@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2025 at 04:11 PM
+-- Generation Time: Jul 08, 2025 at 04:44 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `cache`
 --
+
 
 CREATE TABLE `cache` (
   `key` varchar(255) NOT NULL,
@@ -95,8 +96,7 @@ INSERT INTO `clubs` (`id`, `club_name`, `logo`, `introduction`, `mission`, `staf
 (24, 'Kernel Club', 'club_logos/Jod4TkOQXIo1FlOiR6iRnKzhn6KD8X0JDFND5oNH.png', 'Systems and Linux lovers unite.', 'To deep dive into OS, kernel, and security.', 'Mr. Vishnu K', 'vishnu.kernel@college.edu', 'staff_photos/3vv2PM18nFS2y1tj23HMxgV485dGMfCdUsytLWBT.jpg', 2018, NULL, '2025-06-25 06:57:22'),
 (25, 'Math Club', 'club_logos/qh0INKzh9UEqIN75vx9Tj0BMKdoHaBFmoypJGlau.png', 'Beyond numbers.', 'To build mathematical intuition and fun.', 'Dr. Latha G', 'latha.math@college.edu', 'staff_photos/dAu1FGQheZ4ppK7phjg2vQW6I9FWEcBIrBUfI0cx.jpg', 2015, NULL, '2025-06-25 06:57:49'),
 (26, 'Spark Club', 'club_logos/CgvhX0B2OMfe49fNocWGWP1W9taayrNDRXpH3b4F.png', 'Where ideas spark.', 'To promote ideation and innovation.', 'Ms. Renu A', 'renu.spark@college.edu', 'staff_photos/nSk9g1WMzzA540FXrjFGkLF0cweCPyF3URamSJ6X.jpg', 2020, NULL, '2025-06-25 06:58:26'),
-(27, 'TECHXPLORERS', 'club_logos/eb43zxHJ7EziFG5yyUQ7EfTtyOh2QYP0mxKYj3Q6.png', 'Exploring tech beyond textbooks.', 'To explore, build, and break technology barriers.', 'Mr. Santhosh T', 'santhosh.techx@college.edu', 'staff_photos/5g5jDdCcn8fBKEwnD9yeP7fKkzoMvLYdrWAZPurJ.jpg', 2021, NULL, '2025-06-25 06:58:47'),
-(35, 'AI Consortium', 'club_logos/PirrXIOV1lS7XgfsSB4maYzXQ5hrPz4NYg7xUVLd.jpg', 'AI Consortium is a student-driven club dedicated to exploring the world of Artificial Intelligence and Machine Learning. We bring together enthusiasts, innovators, and learners to build, share, and grow in the rapidly evolving AI ecosystem.', 'To empower students with knowledge, hands-on experience, and a collaborative platform to innovate and apply AI for real-world impact.', 'Mrs. A. Indirani', 'aiica@tce.edu', 'staff_photos/6yyQcqTx5miTwTH096rxPfgUCrwtZUScGJ2H7jTb.jpg', 2025, '2025-07-15 05:05:59', '2025-07-15 05:05:59');
+(27, 'TECHXPLORERS', 'club_logos/eb43zxHJ7EziFG5yyUQ7EfTtyOh2QYP0mxKYj3Q6.png', 'Exploring tech beyond textbooks.', 'To explore, build, and break technology barriers.', 'Mr. Santhosh T', 'santhosh.techx@college.edu', 'staff_photos/5g5jDdCcn8fBKEwnD9yeP7fKkzoMvLYdrWAZPurJ.jpg', 2021, NULL, '2025-06-25 06:58:47');
 
 -- --------------------------------------------------------
 
@@ -151,8 +151,7 @@ INSERT INTO `club_registration` (`id`, `registration_id`, `club_id`, `created_at
 (32, 14, 8, '2025-07-04 05:03:29', '2025-07-04 05:03:29'),
 (33, 15, 1, '2025-07-07 23:17:07', '2025-07-07 23:17:07'),
 (34, 15, 4, '2025-07-07 23:17:07', '2025-07-07 23:17:07'),
-(35, 15, 8, '2025-07-07 23:17:07', '2025-07-07 23:17:07'),
-(36, 16, 35, '2025-07-15 13:23:56', '2025-07-15 13:23:56');
+(35, 15, 8, '2025-07-07 23:17:07', '2025-07-07 23:17:07');
 
 -- --------------------------------------------------------
 
@@ -169,31 +168,24 @@ CREATE TABLE `events` (
   `time` time NOT NULL,
   `image_path` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `gallery` text DEFAULT NULL,
-  `winner_name` varchar(100) DEFAULT NULL,
-  `winner_photo` varchar(255) DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`id`, `club_id`, `event_name`, `description`, `date`, `time`, `image_path`, `created_at`, `updated_at`, `gallery`, `winner_name`, `winner_photo`) VALUES
-(6, 1, 'sensors hunts', 'decode that sensor', '2025-06-24', '15:30:00', 'event_images/QdMdXttjzUyrZP35Cxl88KWHTRxd52ET7lLKOJHi.png', '2025-06-22 01:11:38', '2025-07-03 23:32:17', NULL, NULL, NULL),
-(8, 6, 'Invent New', 'Idea pitching event', '2025-06-10', '09:30:00', 'event_images/fF0DgtGgOlbCK7Mx0WNrWFwKlfrviywsh3LnpQW0.jpg', '2025-06-22 09:29:42', '2025-06-24 08:09:32', NULL, NULL, NULL),
-(9, 3, 'App Mentor', 'Create new apps', '2025-07-03', '16:30:00', 'event_images/9WJYHcvyBEjyZkUgnk4jE7Q2DVrjk04l5nyC60DJ.png', '2025-06-22 09:55:31', '2025-06-24 11:34:03', NULL, NULL, NULL),
-(10, 4, 'Hello', 'hi hello', '2025-06-04', '17:56:00', 'event_images/4m1CLVkp8Dg5eJZtZSTtZkVqnC9uuPBYor85h7lo.png', '2025-06-22 10:03:41', '2025-06-24 11:35:47', NULL, NULL, NULL),
-(11, 7, 'CodeFest', 'Coding in C program', '2025-06-07', '13:25:00', 'event_images/IkJ6ANX0JcKLOawDa8PQQAkcTxB6W2sIcJP4D1db.png', '2025-06-22 11:01:36', '2025-06-24 11:35:08', NULL, NULL, NULL),
-(12, 7, 'Hackfest', 'Coding in hackerrank', '2025-06-27', '14:00:00', 'event_images/nu7dKeThHRiVL6kDhpZBkeJ5pvfEtce0uaQffJsm.png', '2025-06-22 11:02:18', '2025-06-24 11:35:19', NULL, NULL, NULL),
-(13, 4, 'Crime Scene', 'Identify the murderer using clues', '2025-07-12', '17:08:00', 'event_images/7qj9TqOYljGzwSQIOhRHSVxZTdL3MN5sdE2LyySo.png', '2025-06-22 11:03:24', '2025-06-24 11:34:34', NULL, NULL, NULL),
-(15, 1, 'efdcdc', 'fwffscdfef', '2025-06-27', '20:22:00', 'event_images/Bx2tRa1hHB5Hhg16LNibITgxtuFoVpxtJMO9tgZL.png', '2025-06-24 04:18:02', '2025-06-24 04:18:02', NULL, NULL, NULL),
-(16, 3, 'dfdfdf', 'fdadaewrewr', '2025-07-12', '15:44:00', 'event_images/GIdkGjGULper3rw6SyHlQJNjQvyxpUfDA5Vn9H1D.png', '2025-06-24 04:44:29', '2025-06-24 04:44:29', NULL, NULL, NULL),
-(18, 1, 'senthil', 'erewfee', '2025-07-04', '12:51:00', 'event_images/3yqFq1RNzR62XeSX20YZUN9qoli5TdX4pxXpVvkX.png', '2025-06-24 08:46:06', '2025-06-24 08:46:06', NULL, NULL, NULL),
-(19, 35, 'AI week celebration', 'Organized by the AI Consortium, this 5-day power-packed event will take you through the exciting world of Artificial Intelligence — from real-world applications to futuristic innovations!', '2025-04-14', '15:30:00', 'event_images/mOtKKDCLvdpNXsk4U8WKZliMTtRIzaHcIXYJM52W.jpg', '2025-07-15 05:11:30', '2025-07-15 05:43:29', '[\"event_gallery\\/0NcQukwqTK7s4qQsLw3YdURjEA70p7WAbA4yqfC9.jpg\"]', NULL, NULL),
-(20, 35, 'AI Sprint', 'A hands-on In-Lab Internship Opportunity designed for II- and III-year students.\r\n Explore Real-World AI Solutions Across These Key Domains:\r\n MediVision,Decoding Bharat ,Business Minds 2.0, Beyond Tomorrow ,AI Illuminates .', '2025-06-02', '09:30:00', 'event_images/lFPL7kvNdKFpsQ6tQgI2825oB0tw6Xbo3JN4cFSC.jpg', '2025-07-15 05:49:31', '2025-07-15 12:02:56', '[\"event_gallery\\/c77lusBueKU0bho8CshS7bv64wi42HXZKy6tQDYo.jpg\",\"event_gallery\\/lE70XNzbZxSl4AZzj5LWQHSTtAPiuW5wK5MMnxyl.jpg\",\"event_gallery\\/QuhVGspqgdcRglkiRCkjMhx1nD61vvYsog3Kop7l.jpg\",\"event_gallery\\/TRAdCa9JNVwvwwK0s2kXPUB7fhEJe0FLr1uhDv54.jpg\"]', NULL, NULL),
-(21, 35, 'Inauguration of AI consortium-  Gen AI in Action', 'The AI Consortium was inaugurated to bring together experts, students, and institutions in the field of Artificial Intelligence.It aims to promote collaboration, research, and innovation in AI technologies.', '2025-04-02', '10:00:00', 'event_images/UCpS2pSfO6gKjUTpxToq5Q1ktefmlPMAiGdb1zQZ.jpg', '2025-07-15 12:22:52', '2025-07-15 12:23:11', '[\"event_gallery\\/UMfixJteKyXJSm99mVlqMDSkmld3Llhpsc6H2ObX.jpg\",\"event_gallery\\/AToOxLR26FmnAjLL0hDgAbsbaYe54DL0LrJ4391o.jpg\",\"event_gallery\\/sFJNydYFxf150QFhg2uwlkUAtuv88JJ36Q8qHMIV.jpg\",\"event_gallery\\/6hv2yla5jVe3yCSfLzwjyBlUHaZZ6qK1SaJjnBNv.jpg\"]', NULL, NULL),
-(22, 35, 'CRAFT THE CORE – Logo Design Contest', 'Unleash your creativity and design a logo that reflects the core themes of Innovation ,Education and AI Technology.', '2025-06-20', '06:00:00', 'event_images/qFp4MydHybOdjNzNIWSXpg1t89NjUe5pIl9bQg7b.jpg', '2025-07-15 12:31:19', '2025-07-15 12:31:19', NULL, NULL, NULL);
+INSERT INTO `events` (`id`, `club_id`, `event_name`, `description`, `date`, `time`, `image_path`, `created_at`, `updated_at`) VALUES
+(6, 1, 'sensors hunts', 'decode that sensor', '2025-06-24', '15:30:00', 'event_images/QdMdXttjzUyrZP35Cxl88KWHTRxd52ET7lLKOJHi.png', '2025-06-22 01:11:38', '2025-07-03 23:32:17'),
+(8, 6, 'Invent New', 'Idea pitching event', '2025-06-10', '09:30:00', 'event_images/fF0DgtGgOlbCK7Mx0WNrWFwKlfrviywsh3LnpQW0.jpg', '2025-06-22 09:29:42', '2025-06-24 08:09:32'),
+(9, 3, 'App Mentor', 'Create new apps', '2025-07-03', '16:30:00', 'event_images/9WJYHcvyBEjyZkUgnk4jE7Q2DVrjk04l5nyC60DJ.png', '2025-06-22 09:55:31', '2025-06-24 11:34:03'),
+(10, 4, 'Hello', 'hi hello', '2025-06-04', '17:56:00', 'event_images/4m1CLVkp8Dg5eJZtZSTtZkVqnC9uuPBYor85h7lo.png', '2025-06-22 10:03:41', '2025-06-24 11:35:47'),
+(11, 7, 'CodeFest', 'Coding in C program', '2025-06-07', '13:25:00', 'event_images/IkJ6ANX0JcKLOawDa8PQQAkcTxB6W2sIcJP4D1db.png', '2025-06-22 11:01:36', '2025-06-24 11:35:08'),
+(12, 7, 'Hackfest', 'Coding in hackerrank', '2025-06-27', '14:00:00', 'event_images/nu7dKeThHRiVL6kDhpZBkeJ5pvfEtce0uaQffJsm.png', '2025-06-22 11:02:18', '2025-06-24 11:35:19'),
+(13, 4, 'Crime Scene', 'Identify the murderer using clues', '2025-07-12', '17:08:00', 'event_images/7qj9TqOYljGzwSQIOhRHSVxZTdL3MN5sdE2LyySo.png', '2025-06-22 11:03:24', '2025-06-24 11:34:34'),
+(15, 1, 'efdcdc', 'fwffscdfef', '2025-06-27', '20:22:00', 'event_images/Bx2tRa1hHB5Hhg16LNibITgxtuFoVpxtJMO9tgZL.png', '2025-06-24 04:18:02', '2025-06-24 04:18:02'),
+(16, 3, 'dfdfdf', 'fdadaewrewr', '2025-07-12', '15:44:00', 'event_images/GIdkGjGULper3rw6SyHlQJNjQvyxpUfDA5Vn9H1D.png', '2025-06-24 04:44:29', '2025-06-24 04:44:29'),
+(18, 1, 'senthil', 'erewfee', '2025-07-04', '12:51:00', 'event_images/3yqFq1RNzR62XeSX20YZUN9qoli5TdX4pxXpVvkX.png', '2025-06-24 08:46:06', '2025-06-24 08:46:06');
 
 -- --------------------------------------------------------
 
@@ -294,6 +286,7 @@ CREATE TABLE `registrations` (
   `roll_no` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone` varchar(15) NOT NULL,
+  `photo` varchar(255) NOT NULL,
   `department` varchar(50) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -303,23 +296,22 @@ CREATE TABLE `registrations` (
 -- Dumping data for table `registrations`
 --
 
-INSERT INTO `registrations` (`id`, `name`, `roll_no`, `email`, `phone`, `department`, `created_at`, `updated_at`) VALUES
-(1, 'Aburvaa', '660423', 'aburvaasenthilkumarias@gmail.com', '8248224408', 'IT', '2025-06-22 06:03:56', '2025-06-22 06:03:56'),
-(2, 'Kiruthika', '789330', 'kiru@gmail.com', '8248224890', 'IT', '2025-06-22 06:08:38', '2025-06-22 06:08:38'),
-(3, 'Nikitha', '898442', 'niki@gmail.com', '8766590998', 'CIVIL', '2025-06-22 06:16:21', '2025-06-22 06:16:21'),
-(4, 'Varshini', '373290', 'vars@gmail.com', '9843779092', 'ECE', '2025-06-22 06:20:06', '2025-06-22 06:20:06'),
-(5, 'Harshini', '445321', 'harsh@gmail.com', '9787659235', 'AI-ML', '2025-06-22 06:27:25', '2025-06-22 06:27:25'),
-(6, 'Ganga', '334223', 'ganga@gmail.com', '8763342231', 'ROBOTICS', '2025-06-22 06:33:10', '2025-06-22 06:33:10'),
-(7, 'Kaviya', '532133', 'kaviya@gmail.com', '9363333418', 'IT', '2025-06-22 23:34:21', '2025-06-22 23:34:21'),
-(8, 'Valli', '987665', 'valli@gmail.com', '8765490887', 'CSE', '2025-06-23 01:09:36', '2025-06-23 01:09:36'),
-(9, 'fewrrewfdfd', '342413', 'harshinidharsh@gmail.com', '9787644321', 'CIVIL', '2025-06-24 08:06:46', '2025-06-24 08:06:46'),
-(10, 'Abinaya', '654221', 'abi@gmail.com', '7865432190', 'CSE', '2025-06-24 08:18:02', '2025-06-24 08:18:02'),
-(11, 'Abinaya Sri', '654223', 'abinaya@gmail.com', '7865432148', 'ECE', '2025-06-24 08:26:22', '2025-06-24 08:26:22'),
-(12, 'Senthil', '776543', 'senthil@gmail.com', '9843779093', 'EEE', '2025-06-24 08:49:31', '2025-06-24 08:49:31'),
-(13, 'VARSHINI C', '660792', 'cvarshini@student.tce.edu', '7305265003', 'IT', '2025-07-03 12:40:32', '2025-07-03 12:40:32'),
-(14, 'janani', '342116', 'jan@gmail.com', '9843779090', 'ECE', '2025-07-04 05:03:29', '2025-07-04 05:03:29'),
-(15, 'Jeyanthi', '556789', 'jeya@gmail.com', '9877654210', 'ECE', '2025-07-07 23:17:07', '2025-07-07 23:17:07'),
-(16, 'harshini jg', '660100', 'jghar@gmail.com', '9876543210', 'IT', '2025-07-15 13:23:56', '2025-07-15 13:23:56');
+INSERT INTO `registrations` (`id`, `name`, `roll_no`, `email`, `phone`, `photo`, `department`, `created_at`, `updated_at`) VALUES
+(1, 'Aburvaa', '660423', 'aburvaasenthilkumarias@gmail.com', '8248224408', 'photos/KL4Tp8dYEQahzMkcbLrfpRF0g2r1geX4EPrKf9n9.jpg', 'IT', '2025-06-22 06:03:56', '2025-06-22 06:03:56'),
+(2, 'Kiruthika', '789330', 'kiru@gmail.com', '8248224890', 'photos/gTxJLQ3ysjXQb2B1UJftwMApbyXCmnCEVcRFBsGT.jpg', 'IT', '2025-06-22 06:08:38', '2025-06-22 06:08:38'),
+(3, 'Nikitha', '898442', 'niki@gmail.com', '8766590998', 'photos/TGtOSk51XnHsdAk7SLXGIxy6hbXkT9KgjyOcKZ2s.png', 'CIVIL', '2025-06-22 06:16:21', '2025-06-22 06:16:21'),
+(4, 'Varshini', '373290', 'vars@gmail.com', '9843779092', 'photos/fJ9rPgnjzTUe5U5b9mRfzDK4B3vqCoLotAxSnq7K.jpg', 'ECE', '2025-06-22 06:20:06', '2025-06-22 06:20:06'),
+(5, 'Harshini', '445321', 'harsh@gmail.com', '9787659235', 'photos/LvmyM1J6jgMa47tRNTkrhqIxKafwySC2Z06nq31t.png', 'AI-ML', '2025-06-22 06:27:25', '2025-06-22 06:27:25'),
+(6, 'Ganga', '334223', 'ganga@gmail.com', '8763342231', 'photos/WPur9Cu8XD5Dw9RT1roEMxjBO1LeScn5Cz0lyFbf.png', 'ROBOTICS', '2025-06-22 06:33:10', '2025-06-22 06:33:10'),
+(7, 'Kaviya', '532133', 'kaviya@gmail.com', '9363333418', 'photos/5nGkQAk0CRD748b3rlWO30CSEaufeGOg2wOS8h52.jpg', 'IT', '2025-06-22 23:34:21', '2025-06-22 23:34:21'),
+(8, 'Valli', '987665', 'valli@gmail.com', '8765490887', 'photos/jZpA2g2bMAHLLf4yPpQyjsTHkafuTF4aZT5AbM4I.jpg', 'CSE', '2025-06-23 01:09:36', '2025-06-23 01:09:36'),
+(9, 'fewrrewfdfd', '342413', 'harshinidharsh@gmail.com', '9787644321', 'photos/udWk8hpep0tQL6ExSg5n6bFg8ITonoAfOdLm9JHh.png', 'CIVIL', '2025-06-24 08:06:46', '2025-06-24 08:06:46'),
+(10, 'Abinaya', '654221', 'abi@gmail.com', '7865432190', 'photos/TCEOy2pyIgoay21mpWN4BOW3PtHWn1bshBOvcS2s.png', 'CSE', '2025-06-24 08:18:02', '2025-06-24 08:18:02'),
+(11, 'Abinaya Sri', '654223', 'abinaya@gmail.com', '7865432148', 'photos/znEV2mpgUUIWxk2uI9rbwtAIJ54Uj6a9gsvih46M.jpg', 'ECE', '2025-06-24 08:26:22', '2025-06-24 08:26:22'),
+(12, 'Senthil', '776543', 'senthil@gmail.com', '9843779093', 'photos/RIVR5EwqBErQGQkUi6juCQQeSWT3vNEJ6828oxjN.jpg', 'EEE', '2025-06-24 08:49:31', '2025-06-24 08:49:31'),
+(13, 'VARSHINI C', '660792', 'cvarshini@student.tce.edu', '7305265003', 'photos/8g9ojL9K5rO3FOC3YUw67ikiPZQcOqBQlmUOqOdF.jpg', 'IT', '2025-07-03 12:40:32', '2025-07-03 12:40:32'),
+(14, 'janani', '342116', 'jan@gmail.com', '9843779090', 'photos/v63f1pWowlp1VLuCdwDsoy9gn2nx5jismgXeWucv.jpg', 'ECE', '2025-07-04 05:03:29', '2025-07-04 05:03:29'),
+(15, 'Jeyanthi', '556789', 'jeya@gmail.com', '9877654210', 'photos/v6kpbKcON5dOAGuTMhBk0j9tb1I6a90gRKFmVezo.jpg', 'ECE', '2025-07-07 23:17:07', '2025-07-07 23:17:07');
 
 -- --------------------------------------------------------
 
@@ -341,8 +333,21 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('p5LVhELTb75jLwqu5EEqsReNmTawdPG3DSo7Tg13', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiVzJRd3hJOXo1SUpiOG5DUGFzcjJGQW5LclJyZ1ByQ3NYOVgxNUFTYSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC90Y2Uvc3VwZXJhZG1pbi9jbHVicy9wcm9maWxlLzM1Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1752674442),
-('vhyAN58dt29BRA89oqOiQeg5M2NZw88qkfRbaDLo', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoibnp1Z1EwM0dSVjFJTGxQQnZIUHZnSlo0eDhlbTN5Wkg4cmNLNGFNZiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC90Y2Uvc3R1ZGVudC9ldmVudHMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1752605720);
+('1OJzoNDzuLxaPHmQH2xCly8TU1LhmdpQcNogtkMD', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoic3NybzUyY1BTaXZqSVZCNWowYXMzN3hWbE9YWGpFTWI3dmZ1dGRhMCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6MzoidXJsIjthOjE6e3M6ODoiaW50ZW5kZWQiO3M6MzY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC90Y2Uvc3VwZXJhZG1pbiI7fX0=', 1751596924),
+('2jVVzLGPw8M04rCZ04WrWk0VQzR80UaNgRFSaEOG', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiWUtHcGwxdU45NDBTV3lEM1FFdURqeVhqblU1b1hRV0p1cTZuZ25YciI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fX0=', 1751826762),
+('5UsmnoRqBXYoQo2y5tc3xego5J9zbmoamgUZTCqm', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiaHRNa3ZRY0VxcTFYQ1E5UFVBcmtMaU5nN1lIRlZkWG94Um5tUndwUSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC90Y2Uvc3VwZXJhZG1pbi9lbnJvbGxtZW50cyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1751827118),
+('88Nv2qgYCV9DPoykVR1HT5YqrzKRMv4cdIiD2a8O', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoidU5YN2NmMEFTNG1uUVdRaWdERXMzQkRJMk1tbERFNTVIdkdoZ21xbiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1751822533),
+('BfokrviI0lBWAy6qqsBYMQQ1mPWxPdVNJcanHWHm', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiZzk3b0EzNXB3NGQ1OWtqM2RWd3ZBMnNpNWk5YnpxTWQzVG4wTUk5SCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC90Y2Uvc3VwZXJhZG1pbiI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1751982502),
+('DZFU46Dleyq2Exw1jS6BXjnaVJMpkf5ofmJMb8oK', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoia2hSOGpsZ2U2dWhKNTdXN0RMTUllb2lGZW0wSVp0NlAyNkxwRU1EeiI7czozOiJ1cmwiO2E6MDp7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjQ4OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvdGNlL3N1cGVyYWRtaW4vZW5yb2xsbWVudHMiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1751595338),
+('Jt0qKkPbj6sKiV6L0omX4nZ7mcmBIejpiCM9ozkr', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiV0NaS0x3dkpmaVYwTEZNZHRnUzFobFBHWTdIdmhZMjVDREw3TEZrRCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1751600920),
+('LqcLfr8mvzDyyC60pPi40Q8IU5TWWN08m3lQaDvN', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiM280SzE1S1hnVjNqVm5VVUt2WnBxb3RYcGl6UHpnMERpbFc4UGhzZiI7czozOiJ1cmwiO2E6MDp7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC90Y2Uvc3VwZXJhZG1pbi9lbnJvbGxtZW50cyI7fX0=', 1751596792),
+('Lts7LNEkhoGV9zrYd3T3dihV8aKaobWvKouCna9h', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiZ216R2xSWThtVUU4OU1HNFFQZGNBM3hDYWh6TE1zR2FMeUlRMjUzSCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC90Y2Uvc3VwZXJhZG1pbi9lbnJvbGxtZW50cyI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1751605352),
+('nKEYxeQMg96wavABzFxNcLzgQ2U8oAAEtHcuPy8M', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiOTlWYm5vclJXYXJmcDNIT0RoWUpRcEhVQ2pubWxOWWtHRTNJelM4RCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC90Y2Uvc3VwZXJhZG1pbi9jbHVicyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1751626534),
+('pYvdB6z8vZY5AH5ftDQr3UNolgroEUDzlVrxYY7u', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoibm1HNHM3R0hxNWx0b3l2b3IwcHN0VEtCYU14TTI3elBhTkhTQW5QSSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC90Y2Uvc3R1ZGVudCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1751822681),
+('uZlYHViH0GDYABR4bpv6oIyMsy3Ka6NJYRnpdBr9', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoicXZDY05VYk1mWVdvYW05SHhhN1VVRkYxQ2d5TGpsazZiTmtGZmFqTSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC90Y2Uvc3VwZXJhZG1pbi9jbHVicy9wcm9maWxlLzEiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1751985094),
+('vGSsBTEAdYih3cdnHsPnUQfJhv4o0VbzBs61OyWt', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiWUJZTXdCUDg2emFJaTA1R0dTUmJMeW5PSHRMSWRaVHFMUm9hZWFzVyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC90Y2Uvc3VwZXJhZG1pbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1751950407),
+('W0FeoRHAW2QpOiKvr4tYXdshZoUVNwYz3Cgz7p0A', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiYnJvS2tRQlpsZnBKd1o4dkJWZkFaV1NsNzRjdEJ3MGFYMmxkQlk2VyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1751623175),
+('Xj9X8ZH6Z3ZmlGMKqbRsfvcPvfraV48cFDqFKZ46', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoielkwV0pOMlBUYzd0RklsbWZ1ZUpsUUl2SXlzZ0NkeGhwcVREN2RjdyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1751596833);
 
 -- --------------------------------------------------------
 
@@ -366,8 +371,7 @@ CREATE TABLE `student_coordinators` (
 INSERT INTO `student_coordinators` (`id`, `club_id`, `name`, `photo`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Varshini C', 'student_photos/hiRL8wUuj1O5h3Prm2NMXXB5aWltZKhhMvRlGlgB.jpg', '2025-06-21 00:31:40', '2025-07-03 22:50:01'),
 (2, 1, 'Kiruthika B', 'student_photos/DKmmEzvZGHH4Sw1bMWYE4M1IoiCRQGAg48kpAhoZ.jpg', '2025-06-22 04:02:15', '2025-07-03 22:50:01'),
-(3, 1, 'Harshini J G', 'student_photos/2oGBPcKkYvNTq8LR7zjd7Jt2kHqKp8AEj9SQs2T1.jpg', '2025-06-22 04:03:13', '2025-07-03 22:51:23'),
-(4, 35, 'R. Vimitha', 'student_photos/RPY3CSHDIrIEDRQ6mmcGWFFe4cBIPSjPTDmeLhbd.png', '2025-07-15 05:06:46', '2025-07-15 05:06:46');
+(3, 1, 'Harshini J G', 'student_photos/2oGBPcKkYvNTq8LR7zjd7Jt2kHqKp8AEj9SQs2T1.jpg', '2025-06-22 04:03:13', '2025-07-03 22:51:23');
 
 -- --------------------------------------------------------
 
@@ -383,19 +387,15 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `role` varchar(50) DEFAULT NULL,
-  `club_id` int(11) DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `role`, `club_id`) VALUES
-(1, 'Admin', 'admin@example.com', NULL, '$2y$12$7jM1YdJZ1WjVpU48YrlXE.Q1f2hRVL8S/JvIS/Q/JNz7oQn9V2Tji', NULL, '2025-07-03 18:32:28', '2025-07-03 18:32:28', 'super_admin', NULL),
-(2, 'Club A Admin', 'cluba@example.com', NULL, '$2y$12$Si5Zj.7yfVwKr24HFEqGA.TV1n8QjzxrxEupbY8ziNC5VDxO9wXri', NULL, '2025-07-15 10:10:42', '2025-07-15 10:10:42', 'club_admin', 1),
-(3, 'Coders Club Admin', 'coders@example.com', NULL, '$2y$12$jZBkxyKpTGAEWqYEaRSdh.b7Ev14y/Po4L4pSftlavpvCOcTSsqse', NULL, '2025-07-15 10:14:46', '2025-07-15 10:14:46', 'club_admin', 7);
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'admin@example.com', NULL, '$2y$12$7jM1YdJZ1WjVpU48YrlXE.Q1f2hRVL8S/JvIS/Q/JNz7oQn9V2Tji', NULL, '2025-07-03 18:32:28', '2025-07-03 18:32:28');
 
 --
 -- Indexes for dumped tables
@@ -504,19 +504,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `clubs`
 --
 ALTER TABLE `clubs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `club_registration`
 --
 ALTER TABLE `club_registration`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -540,19 +540,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `registrations`
 --
 ALTER TABLE `registrations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `student_coordinators`
 --
 ALTER TABLE `student_coordinators`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
