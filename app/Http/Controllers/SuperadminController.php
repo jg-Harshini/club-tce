@@ -137,61 +137,119 @@ return view('clubs.profile', [
     {
         switch ($action) {
             case 'create':
-                if ($request->isMethod('post')) {
-                    $request->validate([
-                        'club_id' => 'required|exists:clubs,id',
-                        'event_name' => 'required|string|max:255',
-                        'description' => 'nullable|string',
-                        'date' => 'required|date',
-                        'time' => 'required',
-                        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
-                    ]);
+    if ($request->isMethod('post')) {
+        $request->validate([
+            'club_id' => 'required|exists:clubs,id',
+            'event_name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'date' => 'required|date',
+            'time' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'winner_name' => 'nullable|string|max:255',
+            'winner_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gallery.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
-                    $data = $request->only(['club_id', 'event_name', 'description', 'date', 'time']);
+        
+        $data = $request->only([
+            'club_id', 'event_name', 'description', 'date', 'time', 'winner_name'
+        ]);
 
-                    if ($request->hasFile('image')) {
-                        $data['image_path'] = $request->file('image')->store('event_images', 'public');
-                    }
+        // Main event image
+        if ($request->hasFile('image')) {
+            $data['image_path'] = $request->file('image')->store('event_images', 'public');
+        }
 
-                    Event::create($data);
+        // Winner photo
+        if ($request->hasFile('winner_photo')) {
+            $data['winner_photo'] = $request->file('winner_photo')->store('winner_photos', 'public');
+        }
 
-                    return redirect()->back()->with('success', 'Event added successfully!');
-                }
+        // Gallery images
+if ($request->hasFile('gallery')) {
+    $galleryPaths = [];
 
-                return view('events.create');
+    foreach ($request->file('gallery') as $image) {
+        if ($image->isValid()) {
+            $path = $image->store('event_gallery', 'public');
+            $galleryPaths[] = $path;
+        }
+    }
+
+    $data['gallery'] = json_encode($galleryPaths);
+}
+
+        Event::create($data);
+
+        return redirect()->back()->with('success', 'Event added successfully!');
+    }
+
+    return view('events.create');
 
             case 'edit':
-                $event = Event::findOrFail($id);
+    $event = Event::findOrFail($id);
 
-                if ($request->isMethod('post')) {
-                    $request->validate([
-                        'event_name' => 'required|string|max:255',
-                        'description' => 'nullable|string',
-                        'date' => 'required|date',
-                        'time' => 'required',
-                        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-                    ]);
+    if ($request->isMethod('post')) {
+        $request->validate([
+            'event_name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'date' => 'required|date',
+            'time' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'winner_name' => 'nullable|string|max:255',
+            'winner_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gallery.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
-                    if ($request->hasFile('image')) {
-                        if ($event->image_path && Storage::disk('public')->exists($event->image_path)) {
-                            Storage::disk('public')->delete($event->image_path);
-                        }
+        // Image (main)
+        if ($request->hasFile('image')) {
+            if ($event->image_path && Storage::disk('public')->exists($event->image_path)) {
+                Storage::disk('public')->delete($event->image_path);
+            }
+            $event->image_path = $request->file('image')->store('event_images', 'public');
+        }
 
-                        $event->image_path = $request->file('image')->store('event_images', 'public');
-                    }
+        // Winner Photo
+        if ($request->hasFile('winner_photo')) {
+            if ($event->winner_photo && Storage::disk('public')->exists($event->winner_photo)) {
+                Storage::disk('public')->delete($event->winner_photo);
+            }
+            $event->winner_photo = $request->file('winner_photo')->store('winner_photos', 'public');
+        }
 
-                    $event->update([
-                        'event_name' => $request->event_name,
-                        'description' => $request->description,
-                        'date' => $request->date,
-                        'time' => $request->time,
-                    ]);
+        // Gallery Images
+ // Append new gallery images to existing
+if ($request->hasFile('gallery')) {
+    $existingGallery = json_decode($event->gallery ?? '[]', true);
 
-                    return redirect()->route('superadmin.clubs', ['action' => 'profile', 'id' => $event->club_id])
-                                     ->with('success', 'Event updated successfully!');
-                }
+    foreach ($request->file('gallery') as $image) {
+        $path = $image->store('event_gallery', 'public');
+        $existingGallery[] = $path;
+    }
 
-                return view('events.edit', compact('event'));
+    $event->gallery = json_encode($existingGallery);
+    $event->save();
+}
+
+
+        // Update basic details
+        $event->update([
+            'event_name' => $request->event_name,
+            'description' => $request->description,
+            'date' => $request->date,
+            'time' => $request->time,
+            'winner_name' => $request->winner_name,
+        ]);
+
+        return redirect()->route('superadmin.clubs', ['action' => 'profile', 'id' => $event->club_id])
+                         ->with('success', 'Event updated successfully!');
+    }
+
+return view('events.edit', [
+    'event' => $event,
+'formRoute' => url('/superadmin/events/edit/' . $event->id)
+]);
+
 
             case 'delete':
                 $event = Event::findOrFail($id);

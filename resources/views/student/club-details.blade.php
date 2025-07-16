@@ -209,20 +209,20 @@
 
     <!-- Events -->
     <div class="section" data-aos="fade-up" data-aos-delay="300">
-        <h3 class="text-center"><i class="bi bi-megaphone-fill me-2"></i>Upcoming Events</h3>
+        <h3 class="text-center"><i class="bi bi-megaphone-fill me-2"></i>Events</h3>
         <div class="divider mx-auto"></div>
         @if($club->events && $club->events->count())
             @foreach($club->events as $event)
     <a href="{{ route('student.event.details', $event->id) }}" style="text-decoration: none; color: inherit;">
         <div class="event-card">
             <h5 style="color:#800000;">{{ $event->title }}</h5>
-            <p>{{ $event->description }}</p>
+            <p>{{ $event->event_name }}</p>
             <small class="text-muted">📅 {{ \Carbon\Carbon::parse($event->event_date)->format('F j, Y') }}</small>
         </div>
     </a>
 @endforeach
         @else
-            <p class="text-center">No upcoming events right now. Stay tuned!</p>
+            <p class="text-center">No events right now. Stay tuned!</p>
         @endif
     </div>
 

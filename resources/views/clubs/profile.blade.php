@@ -152,29 +152,53 @@
         </div>
         <div class="modal-body">
 
+            <!-- Event Name -->
             <div class="mb-3">
                 <label for="event_name" class="form-label">Event Name</label>
                 <input type="text" name="event_name" class="form-control" required>
             </div>
 
+            <!-- Description -->
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea name="description" class="form-control" rows="3"></textarea>
             </div>
 
+            <!-- Date -->
             <div class="mb-3">
                 <label for="date" class="form-label">Date</label>
                 <input type="date" name="date" class="form-control" required>
             </div>
 
+            <!-- Time -->
             <div class="mb-3">
                 <label for="time" class="form-label">Time</label>
                 <input type="time" name="time" class="form-control" required>
             </div>
 
+            <!-- Event Image -->
             <div class="mb-3">
                 <label for="image" class="form-label">Event Image</label>
                 <input type="file" name="image" class="form-control" accept="image/*">
+            </div>
+
+            <!-- Winner Name (Optional) -->
+            <div class="mb-3">
+                <label for="winner_name" class="form-label">Winner Name (optional)</label>
+                <input type="text" name="winner_name" class="form-control">
+            </div>
+
+            <!-- Winner Photo (Optional) -->
+            <div class="mb-3">
+                <label for="winner_photo" class="form-label">Winner Photo (optional)</label>
+                <input type="file" name="winner_photo" class="form-control" accept="image/*">
+            </div>
+
+            <!-- Gallery Images (Optional) -->
+            <div class="mb-3">
+                <label for="gallery[]" class="form-label">Gallery Images (optional)</label>
+                <input type="file" name="gallery[]" class="form-control" multiple accept="image/*">
+                <small class="text-muted">You can select multiple photos</small>
             </div>
 
         </div>
@@ -185,4 +209,5 @@
     </form>
   </div>
 </div>
+
 @endsection

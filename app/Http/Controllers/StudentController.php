@@ -106,7 +106,6 @@ public function viewClubDetails($id)
             'roll_no' => 'required|string|max:20',
             'email' => 'required|email|max:255',
             'phone' => 'required|digits:10',
-            'photo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'department' => 'required|string',
             'clubs' => 'required|array|min:1|max:3',
         ]);
@@ -135,16 +134,13 @@ public function viewClubDetails($id)
             }
         }
 
-        // Upload photo
-        $photoPath = $request->file('photo')->store('photos', 'public');
 
-        // Save student info
+        // Save student infoS
         $registration = Registration::create([
             'name' => $request->name,
             'roll_no' => $request->roll_no,
             'email' => $request->email,
             'phone' => $request->phone,
-            'photo' => $photoPath,
             'department' => $request->department,
         ]);
 

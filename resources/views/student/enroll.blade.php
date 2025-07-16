@@ -238,7 +238,7 @@
 
     <!-- Enrollment Form -->
     <div class="container-form form-wrapper">
-        <h2>Enroll Club</h2>
+        <h2>Club Enrollment</h2>
 
        
        <form action="{{ route('student.enroll.submit') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
@@ -261,9 +261,6 @@
 
     <label>Email:</label>
     <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
-
-    <label>Photo:</label>
-    <input type="file" name="photo" class="form-control" accept="image/*" required>
 
     <label>Department:</label>
     <select name="department" class="form-select" required>

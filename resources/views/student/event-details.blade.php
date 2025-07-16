@@ -135,6 +135,14 @@
                 font-size: 2rem;
             }
         }
+        .img-fluid {
+    border: 2px solid #ddd;
+    transition: transform 0.3s;
+}
+.img-fluid:hover {
+    transform: scale(1.03);
+}
+
     </style>
 </head>
 <body>
@@ -180,8 +188,41 @@
         <p><i class="fas fa-calendar-alt"></i> <strong>Date:</strong> {{ \Carbon\Carbon::parse($event->date)->format('F j, Y') }}</p>
         <p><i class="fas fa-clock"></i> <strong>Time:</strong> {{ \Carbon\Carbon::parse($event->time)->format('g:i A') }}</p>
         <p><i class="fas fa-align-left"></i> <strong>Description:</strong><br>{{ $event->description }}</p>
-        <a href="{{ route('student.events') }}" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Events</a>
+        <!-- Winner Section -->
+
+
     </div>
+    @if($event->winner_name)
+    <div class="container mt-4" data-aos="fade-up">
+        <h3 style="color: #800000;">🏆 Winner</h3>
+        <p><strong>{{ $event->winner_name }}</strong></p>
+        @if($event->winner_photo)
+            <img src="{{ asset('storage/' . $event->winner_photo) }}" alt="Winner Photo" style="max-width: 200px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        @endif
+    </div>
+@endif
+
+<!-- Gallery Section -->
+@if($event->gallery)
+    @php
+        $galleryImages = json_decode($event->gallery, true);
+    @endphp
+    @if(is_array($galleryImages) && count($galleryImages))
+        <div class="container mt-5" data-aos="fade-up">
+            <h3 style="color: #800000;">📸 Event Gallery</h3>
+            <div class="row g-3 mt-3">
+                @foreach($galleryImages as $img)
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <img src="{{ asset('storage/' . $img) }}" class="img-fluid rounded shadow-sm" alt="Gallery Image">
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    @endif
+@endif
+        <a href="{{ route('student.events') }}" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Events</a>
+
+
 </div>
 
 <!-- Footer -->

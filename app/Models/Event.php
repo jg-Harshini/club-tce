@@ -13,6 +13,7 @@ class Event extends Model
         'date',
         'time',
         'image_path',
+        'winner_name', 'winner_photo', 'gallery'
     ];
 
     public function club()
