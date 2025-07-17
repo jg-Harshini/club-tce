@@ -40,6 +40,7 @@ Route::prefix('tce/superadmin')->middleware(['auth'])->group(function () {
     Route::match(['get', 'post'], '/events/{action?}/{id?}', [SuperadminController::class, 'events'])->name('superadmin.events');
     Route::match(['get', 'post'], '/faculties/{action?}/{id?}', [SuperadminController::class, 'faculties'])->name('superadmin.faculties');
     Route::match(['get', 'post'], '/students/{action?}/{id?}', [SuperadminController::class, 'students'])->name('superadmin.students');
+Route::get('/events/view/{id}', [SuperadminController::class, 'viewEvent'])->name('superadmin.events.view');
 
     Route::get('/enrollments', [SuperadminController::class, 'enrollments'])->name('superadmin.enrollments');
 });
@@ -73,4 +74,4 @@ Route::middleware(['auth'])->group(function () {
     Route::match(['get', 'post'], '/clubadmin/events/{action?}/{id?}', [ClubAdminController::class, 'events'])->name('clubadmin.events');
 });
 
-
+Route::get('/superadmin/events/print/{id}', [SuperadminController::class, 'printReport'])->name('superadmin.events.print');

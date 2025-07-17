@@ -185,8 +185,8 @@
     <div class="event-details" data-aos="fade-left">
         <h1>{{ $event->event_name }}</h1>
         <h4><i class="fas fa-users"></i> {{ $event->club->club_name }}</h4>
-        <p><i class="fas fa-calendar-alt"></i> <strong>Date:</strong> {{ \Carbon\Carbon::parse($event->date)->format('F j, Y') }}</p>
-        <p><i class="fas fa-clock"></i> <strong>Time:</strong> {{ \Carbon\Carbon::parse($event->time)->format('g:i A') }}</p>
+        <p><i class="fas fa-calendar-alt"></i> <strong>Date:</strong> {{ \Carbon\Carbon::parse($event->start_date)->format('F j') }} to {{ \Carbon\Carbon::parse($event->end_date)->format('F j, Y') }}</p>
+        <p><i class="fas fa-clock"></i> <strong>Time:</strong> {{ \Carbon\Carbon::parse($event->start_time)->format('h:i A') }} - {{ \Carbon\Carbon::parse($event->end_time)->format('h:i A') }}</p>
         <p><i class="fas fa-align-left"></i> <strong>Description:</strong><br>{{ $event->description }}</p>
         <!-- Winner Section -->
 

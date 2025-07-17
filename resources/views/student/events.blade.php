@@ -197,8 +197,8 @@
                             <img src="{{ asset('storage/' . $event->image_path ?? 'img/default.png') }}" alt="Event Image">
                             <div class="event-overlay">
                                 <h5>{{ $event->event_name }}</h5>
-                                <p class="mb-0"><strong>Date:</strong> {{ \Carbon\Carbon::parse($event->date)->format('F j, Y') }}</p>
-                                <p class="mb-0"><strong>Time:</strong> {{ \Carbon\Carbon::parse($event->time)->format('g:i A') }}</p>
+                                <p class="mb-0"><strong>Date:</strong> {{ \Carbon\Carbon::parse($event->start_date)->format('d-m-Y') }} to {{ \Carbon\Carbon::parse($event->end_date)->format('d-m-Y') }}</p>
+                                <p class="mb-0"><strong>Time:</strong> {{ \Carbon\Carbon::parse($event->start_time)->format('h:i A') }} - {{ \Carbon\Carbon::parse($event->start_time)->format('h:i A') }}</p>
                             </div>
                         </div>
                     </a>

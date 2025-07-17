@@ -621,7 +621,9 @@
                         <img src="{{ asset('storage/' . $event->image_path) }}" alt="{{ $event->event_name }}">
                         <div class="event-info">
                             <h5>{{ $event->event_name }}</h5>
-                            <p>{{ \Carbon\Carbon::parse($event->date)->format('d M Y') }}</p>
+                            <p>{{ \Carbon\Carbon::parse($event->start_date)->format('d-m-Y') }}
+            to
+            {{ \Carbon\Carbon::parse($event->end_date)->format('d-m-Y') }}</p>
                             <p>{{ $event->club->club_name }}</p>
                             <div class="text-center mt-4 mb-5">
     <a href="{{ route('student.event.details', $event->id) }}" class="btn-maroon">View Details</a>
@@ -675,7 +677,7 @@
         <!-- Contact Info -->
         <div class="col-md-6 col-lg-4">
             <h4 style="color: #B34747; margin-bottom: 20px;">Contact Info</h4>
-            <p><i class="fa fa-map-marker-alt me-2" style="color: #B34747;"></i>123 College Road, Chennai, India</p>
+            <p><i class="fa fa-map-marker-alt me-2" style="color: #B34747;"></i>123 College Road, Madurai, India</p>
             <p><i class="fas fa-envelope me-2" style="color: #B34747;"></i>info@tce.edu.in</p>
             <p><i class="fas fa-phone me-2" style="color: #B34747;"></i>+91 44 1234 5678</p>
         </div>

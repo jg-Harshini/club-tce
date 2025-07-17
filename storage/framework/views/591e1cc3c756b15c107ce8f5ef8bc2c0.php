@@ -113,14 +113,18 @@
                                         </td>
                                         <td><?php echo e($event->event_name); ?></td>
                                         <td><?php echo e($event->description); ?></td>
-                                        <td><?php echo e($event->date); ?></td>
-                                        <td><?php echo e(\Carbon\Carbon::parse($event->time)->format('h:i A')); ?></td>
+                                        <td><?php echo e(\Carbon\Carbon::parse($event->start_date)->format('F j ')); ?> to
+                                            <?php echo e(\Carbon\Carbon::parse($event->end_date)->format('F j, Y')); ?> </td>
+                                        <td><?php echo e(\Carbon\Carbon::parse($event->start_time)->format('h:i A')); ?> - <?php echo e(\Carbon\Carbon::parse($event->end_time)->format('h:i A')); ?></td>
                                         <td>
                                             <a href="<?php echo e($baseUrl . '/edit/' . $event->id); ?>" class="btn btn-sm btn-warning mb-1">Edit</a>
 <form action="<?php echo e($baseUrl . '/delete/' . $event->id); ?>" method="POST" style="display:inline;">
 
                                                 <?php echo csrf_field(); ?>
                                                 <button onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Delete</button>
+                                                <a href="<?php echo e(url('/tce/superadmin/events/view/' . $event->id)); ?>">
+    <i class="fas fa-eye text-primary me-2"></i>View
+</a>
                                             </form>
                                         </td>
                                     </tr>
@@ -139,7 +143,7 @@
 
 <!-- Add Event Modal -->
 <div class="modal fade" id="addEventModal" tabindex="-1" aria-labelledby="addEventModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <form action="<?php echo e($baseUrl . '/create'); ?>" method="POST" enctype="multipart/form-data" class="modal-content">
         <?php echo csrf_field(); ?>
         <input type="hidden" name="club_id" value="<?php echo e($club->id); ?>">
@@ -147,58 +151,94 @@
             <h5 class="modal-title" id="addEventModalLabel">Add New Event</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
 
-            <!-- Event Name -->
-            <div class="mb-3">
-                <label for="event_name" class="form-label">Event Name</label>
-                <input type="text" name="event_name" class="form-control" required>
+        <div class="modal-body px-4">
+            
+            <div class="row mb-3">
+                <label for="event_name" class="col-sm-3 col-form-label">Event Name</label>
+                <div class="col-sm-9">
+                    <input type="text" name="event_name" class="form-control" required>
+                </div>
             </div>
 
-            <!-- Description -->
-            <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea name="description" class="form-control" rows="3"></textarea>
+            
+            <div class="row mb-3">
+                <label for="description" class="col-sm-3 col-form-label">Description</label>
+                <div class="col-sm-9">
+                    <textarea name="description" class="form-control" rows="3"></textarea>
+                </div>
             </div>
 
-            <!-- Date -->
-            <div class="mb-3">
-                <label for="date" class="form-label">Date</label>
-                <input type="date" name="date" class="form-control" required>
+            
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Event Dates</label>
+                <div class="col-sm-4">
+                    <input type="date" name="start_date" class="form-control" required placeholder="Start Date">
+                </div>
+                <div class="col-sm-4">
+                    <input type="date" name="end_date" class="form-control" required placeholder="End Date">
+                </div>
             </div>
 
-            <!-- Time -->
-            <div class="mb-3">
-                <label for="time" class="form-label">Time</label>
-                <input type="time" name="time" class="form-control" required>
+            
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Event Time</label>
+                <div class="col-sm-4">
+                    <input type="time" name="start_time" class="form-control" required placeholder="Start Time">
+                </div>
+                <div class="col-sm-4">
+                    <input type="time" name="end_time" class="form-control" required placeholder="End Time">
+                </div>
             </div>
 
-            <!-- Event Image -->
-            <div class="mb-3">
-                <label for="image" class="form-label">Event Image</label>
-                <input type="file" name="image" class="form-control" accept="image/*">
+            
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Stats</label>
+                <div class="col-sm-3">
+                    <input type="number" name="participants" class="form-control" placeholder="Participants" required>
+                </div>
+                <div class="col-sm-3">
+                    <input type="number" name="coordinators" class="form-control" placeholder="Coordinators" required>
+                </div>
+                <div class="col-sm-3">
+                    <input type="number" name="best_performance" class="form-control" placeholder="Best Performance" required>
+                </div>
             </div>
 
-            <!-- Winner Name (Optional) -->
-            <div class="mb-3">
-                <label for="winner_name" class="form-label">Winner Name (optional)</label>
-                <input type="text" name="winner_name" class="form-control">
+            
+            <div class="row mb-3">
+                <label for="image" class="col-sm-3 col-form-label">Event Image</label>
+                <div class="col-sm-9">
+                    <input type="file" name="image" class="form-control" accept="image/*">
+                </div>
             </div>
 
-            <!-- Winner Photo (Optional) -->
-            <div class="mb-3">
-                <label for="winner_photo" class="form-label">Winner Photo (optional)</label>
-                <input type="file" name="winner_photo" class="form-control" accept="image/*">
+            
+            <div class="row mb-3">
+                <label for="winner_name" class="col-sm-3 col-form-label">Winner Name (Optional)</label>
+                <div class="col-sm-9">
+                    <input type="text" name="winner_name" class="form-control">
+                </div>
             </div>
 
-            <!-- Gallery Images (Optional) -->
-            <div class="mb-3">
-                <label for="gallery[]" class="form-label">Gallery Images (optional)</label>
-                <input type="file" name="gallery[]" class="form-control" multiple accept="image/*">
-                <small class="text-muted">You can select multiple photos</small>
+            
+            <div class="row mb-3">
+                <label for="winner_photo" class="col-sm-3 col-form-label">Winner Photo (Optional)</label>
+                <div class="col-sm-9">
+                    <input type="file" name="winner_photo" class="form-control" accept="image/*">
+                </div>
             </div>
 
+            
+            <div class="row mb-3">
+                <label for="gallery[]" class="col-sm-3 col-form-label">Gallery Images (Optional)</label>
+                <div class="col-sm-9">
+                    <input type="file" name="gallery[]" class="form-control" multiple accept="image/*">
+                    <small class="text-muted">You can select multiple photos</small>
+                </div>
+            </div>
         </div>
+
         <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Save Event</button>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

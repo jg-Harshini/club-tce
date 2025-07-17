@@ -10,10 +10,15 @@ class Event extends Model
         'club_id',
         'event_name',
         'description',
-        'date',
-        'time',
         'image_path',
-        'winner_name', 'winner_photo', 'gallery'
+        'winner_name', 'winner_photo', 'gallery',
+        'start_date',
+        'end_date',
+        'start_time',
+        'end_time',
+        'participants',
+        'coordinators',
+        'best_performance'
     ];
 
     public function club()
