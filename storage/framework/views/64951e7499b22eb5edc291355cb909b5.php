@@ -26,7 +26,10 @@
     </select>
   </div>
 </div>
-
+<div class="mb-3 d-flex gap-2">
+  <a href="<?php echo e(route('export.excel')); ?>" class="btn btn-success">Download Excel</a>
+  <a href="<?php echo e(route('export.pdf')); ?>" class="btn btn-danger">Download PDF</a>
+</div>
   <!-- TABLE -->
   <div class="table-responsive">
     <table id="clubTable" class="table table-bordered table-striped">

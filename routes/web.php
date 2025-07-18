@@ -2,12 +2,18 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Controllers\SuperadminController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ClubAdminController;
+use App\Http\Controllers\EnrollmentController;
+
+
+Route::get('/export/excel', [EnrollmentController::class, 'exportExcel'])->name('export.excel');
+Route::get('/export/pdf', [EnrollmentController::class, 'exportPDF'])->name('export.pdf');
 
 /*
 |--------------------------------------------------------------------------

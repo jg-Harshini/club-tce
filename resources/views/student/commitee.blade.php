@@ -111,12 +111,12 @@
     <div class="row g-4">
       <?php
       $team_members = [
-        ['img' => 'principal.jpg', 'name' => 'Dr. L Ashok Kumar, Principal', 'role' => 'Patron'],
-        ['img' => 'balaji.jpg', 'name' => 'Dr. G.Balaji , Dean ', 'role' => 'Convener'],
-        ['img' => 'ramkumar.jpg', 'name' => 'Dr.Ram Kumar,College level co-ordinator', 'role' => 'Chief Patron'],
-        ['img' => 'cdcse.jpeg', 'name' => 'Dr. C.Deisy, Professor & Head,IT', 'role' => 'Convener'],
-        ['img' => 'kvuit.jpg', 'name' => 'Dr. K.V.Uma, Professor, IT', 'role' => 'Organizing Secretary'],
-        ['img' => 'indirani.jpg', 'name' => 'Mrs.A.Indirani, Professor', 'role' => 'Organizing Secretary'],
+        ['img' => 'principal.jpg', 'name' => 'Dr. L Ashok Kumar, Principal', 'role' => ''],
+        ['img' => 'balaji.jpg', 'name' => 'Dr. G.Balaji , Dean ', 'role' => ''],
+        ['img' => 'ramkumar.jpg', 'name' => 'Dr.Ram Kumar,College level co-ordinator', 'role' => ''],
+        ['img' => 'cdcse.jpeg', 'name' => 'Dr. C.Deisy, Professor & Head,IT', 'role' => ''],
+        ['img' => 'kvuit.jpg', 'name' => 'Dr. K.V.Uma, Professor, IT', 'role' => ''],
+        ['img' => 'indirani.jpg', 'name' => 'Mrs.A.Indirani, Professor', 'role' => ''],
       ];
       foreach ($team_members as $member): ?>
         <div class="col-lg-4 col-md-6" data-aos="fade-up">
