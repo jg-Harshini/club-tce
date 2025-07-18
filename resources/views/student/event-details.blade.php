@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
         body {
@@ -182,16 +183,51 @@
     </div>
 
     <!-- Event Info -->
-    <div class="event-details" data-aos="fade-left">
-        <h1>{{ $event->event_name }}</h1>
-        <h4><i class="fas fa-users"></i> {{ $event->club->club_name }}</h4>
-        <p><i class="fas fa-calendar-alt"></i> <strong>Date:</strong> {{ \Carbon\Carbon::parse($event->start_date)->format('F j') }} to {{ \Carbon\Carbon::parse($event->end_date)->format('F j, Y') }}</p>
-        <p><i class="fas fa-clock"></i> <strong>Time:</strong> {{ \Carbon\Carbon::parse($event->start_time)->format('h:i A') }} - {{ \Carbon\Carbon::parse($event->end_time)->format('h:i A') }}</p>
-        <p><i class="fas fa-align-left"></i> <strong>Description:</strong><br>{{ $event->description }}</p>
-        <!-- Winner Section -->
+<div class="event-details" data-aos="fade-left">
+    <h1>{{ $event->event_name }}</h1>
+    <h4><i class="fas fa-users"></i> {{ $event->club->club_name }}</h4>
+    <p><i class="fas fa-calendar-alt"></i> <strong>Date:</strong> {{ \Carbon\Carbon::parse($event->start_date)->format('F j') }} to {{ \Carbon\Carbon::parse($event->end_date)->format('F j, Y') }}</p>
+    <p><i class="fas fa-clock"></i> <strong>Time:</strong> {{ \Carbon\Carbon::parse($event->start_time)->format('h:i A') }} - {{ \Carbon\Carbon::parse($event->end_time)->format('h:i A') }}</p>
+    <p><i class="fas fa-align-left"></i> <strong>Description:</strong><br>{{ $event->description }}</p>
 
+    @if($event->participants || $event->coordinators || $event->best_performance)
+        <div class="mt-4">
+            <h5 style="color: #800000;">Key Highlights</h5>
+            <div class="d-flex flex-wrap gap-4 mt-3">
+                @if($event->participants)
+                <div class="d-flex align-items-center gap-3">
+                    <i class="bi bi-people-fill text-info" style="font-size: 2rem;"></i>
+                    <div>
+                        <div class="fw-bold fs-5">{{ $event->participants }}</div>
+                        <div class="text-muted">Participants</div>
+                    </div>
+                </div>
+                @endif
 
-    </div>
+                @if($event->coordinators)
+                <div class="d-flex align-items-center gap-3">
+                    <i class="bi bi-person-check-fill text-danger" style="font-size: 2rem;"></i>
+                    <div>
+                        <div class="fw-bold fs-5">{{ $event->coordinators }}</div>
+                        <div class="text-muted">Coordinators</div>
+                    </div>
+                </div>
+                @endif
+
+                @if($event->best_performance)
+                <div class="d-flex align-items-center gap-3">
+                    <i class="bi bi-award-fill text-warning" style="font-size: 2rem;"></i>
+                    <div>
+                        <div class="fw-bold fs-5">{{ $event->best_performance }}</div>
+                        <div class="text-muted">Best Performances</div>
+                    </div>
+                </div>
+                @endif
+            </div>
+        </div>
+    @endif
+</div>
+
     @if($event->winner_name)
     <div class="container mt-4" data-aos="fade-up">
         <h3 style="color: #800000;">🏆 Winner</h3>

@@ -198,7 +198,7 @@
             <i class="bi bi-award-fill text-warning"></i>
             <div class="highlight-text">
                 <div class="highlight-value"><?php echo e($event->best_performance); ?></div>
-                <div class="text-muted">Best Projects</div>
+                <div class="text-muted">Best Performances</div>
             </div>
         </div>
 

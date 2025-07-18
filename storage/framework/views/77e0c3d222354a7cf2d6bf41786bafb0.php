@@ -112,13 +112,11 @@
             </a>
         </div>
         <div class="text-start mt-4">
-<a href="<?php echo e(route('superadmin.events.print', ['id' => $event->id])); ?>" 
+  <a href="<?php echo e(route('superadmin.events.print', ['id' => $event->id])); ?>" 
    target="_blank" 
    class="btn btn-outline-primary">
    Print Details
 </a>
-
-
 </div>
 
     </div>
