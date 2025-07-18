@@ -41,7 +41,7 @@
   <div class="col-lg-6">
     <div class="card shadow-sm">
       <div class="card-body text-center">
-        <h6 class="fw-semibold mb-3">📊 Department-wise Distribution</h6>
+        <h6 class="fw-semibold mb-3"> Department-wise Distribution</h6>
         <canvas id="dept-chart" height="180"></canvas>
       </div>
     </div>
@@ -49,9 +49,34 @@
   <div class="col-lg-6">
     <div class="card shadow-sm">
       <div class="card-body text-center">
-        <h6 class="fw-semibold mb-3">🌟 Top 3 Popular Clubs</h6>
+        <h6 class="fw-semibold mb-3"> Top 3 Popular Clubs</h6>
         <canvas id="popular-clubs-chart" height="180"></canvas>
       </div>
+    </div>
+  </div>
+</div>
+<!-- New Row for Active Clubs by Event Count -->
+<!-- New Row for Active Clubs and Placeholder (for future chart) -->
+<div class="row mb-4">
+  <div class="col-lg-6">
+    <div class="card shadow-sm">
+      <div class="card-body text-center">
+        <h6 class="fw-semibold mb-3"> Most Active Clubs by Events Conducted</h6>
+        <canvas id="active-club-events-chart" height="180"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Placeholder for future chart -->
+<!-- Placeholder for future chart -->
+<div class="col-lg-6">
+  <div class="card shadow-sm">
+    <div class="card-body text-center">
+      <h6 class="fw-semibold mb-3">Gender Distribution</h6>
+      <div style="height: 320px; display: flex; align-items: center; justify-content: center;">
+  <canvas id="gender-chart" width="250" height="250"></canvas>
+</div>
+
     </div>
   </div>
 </div>
@@ -63,9 +88,13 @@
   document.addEventListener('DOMContentLoaded', function () {
     const deptData = <?php echo json_encode($departmentDistribution, 15, 512) ?>;
     const clubData = <?php echo json_encode($popularClubs, 15, 512) ?>;
+ const activeClubEvents = <?php echo json_encode($activeClubsByEvents, 15, 512) ?>;
+  const genderData = <?php echo json_encode($genderDistribution, 15, 512) ?>;
 
     const deptCtx = document.getElementById("dept-chart");
     const clubCtx = document.getElementById("popular-clubs-chart");
+ const activeClubCtx = document.getElementById("active-club-events-chart");
+  const genderCtx = document.getElementById("gender-chart");
 
     if (deptCtx && deptData && Object.keys(deptData).length) {
       new Chart(deptCtx, {
@@ -106,6 +135,52 @@
         }
       });
     }
+      if (activeClubCtx && activeClubEvents && Object.keys(activeClubEvents).length) {
+    new Chart(activeClubCtx, {
+      type: "bar",
+      data: {
+        labels: Object.keys(activeClubEvents),
+        datasets: [{
+          label: "Events Conducted",
+          data: Object.values(activeClubEvents),
+          backgroundColor: ['#f3e8ff', '#d2f1f0', '#ffe4ec', '#fff7d1', '#d7fcd4']
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { precision: 0 }
+          }
+        },
+        plugins: { legend: { display: false } }
+      }
+    });
+  }
+
+  if (genderCtx && genderData && Object.keys(genderData).length) {
+    new Chart(genderCtx, {
+      type: "pie",
+      data: {
+        labels: Object.keys(genderData),
+        datasets: [{
+          label: "Gender",
+          data: Object.values(genderData),
+          backgroundColor: ['#87CEFA','#FFB6C1','#D3D3D3']
+        }]
+      },
+      options: {
+        responsive: false,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }
+    });
+  }
   });
 </script>
 <?php $__env->stopSection(); ?>

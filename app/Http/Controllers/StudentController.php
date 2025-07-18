@@ -104,6 +104,7 @@ public function viewClubDetails($id)
         $request->validate([
             'name' => 'required|string|max:255',
             'roll_no' => 'required|string|max:20',
+            'gender' => 'required|string|max:10',
             'email' => 'required|email|max:255',
             'phone' => 'required|digits:10',
             'department' => 'required|string',
@@ -139,6 +140,7 @@ public function viewClubDetails($id)
         $registration = Registration::create([
             'name' => $request->name,
             'roll_no' => $request->roll_no,
+            'gender' => $request->gender,
             'email' => $request->email,
             'phone' => $request->phone,
             'department' => $request->department,

@@ -11,6 +11,7 @@ class Registration extends Model
         'name',
         'roll_no',
         'email',
+        'gender',
         'phone',
         'photo',
         'department',

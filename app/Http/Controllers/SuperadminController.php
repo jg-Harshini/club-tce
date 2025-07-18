@@ -299,16 +299,52 @@ class SuperadminController extends Controller
             ->orderByDesc('total')
             ->limit(5)
             ->pluck('total', 'clubs.club_name')
-            ->toArray();
+            ->toArray();$activeClubsByEvents = DB::table('events')
+        ->join('clubs', 'events.club_id', '=', 'clubs.id')
+        ->select('clubs.club_name', DB::raw('count(events.id) as total_events'))
+        ->groupBy('clubs.club_name')
+        ->orderByDesc('total_events')
+        ->limit(5)
+        ->pluck('total_events', 'clubs.club_name')
+        ->toArray();
 
-        return view('dash', compact(
-            'totalClubs',
-            'totalApplications',
-            'totalStudents',
-            'recentRegistrations',
-            'departmentDistribution',
-            'popularClubs'
-        ));
+    $rawData = DB::table('registrations')
+    ->select('gender', DB::raw('count(*) as count'))
+    ->groupBy('gender')
+    ->pluck('count', 'gender'); // returns: ['Male' => 50, null => 5, etc.]
+
+$genderDistribution = [
+    'Male' => 0,
+    'Female' => 0,
+    'Other' => 0
+];
+
+foreach ($rawData as $key => $value) {
+    $key = strtolower(trim((string) $key)); // safely handle null or blanks
+
+    if ($key === 'male') {
+        $genderDistribution['Male'] += $value;
+    } elseif ($key === 'female') {
+        $genderDistribution['Female'] += $value;
+    } elseif ($key === 'other') {
+        $genderDistribution['Other'] += $value;
+    } else {
+        // Anything else (null, blank, typos) goes to "Other"
+        $genderDistribution['Other'] += $value;
+    }
+}
+
+    return view('dash', compact(
+    'totalClubs',
+    'totalApplications',
+    'totalStudents',
+    'recentRegistrations',
+    'departmentDistribution',
+    'popularClubs',
+    'activeClubsByEvents',
+    'genderDistribution' // 👈 add this
+));
+
     }
 
     public function enrollments()

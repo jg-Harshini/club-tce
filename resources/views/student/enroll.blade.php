@@ -259,8 +259,21 @@
         </div>
     </div>
 
-    <label>Email:</label>
-    <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
+  <div class="row">
+    <div class="col-md-6">
+        <label>Email:</label>
+        <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
+    </div>
+    <div class="col-md-6">
+        <label>Gender:</label>
+        <select name="gender" class="form-select" required>
+            <option value="" disabled selected>Select gender</option>
+            <option value="Male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male</option>
+            <option value="Female" {{ old('gender') == 'female' ? 'selected' : '' }}>Female</option>
+            <option value="Other" {{ old('gender') == 'other' ? 'selected' : '' }}>Other</option>
+        </select>
+    </div>
+</div>
 
     <label>Department:</label>
     <select name="department" class="form-select" required>

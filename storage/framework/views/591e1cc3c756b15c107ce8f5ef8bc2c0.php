@@ -214,7 +214,7 @@
             </div>
 
             
-            <div class="row mb-3">
+            <!--div class="row mb-3">
                 <label for="winner_name" class="col-sm-3 col-form-label">Winner Name (Optional)</label>
                 <div class="col-sm-9">
                     <input type="text" name="winner_name" class="form-control">
@@ -227,7 +227,7 @@
                 <div class="col-sm-9">
                     <input type="file" name="winner_photo" class="form-control" accept="image/*">
                 </div>
-            </div>
+            </div-->
 
             
             <div class="row mb-3">
