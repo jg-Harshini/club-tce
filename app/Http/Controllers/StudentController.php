@@ -7,6 +7,8 @@ use App\Models\Club;
 use App\Models\Event;
 use App\Models\Registration;
 use Illuminate\Support\Facades\DB;
+use App\Mail\RegistrationConfirmationMail;
+use Illuminate\Support\Facades\Mail;
 
 class StudentController extends Controller
 {
@@ -155,6 +157,8 @@ public function viewClubDetails($id)
                 'updated_at' => now(),
             ]);
         }
+// Send confirmation email
+Mail::to($registration->email)->send(new RegistrationConfirmationMail($registration));
 
         return redirect()->route('student.enroll.form')
             ->with('popup_message', '🎉 Registration successful!')

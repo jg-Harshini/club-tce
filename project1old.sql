@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2025 at 09:06 PM
+-- Generation Time: Jul 18, 2025 at 07:52 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -152,7 +152,15 @@ INSERT INTO `club_registration` (`id`, `registration_id`, `club_id`, `created_at
 (33, 15, 1, '2025-07-07 23:17:07', '2025-07-07 23:17:07'),
 (34, 15, 4, '2025-07-07 23:17:07', '2025-07-07 23:17:07'),
 (35, 15, 8, '2025-07-07 23:17:07', '2025-07-07 23:17:07'),
-(36, 16, 35, '2025-07-15 13:23:56', '2025-07-15 13:23:56');
+(36, 16, 35, '2025-07-15 13:23:56', '2025-07-15 13:23:56'),
+(37, 17, 14, '2025-07-18 10:37:12', '2025-07-18 10:37:12'),
+(38, 17, 21, '2025-07-18 10:37:12', '2025-07-18 10:37:12'),
+(39, 18, 1, '2025-07-18 10:40:07', '2025-07-18 10:40:07'),
+(40, 18, 17, '2025-07-18 10:40:07', '2025-07-18 10:40:07'),
+(41, 19, 15, '2025-07-18 10:44:09', '2025-07-18 10:44:09'),
+(42, 19, 35, '2025-07-18 10:44:09', '2025-07-18 10:44:09'),
+(43, 20, 21, '2025-07-18 11:01:10', '2025-07-18 11:01:10'),
+(44, 20, 24, '2025-07-18 11:01:10', '2025-07-18 11:01:10');
 
 -- --------------------------------------------------------
 
@@ -303,30 +311,35 @@ CREATE TABLE `registrations` (
   `phone` varchar(15) NOT NULL,
   `department` varchar(50) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `gender` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `registrations`
 --
 
-INSERT INTO `registrations` (`id`, `name`, `roll_no`, `email`, `phone`, `department`, `created_at`, `updated_at`) VALUES
-(1, 'Aburvaa', '660423', 'aburvaasenthilkumarias@gmail.com', '8248224408', 'IT', '2025-06-22 06:03:56', '2025-06-22 06:03:56'),
-(2, 'Kiruthika', '789330', 'kiru@gmail.com', '8248224890', 'IT', '2025-06-22 06:08:38', '2025-06-22 06:08:38'),
-(3, 'Nikitha', '898442', 'niki@gmail.com', '8766590998', 'CIVIL', '2025-06-22 06:16:21', '2025-06-22 06:16:21'),
-(4, 'Varshini', '373290', 'vars@gmail.com', '9843779092', 'ECE', '2025-06-22 06:20:06', '2025-06-22 06:20:06'),
-(5, 'Harshini', '445321', 'harsh@gmail.com', '9787659235', 'AI-ML', '2025-06-22 06:27:25', '2025-06-22 06:27:25'),
-(6, 'Ganga', '334223', 'ganga@gmail.com', '8763342231', 'ROBOTICS', '2025-06-22 06:33:10', '2025-06-22 06:33:10'),
-(7, 'Kaviya', '532133', 'kaviya@gmail.com', '9363333418', 'IT', '2025-06-22 23:34:21', '2025-06-22 23:34:21'),
-(8, 'Valli', '987665', 'valli@gmail.com', '8765490887', 'CSE', '2025-06-23 01:09:36', '2025-06-23 01:09:36'),
-(9, 'fewrrewfdfd', '342413', 'harshinidharsh@gmail.com', '9787644321', 'CIVIL', '2025-06-24 08:06:46', '2025-06-24 08:06:46'),
-(10, 'Abinaya', '654221', 'abi@gmail.com', '7865432190', 'CSE', '2025-06-24 08:18:02', '2025-06-24 08:18:02'),
-(11, 'Abinaya Sri', '654223', 'abinaya@gmail.com', '7865432148', 'ECE', '2025-06-24 08:26:22', '2025-06-24 08:26:22'),
-(12, 'Senthil', '776543', 'senthil@gmail.com', '9843779093', 'EEE', '2025-06-24 08:49:31', '2025-06-24 08:49:31'),
-(13, 'VARSHINI C', '660792', 'cvarshini@student.tce.edu', '7305265003', 'IT', '2025-07-03 12:40:32', '2025-07-03 12:40:32'),
-(14, 'janani', '342116', 'jan@gmail.com', '9843779090', 'ECE', '2025-07-04 05:03:29', '2025-07-04 05:03:29'),
-(15, 'Jeyanthi', '556789', 'jeya@gmail.com', '9877654210', 'ECE', '2025-07-07 23:17:07', '2025-07-07 23:17:07'),
-(16, 'harshini jg', '660100', 'jghar@gmail.com', '9876543210', 'IT', '2025-07-15 13:23:56', '2025-07-15 13:23:56');
+INSERT INTO `registrations` (`id`, `name`, `roll_no`, `email`, `phone`, `department`, `created_at`, `updated_at`, `gender`) VALUES
+(1, 'Aburvaa', '660423', 'aburvaasenthilkumarias@gmail.com', '8248224408', 'IT', '2025-06-22 06:03:56', '2025-07-18 15:04:43', 'female'),
+(2, 'Kiruthika', '789330', 'kiru@gmail.com', '8248224890', 'IT', '2025-06-22 06:08:38', '2025-07-18 15:06:10', 'female'),
+(3, 'Nikitha', '898442', 'niki@gmail.com', '8766590998', 'CIVIL', '2025-06-22 06:16:21', '2025-07-18 15:06:10', 'female'),
+(4, 'Varshini', '373290', 'vars@gmail.com', '9843779092', 'ECE', '2025-06-22 06:20:06', '2025-07-18 15:06:10', 'female'),
+(5, 'Harshini', '445321', 'harsh@gmail.com', '9787659235', 'AI-ML', '2025-06-22 06:27:25', '2025-07-18 15:06:10', 'female'),
+(6, 'Ganga', '334223', 'ganga@gmail.com', '8763342231', 'ROBOTICS', '2025-06-22 06:33:10', '2025-07-18 15:06:10', 'female'),
+(7, 'Kaviya', '532133', 'kaviya@gmail.com', '9363333418', 'IT', '2025-06-22 23:34:21', '2025-07-18 15:06:10', 'female'),
+(8, 'hari', '987665', 'hari@gmail.com', '8765490887', 'CSE', '2025-06-23 01:09:36', '2025-07-18 15:07:45', 'female'),
+(9, 'Dharshan', '342413', 'dharsh@gmail.com', '9787644321', 'CIVIL', '2025-06-24 08:06:46', '2025-07-18 16:21:56', 'male'),
+(10, 'Abinaya', '654221', 'abi@gmail.com', '7865432190', 'CSE', '2025-06-24 08:18:02', '2025-07-18 15:06:10', 'female'),
+(11, 'Abinaya Sri', '654223', 'abinaya@gmail.com', '7865432148', 'ECE', '2025-06-24 08:26:22', '2025-07-18 15:05:18', 'female'),
+(12, 'Senthil', '776543', 'senthil@gmail.com', '9843779093', 'EEE', '2025-06-24 08:49:31', '2025-07-18 16:21:56', 'male'),
+(13, 'VARSHINI C', '660792', 'cvarshini@student.tce.edu', '7305265003', 'IT', '2025-07-03 12:40:32', '2025-07-18 15:05:52', 'female'),
+(14, 'janani', '342116', 'jan@gmail.com', '9843779090', 'ECE', '2025-07-04 05:03:29', '2025-07-18 15:06:10', 'female'),
+(15, 'Jeyaram', '556789', 'jeyaram@gmail.com', '9877654210', 'ECE', '2025-07-07 23:17:07', '2025-07-18 16:21:56', 'male'),
+(16, 'harshini jg', '660100', 'jghar@gmail.com', '9876543210', 'IT', '2025-07-15 13:23:56', '2025-07-18 15:06:10', 'female'),
+(17, 'Ganesh', '667899', 'ganesh@gmail.com', '9873044321', 'MECT', '2025-07-18 10:37:12', '2025-07-18 16:21:56', 'male'),
+(18, 'Aravind', '678921', 'ara@gmail.com', '9837423490', 'CSBS', '2025-07-18 10:40:07', '2025-07-18 16:21:34', 'male'),
+(19, 'Goutham', '678095', 'goutham@gmail.com', '8790654321', 'DS', '2025-07-18 10:44:09', '2025-07-18 16:21:56', 'male'),
+(20, 'Harish', '678905', 'har@gmail.com', '9876504327', 'ARCH', '2025-07-18 11:01:10', '2025-07-18 11:01:10', 'Male');
 
 -- --------------------------------------------------------
 
@@ -348,7 +361,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('XJ85wv5o1HA5NMNhUoY3bTBURtZp147r6y3ktWt7', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoieFdnZ2JIcHJHcW9MSk8zRVg0cHlnODNTYXJZcFNkWTRrZUdoY29kUyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zdXBlcmFkbWluL2V2ZW50cy9wcmludC8yMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1752779147);
+('AjEHK12ahFKpjvqW40SKFNpSmnGzKQCwKNk1Pr4Z', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiTjJkdFRZNzF1Q1Y1THp1c0UxdDZYMlR2eE1JVmRLM3dpS3dVNUtHVyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC90Y2Uvc3R1ZGVudC9jb21taXRlZSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1752860821),
+('aSfielGXyc4iAm0jauXoaDjxxhHrVYmiOUudfEwM', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoic0xDRVU0UXlJZlBCUGVPRjgxYjBCNUVJT2daZjVlbHBHRkZjNkNFcyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9leHBvcnQvZXhjZWwiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1752853529);
 
 -- --------------------------------------------------------
 
@@ -516,7 +530,7 @@ ALTER TABLE `clubs`
 -- AUTO_INCREMENT for table `club_registration`
 --
 ALTER TABLE `club_registration`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `events`
@@ -546,7 +560,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `registrations`
 --
 ALTER TABLE `registrations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `student_coordinators`
