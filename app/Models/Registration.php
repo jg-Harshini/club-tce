@@ -16,4 +16,9 @@ class Registration extends Model
         'photo',
         'department',
     ];
+    public function clubs()
+{
+    return $this->belongsToMany(Club::class, 'club_registration', 'registration_id', 'club_id');
+}
+
 }

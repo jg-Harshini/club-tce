@@ -250,13 +250,10 @@
 
     <div class="row">
         <div class="col-md-6">
-            <label>Roll Number:</label>
+            <label>Roll Number/Register Number:</label>
             <input type="text" name="roll_no" maxlength="6" class="form-control" value="{{ old('roll_no') }}" required>
         </div>
-        <div class="col-md-6">
-            <label>Phone Number:</label>
-            <input type="tel" name="phone" pattern="[0-9]{10}" maxlength="10" class="form-control" value="{{ old('phone') }}" required>
-        </div>
+        
     </div>
 
   <div class="row">

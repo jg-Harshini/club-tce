@@ -91,11 +91,12 @@ public function viewClubDetails($id)
     // 3. Show enroll form (enroll.blade.php)
     public function showEnrollForm()
     {
-        $clubs = Club::all();
+$clubs = Club::orderBy('club_name')->get();
         $departments = [
-            'CSE', 'IT', 'ECE', 'EEE', 'MECH', 'CIVIL', 'DS', 'AI-ML',
+            'CSE', 'IT', 'ECE', 'EEE', 'MECH', 'CIVIL', 'AMCS', 'AI-ML',
             'MECT', 'CSBS', 'ARCH'
         ];
+        sort($departments);
 
         return view('student.enroll', compact('clubs', 'departments'));
     }

@@ -13,7 +13,7 @@
 <!-- Summary Cards -->
 <div class="row mb-4">
   <div class="col-lg-4 col-md-6">
-    <div class="card shadow-sm text-dark" style="background-color: #ffe4ec;">
+    <div class="card shadow-sm text-dark" style="background-color: #ffcad4;">
       <div class="card-body">
         <h5 class="card-title">Total Clubs</h5>
         <h2 class="fw-bold">{{ $totalClubs }}</h2>
@@ -21,7 +21,7 @@
     </div>
   </div>
   <div class="col-lg-4 col-md-6">
-    <div class="card shadow-sm text-dark" style="background-color: #fff2e6;">
+    <div class="card shadow-sm text-dark" style="background-color: #ffddb0;">
       <div class="card-body">
         <h5 class="card-title">Total Club Applications</h5>
         <h2 class="fw-bold">{{ $totalApplications }}</h2>
@@ -29,7 +29,7 @@
     </div>
   </div>
   <div class="col-lg-4 col-md-12">
-    <div class="card shadow-sm text-dark" style="background-color: #d2f1f0;">
+    <div class="card shadow-sm text-dark" style="background-color: #b7eadf;">
       <div class="card-body">
         <h5 class="card-title">Total Distinct Students</h5>
         <h2 class="fw-bold">{{ $totalStudents }}</h2>
@@ -106,14 +106,52 @@
           datasets: [{
             label: "Students",
             data: Object.values(deptData),
-            backgroundColor: ['#f3e8ff', '#d2f1f0', '#ffe4ec', '#fff7d1', '#d7fcd4']
+backgroundColor: ['#f7b7b7', '#c2f0c2', '#ffdfba', '#d0c7f2', '#f8e2cf'] // dept-chart
           }]
         },
         options: {
           responsive: true,
           plugins: {
-            legend: { display: false }
-          }
+  legend: {
+    display: false,
+    labels: {
+      font: {
+        weight: 'bold',
+        size: 14
+      },
+      color: '#333' // darker text
+    }
+  },
+  tooltip: {
+    bodyFont: {
+      weight: 'bold',
+      size: 13
+    }
+  }
+},
+scales: {
+  x: {
+    ticks: {
+      color: '#222',
+      font: {
+        weight: 'bold',
+        size: 13
+      }
+    }
+  },
+  y: {
+    beginAtZero: true,
+    ticks: {
+      precision: 0,
+      color: '#222',
+      font: {
+        weight: 'bold',
+        size: 13
+      }
+    }
+  }
+}
+
         }
       });
     }
@@ -126,14 +164,53 @@
           datasets: [{
             label: "Applications",
             data: Object.values(clubData),
-            backgroundColor: ['#c4f0ff', '#fcdada', '#ffe4ec']
+backgroundColor: ['#f5b8d1', '#ffd6a5', '#bae1ff'] // popular-clubs-chart
           }]
         },
         options: {
           responsive: true,
           plugins: {
-            legend: { display: false }
-          }
+  legend: {
+    display: false,
+    labels: {
+      font: {
+        weight: 'bold',
+        size: 14
+      },
+      color: '#333' // darker text
+    }
+  },
+  tooltip: {
+    bodyFont: {
+      weight: 'bold',
+      size: 13
+    }
+  }
+},
+scales: {
+  x: {
+    ticks: {
+      color: '#222',
+      font: {
+        weight: 'bold',
+        size: 13
+      }
+    }
+  },
+  y: {
+    beginAtZero: true,
+    ticks: {
+      precision: 0,
+      color: '#222',
+      font: {
+        weight: 'bold',
+        size: 13
+      }
+    }
+  }
+}
+
+
         }
       });
     }
@@ -145,19 +222,59 @@
         datasets: [{
           label: "Events Conducted",
           data: Object.values(activeClubEvents),
-          backgroundColor: ['#f3e8ff', '#d2f1f0', '#ffe4ec', '#fff7d1', '#d7fcd4']
+backgroundColor: ['#f7b7b7', '#c2f0c2', '#ffdfba', '#d0c7f2', '#f8e2cf'] // active-club-events-chart
         }]
       },
-      options: {
-        responsive: true,
-        scales: {
-          y: {
-            beginAtZero: true,
-            ticks: { precision: 0 }
-          }
+    options: {
+  responsive: true,
+  plugins: {
+    legend: {
+      display: false,
+      labels: {
+        font: {
+          weight: 'bold',
+          size: 14
         },
-        plugins: { legend: { display: false } }
+        color: '#333'
       }
+    },
+    tooltip: {
+      bodyFont: {
+        weight: 'bold',
+        size: 13
+      }
+    }
+  },
+  scales: {
+    x: {
+  ticks: {
+    callback: function(value, index, values) {
+      let label = this.getLabelForValue(value);
+      return label.length > 10 ? label.slice(0, 10) + '…' : label;
+    },
+    color: '#222',
+    font: {
+      weight: 'bold',
+      size: 13
+    },
+    maxRotation: 0,
+    minRotation: 0
+  }
+},
+    y: {
+      beginAtZero: true,
+      ticks: {
+        precision: 0,
+        color: '#222',
+        font: {
+          weight: 'bold',
+          size: 13
+        }
+      }
+    }
+  }
+}
+
     });
   }
 
@@ -169,17 +286,14 @@
         datasets: [{
           label: "Gender",
           data: Object.values(genderData),
-          backgroundColor: ['#87CEFA','#FFB6C1','#D3D3D3']
+backgroundColor: ['#92caff', '#ffb6c1', '#e2e2e2'] // gender pie
         }]
+        
       },
       options: {
         responsive: false,
         maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            position: 'bottom'
-          }
-        }
+        
       }
     });
   }

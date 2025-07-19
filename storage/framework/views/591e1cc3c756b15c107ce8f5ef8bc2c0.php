@@ -212,7 +212,6 @@
                     <input type="file" name="image" class="form-control" accept="image/*">
                 </div>
             </div>
-
             
             <!--div class="row mb-3">
                 <label for="winner_name" class="col-sm-3 col-form-label">Winner Name (Optional)</label>

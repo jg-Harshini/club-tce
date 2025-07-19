@@ -40,7 +40,7 @@
 
         .gallery img {
             width: 48%;
-            height: 290px;
+            height: 280px;
             object-fit:wrap;
             border-radius: 6px;
         }
@@ -150,19 +150,15 @@
 
 <div class="text-center mb-4">
     <img src="/img/tce.jpg" alt="College Logo" style="height: 100px;">
-    <h3 class="title mt-2">Thiagarajar College of Engineering</h3>
-    <p>Where quality and ethics matter</p>
-    <h4 class="section-header mt-4">
-    {{ strtoupper($event->club->club_name) }} ACTIVITY REPORT – {{ \Carbon\Carbon::parse($event->start_date)->format('Y') }}
-</h4>
-    <p class="text-danger fw-bold">INSPIRING INNOVATION | BUILDING AI TALENT | PROMOTING COLLABORATION</p>
-<h2 class="text-success fw-bold">
-    {{ strtoupper($event->event_name) }} - {{ \Carbon\Carbon::parse($event->start_date)->format('Y') }}
+    
+    <h2 class="section-header mt-4">
+    {{ strtoupper($event->club->club_name) }} ACTIVITY REPORT {{ \Carbon\Carbon::parse($event->start_date)->format('Y') }}
 </h2>
-    <p>In-lab internship for future engineers</p>
+<h4 class="text-success fw-bold">
+    {{ strtoupper($event->event_name) }} 
+</h4>
 </div>
 
-<div class="dot-separator">•••• •••• •••• •••• •••• •••• •••• •••• •••• •••• •••• ••••</div>
 
 <div class="container-pdf">
     <!-- Image Grid -->
@@ -224,7 +220,6 @@
     </div>
 </div>
 
-<div class="dot-separator mt-4">•••• •••• •••• •••• •••• •••• •••• •••• •••• •••• •••• ••••</div>
 
 <script>
     window.onload = function () {
