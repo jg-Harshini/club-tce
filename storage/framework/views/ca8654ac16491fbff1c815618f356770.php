@@ -31,7 +31,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('{{ asset('img/clg1.jpg') }}') no-repeat center center fixed;
+            background: url('<?php echo e(asset('img/clg1.jpg')); ?>') no-repeat center center fixed;
             background-size: cover;
             z-index: -2;
         }
@@ -183,13 +183,13 @@
         <div class="container d-flex align-items-center justify-content-between py-3">
 
             <!-- Logo -->
-            <a href="{{ route('student.index') }}"class="d-flex align-items-center text-decoration-none">
-                <img src="{{ asset('img/logo.jpg') }}" alt="Logo" style="height: 60px;">
+            <a href="<?php echo e(route('student.index')); ?>"class="d-flex align-items-center text-decoration-none">
+                <img src="<?php echo e(asset('img/logo.jpg')); ?>" alt="Logo" style="height: 60px;">
             </a>
 
             <!-- Navigation Links -->
             <div style="display: flex; gap: 40px;">
-                <a href="{{ route('student.index') }}" class="nav-item"
+                <a href="<?php echo e(route('student.index')); ?>" class="nav-item"
                     style="text-align: center; color: black; text-decoration: none; font-weight: 600;">
                     <i data-feather="home" style="stroke:#2A5D9F; width:36px; height:36px;"></i><br>Home
                 </a>
@@ -197,11 +197,11 @@
                     style="text-align: center; color: black; text-decoration: none; font-weight: 600;">
                     <i data-feather="users" style="stroke:#E76F51; width:36px; height:36px;"></i><br>Clubs
                 </a>
-                <a href="{{ route('student.events') }}" class="nav-item"
+                <a href="<?php echo e(route('student.events')); ?>" class="nav-item"
                     style="text-align: center; color: black; text-decoration: none; font-weight: 600;">
                     <i data-feather="calendar" style="stroke:#E9C46A; width:36px; height:36px;"></i><br>Events
                 </a>
-                <a href="{{ route('student.enroll.form') }}" class="nav-item"
+                <a href="<?php echo e(route('student.enroll.form')); ?>" class="nav-item"
                     style="text-align: center; color: black; text-decoration: none; font-weight: 600;">
                     <i data-feather="edit-3" style="stroke:#F4A261; width:36px; height:36px;"></i><br>Enroll
                 </a>
@@ -213,24 +213,24 @@
     </div>
 
 
-@if(session('popup_message'))
+<?php if(session('popup_message')): ?>
     <div id="popupOverlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.4); z-index: 2000; display: flex; justify-content: center; align-items: center;">
         <div style="background: white; padding: 30px 40px; border-radius: 15px; text-align: center; max-width: 500px; box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
-            <h4 style="margin-bottom: 20px;">{{ session('popup_message') }}</h4>
+            <h4 style="margin-bottom: 20px;"><?php echo e(session('popup_message')); ?></h4>
         </div>
     </div>
 
     <script>
         setTimeout(function () {
-            window.location.href = "{{ route('student.index') }}";
+            window.location.href = "<?php echo e(route('student.index')); ?>";
         }, 2000); // Redirect after 3 seconds
     </script>
-@endif
+<?php endif; ?>
 
 
 <script>
     function handleAlertClose() {
-        const redirectTo = "{{ session('redirect_to') }}";
+        const redirectTo = "<?php echo e(session('redirect_to')); ?>";
         if (redirectTo) {
             window.location.href = redirectTo;
         } else {
@@ -248,17 +248,17 @@
 
        
 
-<form id="clubForm" action="{{ route('student.enroll.submit') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
+<form id="clubForm" action="<?php echo e(route('student.enroll.submit')); ?>" method="POST" enctype="multipart/form-data" autocomplete="off">
 
-    @csrf
+    <?php echo csrf_field(); ?>
 
     <label>Name:</label>
-    <input type="text" name="name" value="{{ old('name') }}" required>
+    <input type="text" name="name" value="<?php echo e(old('name')); ?>" required>
 
     <div class="row">
         <div class="col-md-6">
             <label>Roll Number/Register Number:</label>
-            <input type="text" name="roll_no" maxlength="6" class="form-control" value="{{ old('roll_no') }}" required>
+            <input type="text" name="roll_no" maxlength="6" class="form-control" value="<?php echo e(old('roll_no')); ?>" required>
         </div>
         
     </div>
@@ -266,15 +266,15 @@
   <div class="row">
     <div class="col-md-6">
         <label>Email:</label>
-        <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
+        <input type="email" name="email" class="form-control" value="<?php echo e(old('email')); ?>" required>
     </div>
     <div class="col-md-6">
         <label>Gender:</label>
         <select name="gender" class="form-select" required>
             <option value="" disabled selected>Select gender</option>
-            <option value="Male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male</option>
-            <option value="Female" {{ old('gender') == 'female' ? 'selected' : '' }}>Female</option>
-            <option value="Other" {{ old('gender') == 'other' ? 'selected' : '' }}>Other</option>
+            <option value="Male" <?php echo e(old('gender') == 'male' ? 'selected' : ''); ?>>Male</option>
+            <option value="Female" <?php echo e(old('gender') == 'female' ? 'selected' : ''); ?>>Female</option>
+            <option value="Other" <?php echo e(old('gender') == 'other' ? 'selected' : ''); ?>>Other</option>
         </select>
     </div>
 </div>
@@ -282,33 +282,35 @@
     <label>Department:</label>
     <select name="department" class="form-select" required>
         <option value="" disabled selected>Select your department</option>
-        @foreach ($departments as $dept)
-            <option value="{{ $dept }}" {{ old('department') == $dept ? 'selected' : '' }}>{{ $dept }}</option>
-        @endforeach
+        <?php $__currentLoopData = $departments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dept): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <option value="<?php echo e($dept); ?>" <?php echo e(old('department') == $dept ? 'selected' : ''); ?>><?php echo e($dept); ?></option>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </select>
 
     <label>Select Clubs (Min: 1 Tech + 1 Non-Tech | Max: 2 Tech + 1 Non-Tech):</label>
 <br>
 <label>Technical Clubs</label>
 <div class="checkbox-group">
-    @foreach($clubs->where('category', 'technical') as $club)
+    <?php $__currentLoopData = $clubs->where('category', 'technical'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $club): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <label class="form-check-label">
-            <input type="checkbox" name="clubs[]" value="{{ $club->id }}" class="form-check-input club-checkbox" data-type="tech"
-                {{ is_array(old('clubs')) && in_array($club->id, old('clubs')) ? 'checked' : '' }}>
-            {{ $club->club_name }}
+            <input type="checkbox" name="clubs[]" value="<?php echo e($club->id); ?>" class="form-check-input club-checkbox" data-type="tech"
+                <?php echo e(is_array(old('clubs')) && in_array($club->id, old('clubs')) ? 'checked' : ''); ?>>
+            <?php echo e($club->club_name); ?>
+
         </label>
-    @endforeach
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </div>
 
 <label>Non-Technical Clubs</label>
 <div class="checkbox-group">
-    @foreach($clubs->where('category', 'non-technical') as $club)
+    <?php $__currentLoopData = $clubs->where('category', 'non-technical'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $club): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <label class="form-check-label">
-            <input type="checkbox" name="clubs[]" value="{{ $club->id }}" class="form-check-input club-checkbox" data-type="nontech"
-                {{ is_array(old('clubs')) && in_array($club->id, old('clubs')) ? 'checked' : '' }}>
-            {{ $club->club_name }}
+            <input type="checkbox" name="clubs[]" value="<?php echo e($club->id); ?>" class="form-check-input club-checkbox" data-type="nontech"
+                <?php echo e(is_array(old('clubs')) && in_array($club->id, old('clubs')) ? 'checked' : ''); ?>>
+            <?php echo e($club->club_name); ?>
+
         </label>
-    @endforeach
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </div>
 
 
@@ -382,4 +384,4 @@
   
 
 </body>
-</html>  
+</html>  <?php /**PATH C:\Users\admin\club-tce\club-tce\resources\views/student/enroll.blade.php ENDPATH**/ ?>

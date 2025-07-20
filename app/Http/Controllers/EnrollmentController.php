@@ -21,7 +21,7 @@ class EnrollmentController extends Controller
 
         // Header row
         $sheet->fromArray([
-            ['ID', 'Name', 'Roll No', 'Email', 'Phone', 'Department', 'Clubs', 'Created At']
+            ['ID', 'Name', 'Roll No', 'Email', 'Phone', 'Department', 'Clubs', 'Registered At']
         ], null, 'A1');
 
         // Fill data

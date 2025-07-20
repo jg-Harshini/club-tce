@@ -7,67 +7,71 @@ use App\Models\Club;
 use App\Models\Event;
 use App\Models\Registration;
 use Illuminate\Support\Facades\DB;
-use App\Mail\RegistrationConfirmationMail;
+use App\Mail\RegistrationSuccessMail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
+
 
 class StudentController extends Controller
 {
     // 1. Show all clubs (index.blade.php)
-public function index()
-{
-    $today = now()->toDateString();
+    public function index()
+    {
+        $today = now()->toDateString();
 
-    // Get up to 6 upcoming events
-    $upcoming = \App\Models\Event::with('club')
-        ->where('date', '>=', $today)
-        ->orderBy('date')
-        ->take(6)
-        ->get();
-
-    $count = $upcoming->count();
-
-    if ($count < 6) {
-        $fillCount = 6 - $count;
-
-        // Get recently completed events to fill the rest
-        $recent = \App\Models\Event::with('club')
-            ->where('date', '<', $today)
-            ->orderByDesc('date')
-            ->take($fillCount)
+        // Get up to 6 upcoming events
+        $upcoming = Event::with('club')
+            ->where('date', '>=', $today)
+            ->orderBy('date')
+            ->take(6)
             ->get();
 
-        $events = $upcoming->concat($recent);
-    } else {
-        $events = $upcoming;
+        $count = $upcoming->count();
+
+        if ($count < 6) {
+            $fillCount = 6 - $count;
+
+            // Get recently completed events to fill the rest
+            $recent = Event::with('club')
+                ->where('date', '<', $today)
+                ->orderByDesc('date')
+                ->take($fillCount)
+                ->get();
+
+            $events = $upcoming->concat($recent);
+        } else {
+            $events = $upcoming;
+        }
+
+        // Get first 6 clubs alphabetically
+        $clubs = Club::orderBy('club_name')->take(9)->get();
+
+        return view('student.index', compact('clubs', 'events'));
     }
 
-    // Get first 6 clubs alphabetically
-    $clubs = \App\Models\Club::orderBy('club_name')->take(9)->get();
+    public function committee()
+    {
+        return view('student.commitee');
+    }
 
-    return view('student.index', compact('clubs', 'events'));
-}
+    public function showAllClubs()
+    {
+        $clubs = Club::orderBy('club_name')->get();
+        return view('student.clubs', compact('clubs'));
+    }
 
-public function committee()
-{
-    return view('student.commitee');
-}
+    public function showEventDetails($id)
+    {
+        $event = Event::with('club')->findOrFail($id);
+        return view('student.event-details', compact('event'));
+    }
 
-public function showAllClubs()
-{
-    $clubs = Club::orderBy('club_name')->get();
-    return view('student.clubs', compact('clubs'));
-}
-public function showEventDetails($id)
-{
-    $event = Event::with('club')->findOrFail($id);
-    return view('student.event-details', compact('event'));
-}
+    public function viewClubDetails($id)
+    {
+        $club = Club::with('events')->findOrFail($id); // Eager load events if available
+        return view('student.club-details', compact('club'));
+    }
 
-public function viewClubDetails($id)
-{
-    $club = Club::with('events')->findOrFail($id); // Eager load events if available
-    return view('student.club-details', compact('club'));
-}
     // 2. Show events page with optional club filter (events.blade.php)
     public function events(Request $request)
     {
@@ -91,7 +95,7 @@ public function viewClubDetails($id)
     // 3. Show enroll form (enroll.blade.php)
     public function showEnrollForm()
     {
-$clubs = Club::orderBy('club_name')->get();
+        $clubs = Club::orderBy('club_name')->get();
         $departments = [
             'CSE', 'IT', 'ECE', 'EEE', 'MECH', 'CIVIL', 'AMCS', 'AI-ML',
             'MECT', 'CSBS', 'ARCH'
@@ -100,70 +104,69 @@ $clubs = Club::orderBy('club_name')->get();
 
         return view('student.enroll', compact('clubs', 'departments'));
     }
-
-    // 4. Store student registration
     public function enroll(Request $request)
-    {
-        $request->validate([
+{
+    try {
+        Log::info('📥 Registration request received', ['request' => $request->all()]);
+
+        // ✅ Step 1: Validate data
+        $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'roll_no' => 'required|string|max:20',
-            'gender' => 'required|string|max:10',
+            'roll_no' => 'required|string|max:50',
             'email' => 'required|email|max:255',
-            'phone' => 'required|digits:10',
-            'department' => 'required|string',
-            'clubs' => 'required|array|min:1|max:3',
+            'gender' => 'required|in:Male,Female,other',
+            'department' => 'required|string|max:255',
+            'clubs' => 'required|array',
+            'clubs.*' => 'exists:clubs,id'
         ]);
 
-        // Check for duplicate registration
-        $alreadyRegistered = Registration::where('roll_no', $request->roll_no)
-            ->orWhere('email', $request->email)
-            ->exists();
+        Log::info('✅ Validation passed', ['validatedData' => $validatedData]);
 
-        if ($alreadyRegistered) {
-            return redirect()->route('student.enroll.form')
-                ->with('popup_message', '⚠️ Already registered using this Roll No or Email.')
-                ->with('popup_type', 'warning')
-                ->with('redirect_to', 'form');
-        }
-
-        // Check if any selected club has reached the limit
-        foreach ($request->clubs as $clubId) {
-            $count = DB::table('club_registration')->where('club_id', $clubId)->count();
-            if ($count >= 100) {
-                $club = Club::find($clubId);
-                return redirect()->route('student.enroll.form')
-                    ->with('popup_message', '❌ ' . $club->club_name . ' has reached its limit.')
-                    ->with('popup_type', 'danger')
-                    ->with('redirect_to', 'form');
-            }
-        }
-
-
-        // Save student infoS
+        // ✅ Step 2: Store in registrations table
         $registration = Registration::create([
-            'name' => $request->name,
-            'roll_no' => $request->roll_no,
-            'gender' => $request->gender,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'department' => $request->department,
+            'name' => $validatedData['name'],
+            'roll_no' => $validatedData['roll_no'],
+            'email' => $validatedData['email'],
+            'gender' => $validatedData['gender'],
+            'department' => $validatedData['department'],
         ]);
 
-        // Register selected clubs
-        foreach ($request->clubs as $clubId) {
-            DB::table('club_registration')->insert([
-                'registration_id' => $registration->id,
-                'club_id' => $clubId,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-        }
-// Send confirmation email
-Mail::to($registration->email)->send(new RegistrationConfirmationMail($registration));
+        Log::info('🗃️ Registration created', ['registration_id' => $registration->id]);
 
-        return redirect()->route('student.enroll.form')
-            ->with('popup_message', '🎉 Registration successful!')
-            ->with('popup_type', 'success')
-            ->with('redirect_to', 'home');
+        // ✅ Step 3: Attach clubs (many-to-many)
+        try {
+            Log::info('📌 Attaching clubs', ['clubs' => $validatedData['clubs']]);
+            $registration->clubs()->attach($validatedData['clubs']);
+            Log::info('✅ Clubs attached successfully');
+        } catch (\Exception $e) {
+            Log::error('❌ Error during club attach: ' . $e->getMessage());
+        }
+
+        $clubNames = Club::whereIn('id', $validatedData['clubs'])->pluck('club_name')->toArray();
+
+$emailData = [
+        'name' => $validatedData['name'],
+        'roll_no' => $validatedData['roll_no'],
+        'email' => $validatedData['email'],
+        'department' => $validatedData['department'],
+        'clubs' => $clubNames,
+    ];
+
+   try{ // Send email
+    Mail::to($validatedData['email'])->send(new RegistrationSuccessMail($emailData));
+
+    Log::info("✅ Registration success mail sent to " . $validatedData['email']);
+} catch (\Exception $e) {
+    Log::error("❌ Error sending mail: " . $e->getMessage());
+}
+
+
+        // ✅ Step 5: Return response or view
+        return redirect()->back()->with('popup_message', 'Registration successful!');
+
+    } catch (\Exception $e) {
+        Log::error('❌ Unexpected error in registration: ' . $e->getMessage());
+        return redirect()->back()->with('error', 'Something went wrong. Please try again.');
     }
+}
 }

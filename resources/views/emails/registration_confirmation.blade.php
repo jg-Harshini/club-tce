@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Registration Confirmation</title>
 </head>
 <body>
-    <h2>Hi {{ $registration->name }},</h2>
-    <p>Thank you for enrolling in the club(s) at our college.</p>
-    <p>We're excited to have you with us!</p>
-    <br>
-    <p><strong>Details:</strong></p>
+    <h2>Dear {{ $data['name'] }}!</h2>
+    <p>You have successfully registered for the club(s).</p>
+
     <ul>
-        <li>Roll No: {{ $registration->roll_no }}</li>
-        <li>Email: {{ $registration->email }}</li>
-        <li>Department: {{ $registration->department }}</li>
+        <li><strong>Roll Number:</strong> {{ $data['roll_no'] }}</li>
+        <li><strong>Email:</strong> {{ $data['email'] }}</li>
+        <li><strong>Department:</strong> {{ $data['department'] }}</li>
+        <li><strong>Clubs Enrolled:</strong>
+            <ul>
+                @foreach($data['clubs'] as $clubName)
+                    <li>{{ $clubName }}</li>
+                @endforeach
+            </ul>
+        </li>
     </ul>
 
-    <p>Best regards,<br>Clubs Coordination Team</p>
+    <p>Thank you!</p>
 </body>
 </html>

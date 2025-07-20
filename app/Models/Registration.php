@@ -12,8 +12,6 @@ class Registration extends Model
         'roll_no',
         'email',
         'gender',
-        'phone',
-        'photo',
         'department',
     ];
     public function clubs()

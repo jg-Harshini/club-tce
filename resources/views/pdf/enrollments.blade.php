@@ -40,7 +40,7 @@
                 <th>Phone</th>
                 <th>Department</th>
                 <th>Clubs</th>
-                <th>Created At</th>
+                <th>Registered At</th>
             </tr>
         </thead>
         <tbody>
