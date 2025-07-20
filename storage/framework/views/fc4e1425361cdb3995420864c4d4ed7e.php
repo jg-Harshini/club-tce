@@ -130,8 +130,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="{{ asset('lib/animate/animate.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="<?php echo e(asset('lib/animate/animate.min.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('lib/owlcarousel/assets/owl.carousel.min.css')); ?>" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -145,8 +145,8 @@
 
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="<?php echo e(asset('css/bootstrap.min.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('css/style.css')); ?>" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
@@ -166,28 +166,28 @@
 
             <!-- Logo -->
             <a href="index.html" class="d-flex align-items-center text-decoration-none">
-                <img src="{{ asset('img/logo.jpg') }}" alt="Logo" style="height: 60px;">
+                <img src="<?php echo e(asset('img/logo.jpg')); ?>" alt="Logo" style="height: 60px;">
             </a>
 
             <!-- Navigation Links -->
             <div style="display: flex; gap: 40px;">
-                <a href="{{ route('student.index') }}" class="nav-item"
+                <a href="<?php echo e(route('student.index')); ?>" class="nav-item"
                     style="text-align: center; color: black; text-decoration: none; font-weight: 600;">
                     <i data-feather="home" style="stroke:#2A5D9F; width:36px; height:36px;"></i><br>Home
                 </a>
-               <a href="{{ route('student.commitee') }}" class="nav-item"
+               <a href="<?php echo e(route('student.commitee')); ?>" class="nav-item"
                     style="text-align: center; color: black; text-decoration: none; font-weight: 600;">
                     <i data-feather="users" style="stroke:#W91G11; width:36px; height:36px;"></i><br>Commitee
                 </a>
-                <a href="{{ route('student.clubs.all') }}" class="nav-item"
+                <a href="<?php echo e(route('student.clubs.all')); ?>" class="nav-item"
                     style="text-align: center; color: black; text-decoration: none; font-weight: 600;">
                     <i data-feather="users" style="stroke:#E76F51; width:36px; height:36px;"></i><br>Clubs
                 </a>
-                <a href="{{ route('student.events') }}" class="nav-item"
+                <a href="<?php echo e(route('student.events')); ?>" class="nav-item"
                     style="text-align: center; color: black; text-decoration: none; font-weight: 600;">
                     <i data-feather="calendar" style="stroke:#E9C46A; width:36px; height:36px;"></i><br>Events
                 </a>
-                <a href="{{ route('student.enroll.form') }}" class="nav-item"
+                <a href="<?php echo e(route('student.enroll.form')); ?>" class="nav-item"
                     style="text-align: center; color: black; text-decoration: none; font-weight: 600;">
                     <i data-feather="edit-3" style="stroke:#F4A261; width:36px; height:36px;"></i><br>Enroll
                 </a>
@@ -270,4 +270,4 @@
   </script>
 
 </body>
-</html>
+</html><?php /**PATH C:\HARSHINI\intern\club-tce\resources\views/student/commitee.blade.php ENDPATH**/ ?>

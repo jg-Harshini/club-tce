@@ -1,8 +1,6 @@
-@extends('layout.app')
+<?php $__env->startSection('title', 'Enrollments'); ?>
 
-@section('title', 'Enrollments')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="main-content">
   <h2>Club Enrollment Table</h2>
 
@@ -12,9 +10,9 @@
       <label for="deptFilter" class="form-label fw-semibold">Filter by Department</label>
       <select id="deptFilter" class="form-select">
         <option value="">All Departments</option>
-        @foreach ($departments as $dept)
-          <option value="{{ $dept }}">{{ $dept }}</option>
-        @endforeach
+        <?php $__currentLoopData = $departments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dept): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <option value="<?php echo e($dept); ?>"><?php echo e($dept); ?></option>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </select>
     </div>
 
@@ -22,17 +20,17 @@
       <label for="clubFilter" class="form-label fw-semibold">Filter by Club</label>
       <select id="clubFilter" class="form-select">
         <option value="">All Clubs</option>
-        @foreach ($clubs as $club)
-          <option value="{{ $club->club_name }}">{{ $club->club_name }}</option>
-        @endforeach
+        <?php $__currentLoopData = $clubs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $club): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <option value="<?php echo e($club->club_name); ?>"><?php echo e($club->club_name); ?></option>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </select>
     </div>
   </div>
 
   <!-- Export Buttons -->
   <div class="mb-3 d-flex gap-2">
-    <a id="excelExport" href="{{ route('export.excel') }}" class="btn btn-success">Download Excel</a>
-    <a id="pdfExport" href="{{ route('export.pdf') }}" class="btn btn-danger">Download PDF</a>
+    <a id="excelExport" href="<?php echo e(route('export.excel')); ?>" class="btn btn-success">Download Excel</a>
+    <a id="pdfExport" href="<?php echo e(route('export.pdf')); ?>" class="btn btn-danger">Download PDF</a>
   </div>
 
   <!-- TABLE -->
@@ -46,13 +44,13 @@
         </tr>
       </thead>
       <tbody>
-        @foreach ($students as $student)
+        <?php $__currentLoopData = $students; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $student): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
           <tr>
-            <td>{{ $student->name }}</td>
-            <td>{{ $student->department }}</td>
-            <td>{{ $student->club_enrolled }}</td>
+            <td><?php echo e($student->name); ?></td>
+            <td><?php echo e($student->department); ?></td>
+            <td><?php echo e($student->club_enrolled); ?></td>
           </tr>
-        @endforeach
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </tbody>
     </table>
   </div>
@@ -71,8 +69,8 @@
       const club = $('#clubFilter').val();
       const dept = $('#deptFilter').val();
 
-      let pdfUrl = '{{ route("export.pdf") }}';
-      let excelUrl = '{{ route("export.excel") }}';
+      let pdfUrl = '<?php echo e(route("export.pdf")); ?>';
+      let excelUrl = '<?php echo e(route("export.excel")); ?>';
 
       const params = new URLSearchParams();
       if (club) params.append('club', club);
@@ -105,4 +103,6 @@
     updateExportLinks(); // Initial run
   });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\HARSHINI\intern\club-tce\resources\views/table.blade.php ENDPATH**/ ?>

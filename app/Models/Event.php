@@ -18,7 +18,8 @@ class Event extends Model
         'end_time',
         'participants',
         'coordinators',
-        'best_performance'
+        'best_performance',
+        'chief_guest'
     ];
 
     public function club()

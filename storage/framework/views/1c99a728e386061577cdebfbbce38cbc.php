@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ $club->club_name }} | Club Details</title>
+    <title><?php echo e($club->club_name); ?> | Club Details</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap, AOS & Icons -->
@@ -134,19 +134,19 @@
 <div style="width: 100%; background-color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
     <div class="container d-flex align-items-center justify-content-between py-3">
         <a href="index.html" class="d-flex align-items-center text-decoration-none">
-            <img src="{{ asset('img/logo.jpg') }}" alt="Logo" style="height: 60px;">
+            <img src="<?php echo e(asset('img/logo.jpg')); ?>" alt="Logo" style="height: 60px;">
         </a>
         <div style="display: flex; gap: 40px;">
-            <a href="{{ route('student.index') }}" class="nav-item" style="text-align: center; color: black; text-decoration: none; font-weight: 600;">
+            <a href="<?php echo e(route('student.index')); ?>" class="nav-item" style="text-align: center; color: black; text-decoration: none; font-weight: 600;">
                 <i data-feather="home" style="stroke:#2A5D9F; width:36px; height:36px;"></i><br>Home
             </a>
-            <a href="{{ route('student.clubs.all') }}" class="nav-item" style="text-align: center; color: black; text-decoration: none; font-weight: 600;">
+            <a href="<?php echo e(route('student.clubs.all')); ?>" class="nav-item" style="text-align: center; color: black; text-decoration: none; font-weight: 600;">
                 <i data-feather="users" style="stroke:#E76F51; width:36px; height:36px;"></i><br>Clubs
             </a>
-            <a href="{{ route('student.events') }}" class="nav-item" style="text-align: center; color: black; text-decoration: none; font-weight: 600;">
+            <a href="<?php echo e(route('student.events')); ?>" class="nav-item" style="text-align: center; color: black; text-decoration: none; font-weight: 600;">
                 <i data-feather="calendar" style="stroke:#E9C46A; width:36px; height:36px;"></i><br>Events
             </a>
-            <a href="{{ route('student.enroll.form') }}" class="nav-item" style="text-align: center; color: black; text-decoration: none; font-weight: 600;">
+            <a href="<?php echo e(route('student.enroll.form')); ?>" class="nav-item" style="text-align: center; color: black; text-decoration: none; font-weight: 600;">
                 <i data-feather="edit-3" style="stroke:#F4A261; width:36px; height:36px;"></i><br>Enroll
             </a>
         </div>
@@ -160,10 +160,10 @@
 <!-- Club Header -->
 <div class="club-header" data-aos="fade-down">
     <div class="container">
-        <h1 class="display-4">{{ $club->club_name }}</h1>
-        @if($club->logo)
-            <img src="{{ asset('storage/' . $club->logo) }}" alt="{{ $club->club_name }} Logo" class="club-logo" data-aos="zoom-in" data-aos-delay="200">
-        @endif
+        <h1 class="display-4"><?php echo e($club->club_name); ?></h1>
+        <?php if($club->logo): ?>
+            <img src="<?php echo e(asset('storage/' . $club->logo)); ?>" alt="<?php echo e($club->club_name); ?> Logo" class="club-logo" data-aos="zoom-in" data-aos-delay="200">
+        <?php endif; ?>
     </div>
 </div>
 
@@ -173,28 +173,28 @@
     <div class="section" data-aos="fade-up">
         <h3 class="text-center"><i class="bi bi-info-circle-fill me-2"></i>Introduction</h3>
         <div class="divider"></div>
-        <p class="text-center">{{ $club->introduction }}</p>
+        <p class="text-center"><?php echo e($club->introduction); ?></p>
     </div>
 
     <!-- Mission -->
     <div class="section" data-aos="fade-up" data-aos-delay="100">
         <h3 class="text-center"><i class="bi bi-lightbulb-fill me-2"></i>Our Mission</h3>
         <div class="divider"></div>
-        <p class="text-center">{{ $club->mission ?? 'Mission not available.' }}</p>
+        <p class="text-center"><?php echo e($club->mission ?? 'Mission not available.'); ?></p>
     </div>
 
     <!-- Staff Coordinator -->
     <div class="section row align-items-center" data-aos="fade-right" data-aos-delay="150">
         <!--div class="col-md-4 text-center">
-            @if($club->staff_coordinator_photo)
-                <img src="{{ asset('storage/' . $club->staff_coordinator_photo) }}" alt="Coordinator Photo" class="staff-photo">
-            @endif
+            <?php if($club->staff_coordinator_photo): ?>
+                <img src="<?php echo e(asset('storage/' . $club->staff_coordinator_photo)); ?>" alt="Coordinator Photo" class="staff-photo">
+            <?php endif; ?>
         </div-->
         <div class="col-md-8 mt-4 mt-md-0">
             <h3><i class="bi bi-person-badge-fill me-2"></i>Staff Coordinator</h3>
             <div class="divider ms-0 me-auto"></div>
-            <p><strong>Name:</strong> {{ $club->staff_coordinator_name }}</p>
-            <p><strong>Email:</strong> <a href="mailto:{{ $club->staff_coordinator_email }}">{{ $club->staff_coordinator_email }}</a></p>
+            <p><strong>Name:</strong> <?php echo e($club->staff_coordinator_name); ?></p>
+            <p><strong>Email:</strong> <a href="mailto:<?php echo e($club->staff_coordinator_email); ?>"><?php echo e($club->staff_coordinator_email); ?></a></p>
         </div>
     </div>
 
@@ -204,31 +204,31 @@
             <i class="bi bi-calendar-event fs-3 text-danger"></i>
             <h5 class="mb-0">Founded</h5>
         </div>
-        <span class="founded-badge">{{ $club->year_started }}</span>
+        <span class="founded-badge"><?php echo e($club->year_started); ?></span>
     </div>
 
     <!-- Events -->
     <div class="section" data-aos="fade-up" data-aos-delay="300">
         <h3 class="text-center"><i class="bi bi-megaphone-fill me-2"></i>Events</h3>
         <div class="divider mx-auto"></div>
-        @if($club->events && $club->events->count())
-            @foreach($club->events as $event)
-    <a href="{{ route('student.event.details', $event->id) }}" style="text-decoration: none; color: inherit;">
+        <?php if($club->events && $club->events->count()): ?>
+            <?php $__currentLoopData = $club->events; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $event): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+    <a href="<?php echo e(route('student.event.details', $event->id)); ?>" style="text-decoration: none; color: inherit;">
         <div class="event-card">
-            <h5 style="color:#800000;">{{ $event->title }}</h5>
-            <p>{{ $event->event_name }}</p>
-            <small class="text-muted">📅 {{ \Carbon\Carbon::parse($event->event_date)->format('F j, Y') }}</small>
+            <h5 style="color:#800000;"><?php echo e($event->title); ?></h5>
+            <p><?php echo e($event->event_name); ?></p>
+            <small class="text-muted">📅 <?php echo e(\Carbon\Carbon::parse($event->event_date)->format('F j, Y')); ?></small>
         </div>
     </a>
-@endforeach
-        @else
+<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        <?php else: ?>
             <p class="text-center">No events right now. Stay tuned!</p>
-        @endif
+        <?php endif; ?>
     </div>
 
     <!-- Back Button -->
     <div class="text-center mt-5 mb-4">
-        <a href="{{ route('student.clubs.all') }}" class="back-btn">← Back to All Clubs</a>
+        <a href="<?php echo e(route('student.clubs.all')); ?>" class="back-btn">← Back to All Clubs</a>
     </div>
 </div>
 
@@ -278,3 +278,4 @@
 </script>
 </body>
 </html>
+<?php /**PATH C:\HARSHINI\intern\club-tce\resources\views/student/club-details.blade.php ENDPATH**/ ?>

@@ -3,32 +3,61 @@
 <head>
     <title>Student Registrations</title>
     <style>
+@page {
+    margin: 10px; /* You can reduce further if needed */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    margin: 0; /* Remove browser default body margin */
+    padding: 0;
+}
+
+
+        .header {
+            text-align: center;
+        }
+
+        .header img {
+            height: 80px;
+            width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+           text-transform: uppercase;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            table-layout: fixed; /* Ensure fixed width distribution */
-            font-size: 12px; /* Slightly smaller for better fitting */
+            font-size: 12px;
         }
 
         th, td {
             border: 1px solid #000;
             padding: 6px;
             text-align: left;
-            vertical-align: top;
             word-wrap: break-word;
         }
-
-        th:nth-child(1), td:nth-child(1) { width: 4%; }   /* ID */
-        th:nth-child(2), td:nth-child(2) { width: 12%; }  /* Name */
-        th:nth-child(3), td:nth-child(3) { width: 10%; }  /* Roll No */
-        th:nth-child(4), td:nth-child(4) { width: 16%; }  /* Email */
-        th:nth-child(6), td:nth-child(6) { width: 10%; }  /* Department */
-        th:nth-child(7), td:nth-child(7) { width: 20%; }  /* Clubs */
-        th:nth-child(8), td:nth-child(8) { width: 16%; }  /* Created At */
     </style>
 </head>
 <body>
-    <h2>Student Registrations</h2>
+    <div class="header">
+        <img src="{{ public_path('/img/tce.jpg') }}" alt="Logo">
+        <h2>
+            Student Registrations
+            @if($filterType === 'club')
+                for {{ $filterValue }} Club
+            @elseif($filterType === 'dept')
+                for {{ $filterValue }} Department
+            @elseif($filterType === 'both')
+                for {{ $filterValue['club'] }} Club, {{ $filterValue['dept'] }} Department
+            @endif
+        </h2>
+    </div>
+
     <table>
         <thead>
             <tr>
@@ -36,8 +65,15 @@
                 <th>Name</th>
                 <th>Roll No</th>
                 <th>Email</th>
-                <th>Department</th>
-                <th>Clubs</th>
+
+                @if (!in_array($filterType, ['dept', 'both']))
+                    <th>Department</th>
+                @endif
+
+                @if (!in_array($filterType, ['club', 'both']))
+                    <th>Clubs</th>
+                @endif
+
                 <th>Registered At</th>
             </tr>
         </thead>
@@ -48,12 +84,19 @@
                     <td>{{ $s->name }}</td>
                     <td>{{ $s->roll_no }}</td>
                     <td>{{ $s->email }}</td>
-                    <td>{{ $s->department }}</td>
-                    <td>
-                        @foreach ($s->clubs as $club)
-                            {{ $club->club_name }}@if (!$loop->last), @endif
-                        @endforeach
-                    </td>
+
+                    @if (!in_array($filterType, ['dept', 'both']))
+                        <td>{{ $s->department }}</td>
+                    @endif
+
+                    @if (!in_array($filterType, ['club', 'both']))
+                        <td>
+                            @foreach ($s->clubs as $club)
+                                {{ $club->club_name }}@if (!$loop->last), @endif
+                            @endforeach
+                        </td>
+                    @endif
+
                     <td>{{ $s->created_at->format('d-m-Y H:i') }}</td>
                 </tr>
             @endforeach

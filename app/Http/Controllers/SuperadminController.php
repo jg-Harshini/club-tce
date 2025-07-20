@@ -141,6 +141,7 @@ class SuperadminController extends Controller
                         'club_id' => 'required|exists:clubs,id',
                         'event_name' => 'required|string|max:255',
                         'description' => 'nullable|string',
+                         'chief_guest' => 'required|string|max:255',
                         'start_date' => 'required|date',
                         'end_date' => 'required|date',
                         'start_time' => 'required',
@@ -155,7 +156,7 @@ class SuperadminController extends Controller
                     ]);
 
                     $data = $request->only([
-                        'club_id', 'event_name', 'description', 'start_date', 'end_date', 'start_time', 'end_time', 'participants', 'coordinators', 'best_performance', 'winner_name'
+                        'club_id', 'event_name', 'description','chief_guest','start_date', 'end_date', 'start_time', 'end_time', 'participants', 'coordinators', 'best_performance', 'winner_name'
                     ]);
 
                     if ($request->hasFile('image')) {
@@ -197,6 +198,7 @@ class SuperadminController extends Controller
                     $request->validate([
                         'event_name' => 'required|string|max:255',
                         'description' => 'nullable|string',
+                        'chief_guest' => 'required|string|max:255',
                         'start_date' => 'required|date',
                         'end_date' => 'required|date',
                         'start_time' => 'required',
@@ -247,6 +249,8 @@ class SuperadminController extends Controller
                         'coordinators' => $request->coordinators,
                         'best_performance' => $request->best_performance,
                         'winner_name' => $request->winner_name,
+                        'chief_guest' =>  $request->chief_guest,
+
                     ]);
 
                     return redirect()->route('superadmin.clubs', ['action' => 'profile', 'id' => $event->club_id])

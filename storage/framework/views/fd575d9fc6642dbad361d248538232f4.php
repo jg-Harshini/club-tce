@@ -65,7 +65,7 @@
         <h4 class="text-center">Super Admin Panel</h4>
         <hr>
 
-        <a href="{{ route('superadmin.dashboard') }}">🏠 Dashboard</a>
+        <a href="<?php echo e(route('superadmin.dashboard')); ?>">🏠 Dashboard</a>
 
        <div class="dropdown mb-3">
     <a class="dropdown-toggle d-block text-white" href="#" role="button"
@@ -73,17 +73,17 @@
         🏫 Manage Club
     </a>
     <ul class="dropdown-menu" aria-labelledby="manageClubDropdown">
-        <li><a class="dropdown-item" href="{{ route('superadmin.clubs') }}">View Clubs</a></li>
-        <li><a class="dropdown-item" href="{{ route('superadmin.clubs', ['action' => 'create']) }}">Add Club</a></li>
+        <li><a class="dropdown-item" href="<?php echo e(route('superadmin.clubs')); ?>">View Clubs</a></li>
+        <li><a class="dropdown-item" href="<?php echo e(route('superadmin.clubs', ['action' => 'create'])); ?>">Add Club</a></li>
     </ul>
 </div>
 
 
 
-        <a href="{{ route('superadmin.enrollments') }}">📋 Enrollments</a>
+        <a href="<?php echo e(route('superadmin.enrollments')); ?>">📋 Enrollments</a>
         <!-- 🔒 Logout -->
-    <form method="POST" action="{{ route('logout') }}">
-        @csrf
+    <form method="POST" action="<?php echo e(route('logout')); ?>">
+        <?php echo csrf_field(); ?>
         <button type="submit" class="btn btn-danger w-100 mt-3">Logout</button>
     </form>
     </div>
@@ -91,7 +91,7 @@
 
     <!-- Content -->
     <div class="content">
-        @yield('content')
+        <?php echo $__env->yieldContent('content'); ?>
     </div>
     
 </div>
@@ -109,7 +109,7 @@
 
 
 
-@yield('scripts')
+<?php echo $__env->yieldContent('scripts'); ?>
 
 </body>
-</html>
+</html><?php /**PATH C:\HARSHINI\intern\club-tce\resources\views/layout/app.blade.php ENDPATH**/ ?>
