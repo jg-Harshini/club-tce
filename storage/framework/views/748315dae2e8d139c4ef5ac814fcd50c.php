@@ -22,7 +22,6 @@
         th:nth-child(2), td:nth-child(2) { width: 12%; }  /* Name */
         th:nth-child(3), td:nth-child(3) { width: 10%; }  /* Roll No */
         th:nth-child(4), td:nth-child(4) { width: 16%; }  /* Email */
-        th:nth-child(5), td:nth-child(5) { width: 12%; }  /* Phone */
         th:nth-child(6), td:nth-child(6) { width: 10%; }  /* Department */
         th:nth-child(7), td:nth-child(7) { width: 20%; }  /* Clubs */
         th:nth-child(8), td:nth-child(8) { width: 16%; }  /* Created At */
@@ -37,10 +36,9 @@
                 <th>Name</th>
                 <th>Roll No</th>
                 <th>Email</th>
-                <th>Phone</th>
                 <th>Department</th>
                 <th>Clubs</th>
-                <th>Created At</th>
+                <th>Registered At</th>
             </tr>
         </thead>
         <tbody>
@@ -50,7 +48,6 @@
                     <td><?php echo e($s->name); ?></td>
                     <td><?php echo e($s->roll_no); ?></td>
                     <td><?php echo e($s->email); ?></td>
-                    <td><?php echo e($s->phone); ?></td>
                     <td><?php echo e($s->department); ?></td>
                     <td>
                         <?php $__currentLoopData = $s->clubs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $club): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

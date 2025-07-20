@@ -219,7 +219,7 @@
                     <i class="bi bi-award-fill text-warning" style="font-size: 2rem;"></i>
                     <div>
                         <div class="fw-bold fs-5">{{ $event->best_performance }}</div>
-                        <div class="text-muted">Best Performances</div>
+                        <div class="text-muted">Top Performances</div>
                     </div>
                 </div>
                 @endif

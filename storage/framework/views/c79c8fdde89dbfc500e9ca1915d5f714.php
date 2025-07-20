@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Registration Confirmation</title>
 </head>
 <body>
-    <h2>Hi <?php echo e($registration->name); ?>,</h2>
-    <p>Thank you for enrolling in the club(s) at our college.</p>
-    <p>We're excited to have you with us!</p>
-    <br>
-    <p><strong>Details:</strong></p>
+    <h2>Dear <?php echo e($data['name']); ?>!</h2>
+    <p>You have successfully registered for the club(s).</p>
+
     <ul>
-        <li>Roll No: <?php echo e($registration->roll_no); ?></li>
-        <li>Email: <?php echo e($registration->email); ?></li>
-        <li>Department: <?php echo e($registration->department); ?></li>
+        <li><strong>Roll Number:</strong> <?php echo e($data['roll_no']); ?></li>
+        <li><strong>Email:</strong> <?php echo e($data['email']); ?></li>
+        <li><strong>Department:</strong> <?php echo e($data['department']); ?></li>
+        <li><strong>Clubs Enrolled:</strong>
+            <ul>
+                <?php $__currentLoopData = $data['clubs']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $clubName): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li><?php echo e($clubName); ?></li>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </ul>
+        </li>
     </ul>
 
-    <p>Best regards,<br>Clubs Coordination Team</p>
+    <p>Thank you!</p>
 </body>
 </html>
 <?php /**PATH C:\HARSHINI\intern\clubstce\resources\views/emails/registration_confirmation.blade.php ENDPATH**/ ?>

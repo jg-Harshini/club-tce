@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 20, 2025 at 08:27 AM
+-- Generation Time: Jul 20, 2025 at 10:54 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -71,28 +71,28 @@ CREATE TABLE `clubs` (
 --
 
 INSERT INTO `clubs` (`id`, `club_name`, `category`, `logo`, `introduction`, `mission`, `staff_coordinator_name`, `staff_coordinator_email`, `staff_coordinator_photo`, `year_started`, `created_at`, `updated_at`) VALUES
-(1, 'IoT', 'technical', 'club_logos/N9yXe9zUvInJTFuelHpmDvHIHNYnkcKYlArOTjFA.png', 'The IoT Club centers around the Internet of Things and its industrial and societal applications. The club promotes sensor-based innovations, smart home prototypes, and real-time monitoring projects. Its social contributions include community automation projects such as smart irrigation and energy-saving devices.', 'To empower students with hands-on skills in the Internet of Things by fostering innovation, collaboration, and real-world problem-solving through workshops, projects engagement.', 'C.V.Nisha', 'cvnait@faculty.tce.edu', 'staff_photos/loXsJoLeRTjoKnHohpj2sxNRLmvdBTkW6cYlc0Rp.jpg', 2012, '2025-06-21 00:31:40', '2025-06-24 09:44:01'),
-(3, 'App Development', 'technical', 'club_logos/6GIs6qsVaTJGN3XyHsfTwZTyN6XkDvwNpOwfb7Gr.png', 'Empowers students to build Android & iOS apps.', 'To create apps that solve real-world problems.', 'Ms. Anjali Rao', 'anjali.app@college.edu', 'staff_photos/08ia4Zzhs45DeS1Y6s1UEk3iAMFKwznp18Z2tRQV.jpg', 2019, NULL, '2025-06-24 09:45:12'),
-(4, 'AR/VR', 'technical', 'club_logos/xuZU6zm2uCvwEfPtLJ1iEP7aw5yJeSgiWKf1tK2n.png', 'Dive into augmented and virtual reality tech.', 'To enhance interaction through immersive tech.', 'Mr. Karthik S', 'karthik.ar@college.edu', 'staff_photos/ucgkF4pbUE1wU6c0A06T4ycGDpH2YbBwrtqAagCI.jpg', 2020, NULL, '2025-06-24 09:45:28'),
+(1, 'IoT', 'technical', 'club_logos/N9yXe9zUvInJTFuelHpmDvHIHNYnkcKYlArOTjFA.png', 'The IoT Club centers around the Internet of Things and its industrial and societal applications. The club promotes sensor-based innovations, smart home prototypes, and real-time monitoring projects. Its social contributions include community automation projects such as smart irrigation and energy-saving devices.', 'To empower students with hands-on skills in the Internet of Things by fostering innovation, collaboration, and real-world problem-solving through workshops, projects engagement.', 'Mrs. C.V.Nisha', 'cvnait@faculty.tce.edu', 'staff_photos/4YJ3fPVsHNxgYN288qnPJaDeiIFC6rwa7w83Yl0U.png', 2012, '2025-06-21 00:31:40', '2025-07-20 02:13:19'),
+(3, 'App Development', 'technical', 'club_logos/6GIs6qsVaTJGN3XyHsfTwZTyN6XkDvwNpOwfb7Gr.png', 'Empowers students to build Android & iOS apps.', 'To create apps that solve real-world problems.', 'Ms. Anjali Rao', 'anjali.app@college.edu', 'staff_photos/PFOZxu9GBpn4zjsdmu5pjLaIRP9QoLdewwj3wkDu.png', 2019, NULL, '2025-07-20 02:13:42'),
+(4, 'AR/VR', 'technical', 'club_logos/xuZU6zm2uCvwEfPtLJ1iEP7aw5yJeSgiWKf1tK2n.png', 'Dive into augmented and virtual reality tech.', 'To enhance interaction through immersive tech.', 'Mr. Karthik S', 'karthik.ar@college.edu', 'staff_photos/BUpUYvxfuEM7pXbgZZACLjNGe94VzLHL3mOySL7h.png', 2020, NULL, '2025-07-20 02:14:00'),
 (5, 'Prometheans', 'technical', 'club_logos/WkWsFkL3uG17aghOJRoK9OfLD1hmh74H3jN7dHmd.png', 'Fosters innovation and curiosity.', 'To ignite the flame of creation in every student.', 'Ms. Nivetha R', 'nivetha.prometheans@college.edu', 'staff_photos/4iU8bk8dX1K9ESPEUg9xHkPYKPABOm41x924SjEh.webp', 2017, NULL, '2025-06-24 09:45:45'),
-(6, 'Eureka', 'technical', 'club_logos/SR2QK7pgFyTbQ2VA2dzNFRttZY4nyowQCIp3jSI1.png', 'Where curiosity meets discovery.', 'To inspire research and experimentation.', 'Dr. Suresh P', 'suresh.eureka@college.edu', 'staff_photos/djpAUdLAGwJJ6xdXrCwzcMfnnwY4WINWxlnIVrUf.jpg', 2016, NULL, '2025-06-24 08:09:14'),
-(7, 'Coders Club', 'technical', 'club_logos/LOWxyQurYkz862KaXDXQar4SvT2RA8K6Y2b7TwEx.png', 'For those who love to code.', 'To empower students through problem solving and programming.', 'Mr. Aravind R', 'aravind.coders@college.edu', 'staff_photos/35s4OImhdKkjmG64Dh1HyJYdMUseRrXBDYsCmn92.jpg', 2015, NULL, '2025-06-24 09:46:20'),
-(8, 'Ekalayva', 'technical', 'club_logos/VsAihPvNKsBxP3hkE67ps3tXswsWcxro1v5RpdnM.png', 'Self-learning is our strength.', 'To promote independent learning through projects.', 'Ms. Raji M', 'raji.ekalayva@college.edu', 'staff_photos/ypLyMvtiO5NGZO5dqzMPJI10Zjol2jgWDqKRwxF4.jpg', 2020, NULL, '2025-06-24 09:53:47'),
-(9, 'SAE Collegiate Club', 'technical', 'club_logos/VvTi90cmXsBAxpRBXnLHsF5QpCMnbbcCcXxZWT5E.png', 'Automobile and design lovers unite.', 'To build engineers passionate about vehicles.', 'Mr. Manoj B', 'manoj.sae@college.edu', 'staff_photos/6wxUDMYw4rLMFL16jS9QMIWHaelYlRHEGa8K9ASN.jpg', 2014, NULL, '2025-06-25 06:48:13'),
-(11, 'YUKTA Racing', 'technical', 'club_logos/59TrJak3Rz3Ym9G8ksjZlt7h7H0fXwtsI4y25Wfu.png', 'Fuel your dreams with speed.', 'To design and race efficient student-built vehicles.', 'Mr. Rajesh D', 'rajesh.yukta@college.edu', 'staff_photos/qXVEQJuCA9ocPVKeapCTgDl9lHeEqaJOMz2taf4I.jpg', 2016, NULL, '2025-06-25 06:48:54'),
-(12, 'Algo Geeks', 'technical', 'club_logos/YFWkACMopbTlxvwWbVGODPBY79SlTRuznz6bDo4N.png', 'Love for algorithms and DSA.', 'To master the art of competitive programming.', 'Ms. Sneha P', 'sneha.algo@college.edu', 'staff_photos/PWSJP6SSFGoTCPWBFM4LSJoZ3fF36tQXCGvhy0pz.webp', 2018, NULL, '2025-06-24 10:59:48'),
-(14, 'Ascenders', 'technical', 'club_logos/c8nH7qRAxM8gInC8l35KOZAaEMwRlwjOVMQEhnmp.png', 'Rise and evolve together.', 'To build leadership and career readiness.', 'Ms. Divya T', 'divya.ascenders@college.edu', 'staff_photos/bKD7LPIBf0oP1GORCptnpppt89iGY36bM7DDKHAT.jpg', 2020, NULL, '2025-06-25 06:49:36'),
-(15, 'Quizzards', 'technical', 'club_logos/ovyYEbnBULDRDvsv2iEJ3YEDPT7Jek3adNejfyGl.png', 'Quiz lovers’ paradise.', 'To challenge and expand general knowledge.', 'Mr. Nilesh V', 'nilesh.quiz@college.edu', 'staff_photos/wkf2ndFjVWO0sP9oLEtDAtQFg8nKOoqIzjwpdTbg.jpg', 2017, NULL, '2025-06-25 06:49:55'),
+(6, 'Eureka', 'technical', 'club_logos/SR2QK7pgFyTbQ2VA2dzNFRttZY4nyowQCIp3jSI1.png', 'Where curiosity meets discovery.', 'To inspire research and experimentation.', 'Dr. Suresh P', 'suresh.eureka@college.edu', 'staff_photos/JNJj2XRGsCan9eVFeDAax6XnGdLdYYzvDSi3x8SW.png', 2016, NULL, '2025-07-20 02:15:05'),
+(7, 'Coders Club', 'technical', 'club_logos/LOWxyQurYkz862KaXDXQar4SvT2RA8K6Y2b7TwEx.png', 'For those who love to code.', 'To empower students through problem solving and programming.', 'Mr. Aravind R', 'aravind.coders@college.edu', 'staff_photos/QkMXbFipTy9vaML59kEys89t2IdV08UviQBJLFnQ.png', 2015, NULL, '2025-07-20 02:14:28'),
+(8, 'Ekalayva', 'technical', 'club_logos/VsAihPvNKsBxP3hkE67ps3tXswsWcxro1v5RpdnM.png', 'Self-learning is our strength.', 'To promote independent learning through projects.', 'Ms. Raji M', 'raji.ekalayva@college.edu', 'staff_photos/ijrB4R5ktRkVhKySDvzOQswdORcWvf8GFHiHyvzm.png', 2020, NULL, '2025-07-20 02:15:38'),
+(9, 'SAE Collegiate Club', 'technical', 'club_logos/VvTi90cmXsBAxpRBXnLHsF5QpCMnbbcCcXxZWT5E.png', 'Automobile and design lovers unite.', 'To build engineers passionate about vehicles.', 'Mr. Manoj B', 'manoj.sae@college.edu', 'staff_photos/Nzy7imTbsmDzBeGCRYiEoxxUIC5komVCmcYKRgTb.png', 2014, NULL, '2025-07-20 02:15:16'),
+(11, 'YUKTA Racing', 'technical', 'club_logos/59TrJak3Rz3Ym9G8ksjZlt7h7H0fXwtsI4y25Wfu.png', 'Fuel your dreams with speed.', 'To design and race efficient student-built vehicles.', 'Mr. Rajesh D', 'rajesh.yukta@college.edu', 'staff_photos/A4uVoeM4JWqafa1zSB3wMId0JRpmHMISHDLVvbkZ.png', 2016, NULL, '2025-07-20 02:15:49'),
+(12, 'Algo Geeks', 'technical', 'club_logos/YFWkACMopbTlxvwWbVGODPBY79SlTRuznz6bDo4N.png', 'Love for algorithms and DSA.', 'To master the art of competitive programming.', 'Ms. Sneha P', 'sneha.algo@college.edu', 'staff_photos/yKdr5sTWYrdFQLUaxaFXqlwhFeYi1eZlOIISRZmx.png', 2018, NULL, '2025-07-20 02:15:59'),
+(14, 'Ascenders', 'technical', 'club_logos/c8nH7qRAxM8gInC8l35KOZAaEMwRlwjOVMQEhnmp.png', 'Rise and evolve together.', 'To build leadership and career readiness.', 'Ms. Divya T', 'divya.ascenders@college.edu', 'staff_photos/jsmi4ZYgX8aYCszJB2ZINZd6gNoIkMGCWwa77oWm.png', 2020, NULL, '2025-07-20 02:16:14'),
+(15, 'Quizzards', 'technical', 'club_logos/ovyYEbnBULDRDvsv2iEJ3YEDPT7Jek3adNejfyGl.png', 'Quiz lovers’ paradise.', 'To challenge and expand general knowledge.', 'Mr. Nilesh V', 'nilesh.quiz@college.edu', 'staff_photos/45Ukv0KKKKS50MeastN8yCH96qINXlavmxTaoEIl.png', 2017, NULL, '2025-07-20 02:16:25'),
 (17, 'Anglophile Longue', 'non-technical', 'club_logos/BfZ5kbGih4wuMvGeGFkMXoiCIEsCOTZxjEZznltD.png', 'Celebrate English language.', 'To develop public speaking and literature skills.', 'Ms. Sangeetha J', 'sangeetha.anglo@college.edu', 'staff_photos/Se2GCyJVlbE1kHqQJ6fRduS0ugWrjMqcMKmTPbKP.jpg', 2021, NULL, '2025-06-25 06:53:37'),
-(19, 'Ventura', 'technical', 'club_logos/g4TtCosaFf9u1A2RhLFnB6vWlOnh233KFVA6ThKZ.png', 'Entrepreneurship development cell.', 'To turn ideas into startups.', 'Ms. Keerthi M', 'keerthi.ventura@college.edu', 'staff_photos/ldwofIs8IkRdrGG8pRfzxzK8SLOYiROzlxxJaBs6.jpg', 2018, NULL, '2025-06-25 06:55:22'),
-(20, 'Innov CHEM', 'technical', 'club_logos/WoG6TkgwH6fVPaAWT7EFYEKNssirMuVU17lvwKWi.png', 'For future chemical engineers.', 'To build process understanding and safety.', 'Dr. Mahesh B', 'mahesh.chem@college.edu', 'staff_photos/IJp0Bjyo4vFM84ymygdYyMmASTihvaBRsWbubgJi.jpg', 2016, NULL, '2025-06-25 06:56:01'),
+(19, 'Ventura', 'technical', 'club_logos/g4TtCosaFf9u1A2RhLFnB6vWlOnh233KFVA6ThKZ.png', 'Entrepreneurship development cell.', 'To turn ideas into startups.', 'Ms. Keerthi M', 'keerthi.ventura@college.edu', 'staff_photos/4MM2fHspM7wPoYjUmQ3IW3zehFnjg37rEP6pIstO.png', 2018, NULL, '2025-07-20 02:14:54'),
+(20, 'Innov CHEM', 'technical', 'club_logos/WoG6TkgwH6fVPaAWT7EFYEKNssirMuVU17lvwKWi.png', 'For future chemical engineers.', 'To build process understanding and safety.', 'Dr. Mahesh B', 'mahesh.chem@college.edu', 'staff_photos/fdEjBzINDugyHG3LbIyxJcS93fBVjxmjP1fsncho.png', 2016, NULL, '2025-07-20 02:16:58'),
 (22, 'Foreign language club', 'non-technical', 'club_logos/Mu0VjNoXT1aphsrZVnOZb5Ovz237ya3Yo8k5nBLF.png', 'Bonjour! Konichiwa! Hola!', 'To explore languages and cultures worldwide.', 'Ms. Aarthi N', 'aarthi.lang@college.edu', 'staff_photos/xL8v5GwHL46qRCavoUhaLoAz3HvcYBlX2lCzsfph.jpg', 2019, NULL, '2025-06-25 06:56:45'),
 (23, 'Happy Hive', 'technical', 'club_logos/lXTxxHfD654GXtvwh3hswmgMWxGszzB0HqhWiCra.png', 'Your mental health buddy.', 'To promote mental well-being and happiness.', 'Ms. Shruthi V', 'shruthi.hive@college.edu', 'staff_photos/Df8TzTZYqT1M4o70ev0FVPFcAebeZFi5Pcu73b2m.jpg', 2021, NULL, '2025-06-25 06:57:03'),
 (24, 'Kernel Club', 'technical', 'club_logos/Jod4TkOQXIo1FlOiR6iRnKzhn6KD8X0JDFND5oNH.png', 'Systems and Linux lovers unite.', 'To deep dive into OS, kernel, and security.', 'Mr. Vishnu K', 'vishnu.kernel@college.edu', 'staff_photos/3vv2PM18nFS2y1tj23HMxgV485dGMfCdUsytLWBT.jpg', 2018, NULL, '2025-06-25 06:57:22'),
-(25, 'Math Club', 'technical', 'club_logos/qh0INKzh9UEqIN75vx9Tj0BMKdoHaBFmoypJGlau.png', 'Beyond numbers.', 'To build mathematical intuition and fun.', 'Dr. Latha G', 'latha.math@college.edu', 'staff_photos/dAu1FGQheZ4ppK7phjg2vQW6I9FWEcBIrBUfI0cx.jpg', 2015, NULL, '2025-06-25 06:57:49'),
+(25, 'Math Club', 'technical', 'club_logos/qh0INKzh9UEqIN75vx9Tj0BMKdoHaBFmoypJGlau.png', 'Beyond numbers.', 'To build mathematical intuition and fun.', 'Dr. Latha G', 'latha.math@college.edu', 'staff_photos/COpPhj1MINsgdF9GFKq1moGngNnIuW9oGc8Wu5hb.png', 2015, NULL, '2025-07-20 02:16:37'),
 (26, 'Spark Club', 'technical', 'club_logos/CgvhX0B2OMfe49fNocWGWP1W9taayrNDRXpH3b4F.png', 'Where ideas spark.', 'To promote ideation and innovation.', 'Ms. Renu A', 'renu.spark@college.edu', 'staff_photos/nSk9g1WMzzA540FXrjFGkLF0cweCPyF3URamSJ6X.jpg', 2020, NULL, '2025-06-25 06:58:26'),
-(27, 'TECHXPLORERS', 'technical', 'club_logos/eb43zxHJ7EziFG5yyUQ7EfTtyOh2QYP0mxKYj3Q6.png', 'Exploring tech beyond textbooks.', 'To explore, build, and break technology barriers.', 'Mr. Santhosh T', 'santhosh.techx@college.edu', 'staff_photos/5g5jDdCcn8fBKEwnD9yeP7fKkzoMvLYdrWAZPurJ.jpg', 2021, NULL, '2025-06-25 06:58:47'),
-(35, 'AI Consortium', 'technical', 'club_logos/PirrXIOV1lS7XgfsSB4maYzXQ5hrPz4NYg7xUVLd.jpg', 'AI Consortium is a student-driven club dedicated to exploring the world of Artificial Intelligence and Machine Learning. We bring together enthusiasts, innovators, and learners to build, share, and grow in the rapidly evolving AI ecosystem.', 'To empower students with knowledge, hands-on experience, and a collaborative platform to innovate and apply AI for real-world impact.', 'Mrs. A. Indirani', 'aiica@tce.edu', 'staff_photos/6yyQcqTx5miTwTH096rxPfgUCrwtZUScGJ2H7jTb.jpg', 2025, '2025-07-15 05:05:59', '2025-07-15 05:05:59'),
+(27, 'TECHXPLORERS', 'technical', 'club_logos/eb43zxHJ7EziFG5yyUQ7EfTtyOh2QYP0mxKYj3Q6.png', 'Exploring tech beyond textbooks.', 'To explore, build, and break technology barriers.', 'Mr. Santhosh T', 'santhosh.techx@college.edu', 'staff_photos/sPZWkBxwvG6EEp4lnAyYVEMs82olj5SwsAxgQfr9.png', 2021, NULL, '2025-07-20 02:15:29'),
+(35, 'AI Consortium', 'technical', 'club_logos/PirrXIOV1lS7XgfsSB4maYzXQ5hrPz4NYg7xUVLd.jpg', 'AI Consortium is a student-driven club dedicated to exploring the world of Artificial Intelligence and Machine Learning. We bring together enthusiasts, innovators, and learners to build, share, and grow in the rapidly evolving AI ecosystem.', 'To empower students with knowledge, hands-on experience, and a collaborative platform to innovate and apply AI for real-world impact.', 'Mrs. A. Indirani', 'aiica@tce.edu', 'staff_photos/nM4h1ZPpy407pqB3LWeujjLhYnRz8B0LVhaEgEva.png', 2025, '2025-07-15 05:05:59', '2025-07-20 02:14:41'),
 (36, 'Drone Club', 'technical', NULL, NULL, NULL, '', '', NULL, 0, NULL, NULL),
 (37, 'School of Thoughts', 'technical', NULL, NULL, NULL, '', '', NULL, 0, NULL, NULL),
 (38, 'Sustainable Development Goals', 'technical', NULL, NULL, NULL, '', '', NULL, 0, NULL, NULL),
@@ -124,13 +124,13 @@ CREATE TABLE `club_registration` (
 
 INSERT INTO `club_registration` (`id`, `registration_id`, `club_id`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, '2025-06-22 06:03:56', '2025-06-22 06:03:56'),
-(2, 2, 1, '2025-06-22 06:08:38', '2025-06-22 06:08:38'),
-(4, 4, 1, '2025-06-22 06:20:06', '2025-06-22 06:20:06'),
-(5, 5, 1, '2025-06-22 06:27:25', '2025-06-22 06:27:25'),
+(2, 2, 35, '2025-06-22 06:08:38', '2025-07-20 08:47:31'),
+(4, 4, 6, '2025-06-22 06:20:06', '2025-07-20 08:46:56'),
+(5, 5, 5, '2025-06-22 06:27:25', '2025-07-20 08:44:58'),
 (6, 6, 5, '2025-06-22 06:33:10', '2025-06-22 06:33:10'),
 (7, 6, 6, '2025-06-22 06:33:10', '2025-06-22 06:33:10'),
 (8, 6, 11, '2025-06-22 06:33:10', '2025-06-22 06:33:10'),
-(9, 7, 1, '2025-06-22 23:34:21', '2025-06-22 23:34:21'),
+(9, 7, 27, '2025-06-22 23:34:21', '2025-07-20 08:46:34'),
 (10, 7, 4, '2025-06-22 23:34:21', '2025-06-22 23:34:21'),
 (11, 7, 7, '2025-06-22 23:34:21', '2025-06-22 23:34:21'),
 (12, 8, 8, '2025-06-23 01:09:36', '2025-06-23 01:09:36'),
@@ -139,7 +139,7 @@ INSERT INTO `club_registration` (`id`, `registration_id`, `club_id`, `created_at
 (15, 9, 3, '2025-06-24 08:06:46', '2025-06-24 08:06:46'),
 (16, 9, 6, '2025-06-24 08:06:46', '2025-06-24 08:06:46'),
 (17, 9, 7, '2025-06-24 08:06:46', '2025-06-24 08:06:46'),
-(18, 10, 1, '2025-06-24 08:18:02', '2025-06-24 08:18:02'),
+(18, 10, 3, '2025-06-24 08:18:02', '2025-07-20 08:47:57'),
 (19, 10, 4, '2025-06-24 08:18:02', '2025-06-24 08:18:02'),
 (20, 10, 8, '2025-06-24 08:18:02', '2025-06-24 08:18:02'),
 (21, 11, 1, '2025-06-24 08:26:22', '2025-06-24 08:26:22'),
@@ -175,7 +175,10 @@ INSERT INTO `club_registration` (`id`, `registration_id`, `club_id`, `created_at
 (90, 41, 17, '2025-07-20 04:40:40', '2025-07-20 04:40:40'),
 (112, 50, 7, '2025-07-20 05:52:25', '2025-07-20 05:52:25'),
 (113, 50, 36, '2025-07-20 05:52:25', '2025-07-20 05:52:25'),
-(114, 50, 41, '2025-07-20 05:52:25', '2025-07-20 05:52:25');
+(114, 50, 41, '2025-07-20 05:52:25', '2025-07-20 05:52:25'),
+(115, 51, 14, '2025-07-20 08:52:24', '2025-07-20 08:52:24'),
+(116, 51, 26, '2025-07-20 08:52:24', '2025-07-20 08:52:24'),
+(117, 51, 45, '2025-07-20 08:52:24', '2025-07-20 08:52:24');
 
 -- --------------------------------------------------------
 
@@ -220,7 +223,7 @@ INSERT INTO `events` (`id`, `club_id`, `event_name`, `description`, `start_date`
 (15, 1, 'efdcdc', 'fwffscdfef', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-06-27', '20:22:00', 'event_images/Bx2tRa1hHB5Hhg16LNibITgxtuFoVpxtJMO9tgZL.png', '2025-06-24 04:18:02', '2025-06-24 04:18:02', NULL, NULL, NULL),
 (16, 3, 'dfdfdf', 'fdadaewrewr', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-07-12', '15:44:00', 'event_images/GIdkGjGULper3rw6SyHlQJNjQvyxpUfDA5Vn9H1D.png', '2025-06-24 04:44:29', '2025-06-24 04:44:29', NULL, NULL, NULL),
 (18, 1, 'senthil', 'erewfee', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-07-04', '12:51:00', 'event_images/3yqFq1RNzR62XeSX20YZUN9qoli5TdX4pxXpVvkX.png', '2025-06-24 08:46:06', '2025-06-24 08:46:06', NULL, NULL, NULL),
-(19, 35, 'AI week celebration', 'Organized by the AI Consortium, this 5-day power-packed event will take you through the exciting world of Artificial Intelligence — from real-world applications to futuristic innovations!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-04-14', '15:30:00', 'event_images/mOtKKDCLvdpNXsk4U8WKZliMTtRIzaHcIXYJM52W.jpg', '2025-07-15 05:11:30', '2025-07-15 05:43:29', '[\"event_gallery\\/0NcQukwqTK7s4qQsLw3YdURjEA70p7WAbA4yqfC9.jpg\"]', NULL, NULL),
+(19, 35, 'AI week celebration', 'Organized by the AI Consortium, this 5-day power-packed event will take you through the exciting world of Artificial Intelligence — from real-world applications to futuristic innovations!', '2025-04-14', '2025-04-18', '15:30:00', '17:00:00', 40, 8, 0, '2025-04-14', '15:30:00', 'event_images/mOtKKDCLvdpNXsk4U8WKZliMTtRIzaHcIXYJM52W.jpg', '2025-07-15 05:11:30', '2025-07-20 02:42:47', '[\"event_gallery\\/0NcQukwqTK7s4qQsLw3YdURjEA70p7WAbA4yqfC9.jpg\"]', NULL, NULL),
 (20, 35, 'AI Sprint', 'A hands-on In-Lab Internship Opportunity designed for II- and III-year students.\r\n Explore Real-World AI Solutions Across These Key Domains:\r\n MediVision,Decoding Bharat ,Business Minds 2.0, Beyond Tomorrow ,AI Illuminates .', '2025-06-02', '2025-06-13', '09:30:00', '16:30:00', 167, 10, 3, '2025-06-02', '09:30:00', 'event_images/lFPL7kvNdKFpsQ6tQgI2825oB0tw6Xbo3JN4cFSC.jpg', '2025-07-15 05:49:31', '2025-07-17 08:54:26', '[\"event_gallery\\/c77lusBueKU0bho8CshS7bv64wi42HXZKy6tQDYo.jpg\",\"event_gallery\\/lE70XNzbZxSl4AZzj5LWQHSTtAPiuW5wK5MMnxyl.jpg\",\"event_gallery\\/QuhVGspqgdcRglkiRCkjMhx1nD61vvYsog3Kop7l.jpg\",\"event_gallery\\/TRAdCa9JNVwvwwK0s2kXPUB7fhEJe0FLr1uhDv54.jpg\"]', NULL, NULL),
 (21, 35, 'Inauguration of AI consortium-  Gen AI in Action', 'The AI Consortium was inaugurated to bring together experts, students, and institutions in the field of Artificial Intelligence.It aims to promote collaboration, research, and innovation in AI technologies.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-04-02', '10:00:00', 'event_images/UCpS2pSfO6gKjUTpxToq5Q1ktefmlPMAiGdb1zQZ.jpg', '2025-07-15 12:22:52', '2025-07-15 12:23:11', '[\"event_gallery\\/UMfixJteKyXJSm99mVlqMDSkmld3Llhpsc6H2ObX.jpg\",\"event_gallery\\/AToOxLR26FmnAjLL0hDgAbsbaYe54DL0LrJ4391o.jpg\",\"event_gallery\\/sFJNydYFxf150QFhg2uwlkUAtuv88JJ36Q8qHMIV.jpg\",\"event_gallery\\/6hv2yla5jVe3yCSfLzwjyBlUHaZZ6qK1SaJjnBNv.jpg\"]', NULL, NULL),
 (22, 35, 'CRAFT THE CORE – Logo Design Contest', 'Unleash your creativity and design a logo that reflects the core themes of Innovation ,Education and AI Technology.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-06-20', '06:00:00', 'event_images/qFp4MydHybOdjNzNIWSXpg1t89NjUe5pIl9bQg7b.jpg', '2025-07-15 12:31:19', '2025-07-15 12:31:19', NULL, NULL, NULL);
@@ -335,11 +338,11 @@ CREATE TABLE `registrations` (
 --
 
 INSERT INTO `registrations` (`id`, `name`, `roll_no`, `email`, `department`, `created_at`, `updated_at`, `gender`) VALUES
-(1, 'Aburvaa', '660423', 'aburvaasenthilkumarias@gmail.com', 'IT', '2025-06-22 06:03:56', '2025-07-18 15:04:43', 'female'),
-(2, 'Kiruthika', '789330', 'kiru@gmail.com', 'IT', '2025-06-22 06:08:38', '2025-07-18 15:06:10', 'female'),
-(4, 'Varshini', '373290', 'vars@gmail.com', 'ECE', '2025-06-22 06:20:06', '2025-07-18 15:06:10', 'female'),
+(1, 'Aburvaa', '660423', 'aburvaasenthilkumarias@gmail.com', 'MECT', '2025-06-22 06:03:56', '2025-07-20 08:36:03', 'female'),
+(2, 'Kiruthika', '789330', 'kiru@gmail.com', 'CSBS', '2025-06-22 06:08:38', '2025-07-20 08:41:25', 'female'),
+(4, 'Varshini', '373290', 'vars@gmail.com', 'ARCH', '2025-06-22 06:20:06', '2025-07-20 08:36:36', 'female'),
 (5, 'Harshini', '445321', 'harsh@gmail.com', 'AI-ML', '2025-06-22 06:27:25', '2025-07-18 15:06:10', 'female'),
-(6, 'Ganga', '334223', 'ganga@gmail.com', 'ROBOTICS', '2025-06-22 06:33:10', '2025-07-18 15:06:10', 'female'),
+(6, 'Ganga', '334223', 'ganga@gmail.com', 'MECH', '2025-06-22 06:33:10', '2025-07-20 08:40:15', 'female'),
 (7, 'Kaviya', '532133', 'kaviya@gmail.com', 'IT', '2025-06-22 23:34:21', '2025-07-18 15:06:10', 'female'),
 (8, 'hari', '987665', 'hari@gmail.com', 'CSE', '2025-06-23 01:09:36', '2025-07-18 15:07:45', 'female'),
 (9, 'Dharshan', '342413', 'dharsh@gmail.com', 'CIVIL', '2025-06-24 08:06:46', '2025-07-18 16:21:56', 'male'),
@@ -349,7 +352,7 @@ INSERT INTO `registrations` (`id`, `name`, `roll_no`, `email`, `department`, `cr
 (13, 'VARSHINI C', '660792', 'cvarshini@student.tce.edu', 'IT', '2025-07-03 12:40:32', '2025-07-18 15:05:52', 'female'),
 (14, 'janani', '342116', 'jan@gmail.com', 'ECE', '2025-07-04 05:03:29', '2025-07-18 15:06:10', 'female'),
 (15, 'Jeyaram', '556789', 'jeyaram@gmail.com', 'ECE', '2025-07-07 23:17:07', '2025-07-18 16:21:56', 'male'),
-(16, 'harshini jg', '660100', 'jghar@gmail.com', 'IT', '2025-07-15 13:23:56', '2025-07-18 15:06:10', 'female'),
+(16, 'harshini jg', '660100', 'jghar@gmail.com', 'DS', '2025-07-15 13:23:56', '2025-07-20 08:34:50', 'female'),
 (17, 'Ganesh', '667899', 'ganesh@gmail.com', 'MECT', '2025-07-18 10:37:12', '2025-07-18 16:21:56', 'male'),
 (18, 'Aravind', '678921', 'ara@gmail.com', 'CSBS', '2025-07-18 10:40:07', '2025-07-18 16:21:34', 'male'),
 (19, 'Goutham', '678095', 'goutham@gmail.com', 'DS', '2025-07-18 10:44:09', '2025-07-18 16:21:56', 'male'),
@@ -357,7 +360,8 @@ INSERT INTO `registrations` (`id`, `name`, `roll_no`, `email`, `department`, `cr
 (39, 'Mai', '661112', 'mai@gmail.com', 'CSE', '2025-07-19 23:04:58', '2025-07-19 23:04:58', 'Female'),
 (40, 'sss', '660789', 'sss@gmail.com', 'EEE', '2025-07-19 23:07:58', '2025-07-19 23:07:58', 'Male'),
 (41, 'jjj', '660786', 'jjj@gmail.com', 'CIVIL', '2025-07-19 23:10:40', '2025-07-19 23:10:40', 'Male'),
-(50, 'Nikitha', '660718', 'nikithaa@student.tce.edu', 'AI-ML', '2025-07-20 00:22:24', '2025-07-20 00:22:24', 'Female');
+(50, 'Nikitha', '660718', 'nikithaa@student.tce.edu', 'AI-ML', '2025-07-20 00:22:24', '2025-07-20 00:22:24', 'Female'),
+(51, 'Roshini', '678999', 'harshinijg@student.tce.edu', 'MECH', '2025-07-20 03:22:24', '2025-07-20 03:22:24', 'Female');
 
 -- --------------------------------------------------------
 
@@ -379,6 +383,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+('bI2VkaUQBZaob8zsoKS2pvZPx6Yunj9z8vSwqiUI', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiUWh0Q2ZmVWtNUHZrdTB1OUVUWkhZdXVhNHlCeFJMazlOWG9Vd3pSTyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC90Y2Uvc3VwZXJhZG1pbi9kYXNoYm9hcmQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1753001642),
 ('x5p5hgZh6j2PsYOsrZpkJ20FTG2CaVOSQVHSOtF4', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiOXJrWTA5Yk5Mc1JuZDVtbEI0Q0MyaE9yQUt3dDFDNWRVNEFpVjdxRyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9leHBvcnQvcGRmIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1752992159);
 
 -- --------------------------------------------------------
@@ -401,10 +406,11 @@ CREATE TABLE `student_coordinators` (
 --
 
 INSERT INTO `student_coordinators` (`id`, `club_id`, `name`, `photo`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Varshini C', 'student_photos/hiRL8wUuj1O5h3Prm2NMXXB5aWltZKhhMvRlGlgB.jpg', '2025-06-21 00:31:40', '2025-07-03 22:50:01'),
-(2, 1, 'Kiruthika B', 'student_photos/DKmmEzvZGHH4Sw1bMWYE4M1IoiCRQGAg48kpAhoZ.jpg', '2025-06-22 04:02:15', '2025-07-03 22:50:01'),
-(3, 1, 'Harshini J G', 'student_photos/2oGBPcKkYvNTq8LR7zjd7Jt2kHqKp8AEj9SQs2T1.jpg', '2025-06-22 04:03:13', '2025-07-03 22:51:23'),
-(4, 35, 'R. Vimitha', 'student_photos/RPY3CSHDIrIEDRQ6mmcGWFFe4cBIPSjPTDmeLhbd.png', '2025-07-15 05:06:46', '2025-07-15 05:06:46');
+(1, 1, 'Nikitha A S', 'student_photos/kho2lxgvVsg9sZAxGa6H89oITXdBVr0iumpILVSY.png', '2025-06-21 00:31:40', '2025-07-20 02:12:48'),
+(2, 1, 'Kiruthika B', 'student_photos/n4d7PRJ9ipb61iejMhOC7iNJhahuVMnLvjYKhq9V.png', '2025-06-22 04:02:15', '2025-07-20 02:12:48'),
+(3, 1, 'Harshini J G', 'student_photos/aBqPHmHLSPhiTkFJQkkhouDPkkogeThEhdZ5nPUY.png', '2025-06-22 04:03:13', '2025-07-20 02:12:48'),
+(4, 35, 'R. Vimitha', 'student_photos/RPY3CSHDIrIEDRQ6mmcGWFFe4cBIPSjPTDmeLhbd.png', '2025-07-15 05:06:46', '2025-07-15 05:06:46'),
+(5, 3, 'Snowfine J', 'student_photos/DSAp7zAp3bBiOb4BLqaNQb691wGKa8CyNzD4eUPU.png', '2025-07-20 02:13:42', '2025-07-20 02:13:42');
 
 -- --------------------------------------------------------
 
@@ -547,7 +553,7 @@ ALTER TABLE `clubs`
 -- AUTO_INCREMENT for table `club_registration`
 --
 ALTER TABLE `club_registration`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT for table `events`
@@ -577,13 +583,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `registrations`
 --
 ALTER TABLE `registrations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `student_coordinators`
 --
 ALTER TABLE `student_coordinators`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`

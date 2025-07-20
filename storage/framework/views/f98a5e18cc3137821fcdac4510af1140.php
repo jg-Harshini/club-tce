@@ -213,25 +213,31 @@
     </div>
 
 
-   <?php if(session('popup_message')): ?>
-<div id="customAlert" style="position: fixed; top: 0; left: 0; height: 100vh; width: 100vw; background: rgba(0,0,0,0.4); z-index: 2000; display: flex; justify-content: center; align-items: center;">
-    <div style="background: white; padding: 30px 40px; border-radius: 15px; text-align: center; max-width: 500px; box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
-        <h4 style="margin-bottom: 20px;"><?php echo e(session('popup_message')); ?></h4>
-        <button onclick="handleAlertClose()" style="padding: 10px 20px; background-color: #0d6efd; color: white; border: none; border-radius: 8px;">OK</button>
+<?php if(session('popup_message')): ?>
+    <div id="popupOverlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.4); z-index: 2000; display: flex; justify-content: center; align-items: center;">
+        <div style="background: white; padding: 30px 40px; border-radius: 15px; text-align: center; max-width: 500px; box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
+            <h4 style="margin-bottom: 20px;"><?php echo e(session('popup_message')); ?></h4>
+        </div>
     </div>
-</div>
+
+    <script>
+        setTimeout(function () {
+            window.location.href = "<?php echo e(route('student.index')); ?>";
+        }, 2000); // Redirect after 3 seconds
+    </script>
+<?php endif; ?>
+
 
 <script>
     function handleAlertClose() {
         const redirectTo = "<?php echo e(session('redirect_to')); ?>";
-        if (redirectTo === 'home') {
-            window.location.href = "<?php echo e(route('student.index')); ?>";
+        if (redirectTo) {
+            window.location.href = redirectTo;
         } else {
             document.getElementById('customAlert').style.display = 'none';
         }
     }
 </script>
-<?php endif; ?>
 
 
 
@@ -241,7 +247,8 @@
         <h2>Club Enrollment</h2>
 
        
-       <form action="<?php echo e(route('student.enroll.submit')); ?>" method="POST" enctype="multipart/form-data" autocomplete="off">
+
+<form id="clubForm" action="<?php echo e(route('student.enroll.submit')); ?>" method="POST" enctype="multipart/form-data" autocomplete="off">
 
     <?php echo csrf_field(); ?>
 
@@ -280,43 +287,101 @@
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </select>
 
-    <label>Select up to 3 Clubs:</label>
-    <div class="checkbox-group">
-        <?php $__currentLoopData = $clubs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $club): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <label class="form-check-label">
-                <input type="checkbox" name="clubs[]" value="<?php echo e($club->id); ?>" class="form-check-input club-checkbox"
-                    <?php echo e(is_array(old('clubs')) && in_array($club->id, old('clubs')) ? 'checked' : ''); ?>>
-                <?php echo e($club->club_name); ?>
+    <label>Select Clubs (Min: 1 Tech + 1 Non-Tech | Max: 2 Tech + 1 Non-Tech):</label>
+<br>
+<label>Technical Clubs</label>
+<div class="checkbox-group">
+    <?php $__currentLoopData = $clubs->where('category', 'technical'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $club): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <label class="form-check-label">
+            <input type="checkbox" name="clubs[]" value="<?php echo e($club->id); ?>" class="form-check-input club-checkbox" data-type="tech"
+                <?php echo e(is_array(old('clubs')) && in_array($club->id, old('clubs')) ? 'checked' : ''); ?>>
+            <?php echo e($club->club_name); ?>
 
-            </label>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-    </div>
+        </label>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+</div>
+
+<label>Non-Technical Clubs</label>
+<div class="checkbox-group">
+    <?php $__currentLoopData = $clubs->where('category', 'non-technical'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $club): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <label class="form-check-label">
+            <input type="checkbox" name="clubs[]" value="<?php echo e($club->id); ?>" class="form-check-input club-checkbox" data-type="nontech"
+                <?php echo e(is_array(old('clubs')) && in_array($club->id, old('clubs')) ? 'checked' : ''); ?>>
+            <?php echo e($club->club_name); ?>
+
+        </label>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+</div>
+
 
     <button type="submit">Submit</button>
 </form>
-<?php if(session('success')): ?>
+
+
+
 <script>
-    setTimeout(() => {
-        window.location.href = "<?php echo e(route('student.index')); ?>";
-    }, 5000);
+    feather.replace();
+
+    function showCustomAlert(message) {
+        let alertBox = document.getElementById('customAlert');
+        if (!alertBox) {
+            alertBox = document.createElement('div');
+            alertBox.id = 'customAlert';
+            alertBox.style = `position: fixed; top: 0; left: 0; height: 100vh; width: 100vw; background: rgba(0,0,0,0.4); z-index: 2000; display: flex; justify-content: center; align-items: center;`;
+
+            alertBox.innerHTML = `
+                <div style="background: white; padding: 30px 40px; border-radius: 15px; text-align: center; max-width: 500px; box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
+                    <h4 id="validationMessage" style="margin-bottom: 20px;">${message}</h4>
+                    <button onclick="document.getElementById('customAlert').style.display = 'none';"
+                            style="padding: 10px 20px; background-color: #0d6efd; color: white; border: none; border-radius: 8px;">
+                        OK
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(alertBox);
+        } else {
+            alertBox.querySelector('h4').innerText = message;
+            alertBox.style.display = 'flex';
+        }
+    }
+
+    const form = document.getElementById("clubForm");
+    const allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+
+    allCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener("change", function () {
+            const selectedTech = document.querySelectorAll('input[data-type="tech"]:checked');
+            const selectedNonTech = document.querySelectorAll('input[data-type="nontech"]:checked');
+
+            if (selectedTech.length > 2) {
+                showCustomAlert("You can select a maximum of 2 Technical clubs.");
+                checkbox.checked = false;
+            }
+
+            if (selectedNonTech.length > 1) {
+                showCustomAlert("You can select a max of 1 Non-Technical club.");
+                checkbox.checked = false;
+            }
+        });
+    });
+
+    // ✅ Move this OUTSIDE the checkbox loop
+    form.addEventListener("submit", function (event) {
+        const selectedTech = document.querySelectorAll('input[data-type="tech"]:checked');
+        const selectedNonTech = document.querySelectorAll('input[data-type="nontech"]:checked');
+
+        if (selectedTech.length === 0 || selectedNonTech.length === 0) {
+            event.preventDefault();
+            showCustomAlert("Please select at least 1 Technical and 1 Non-Technical club.");
+        }
+    });
 </script>
-<?php endif; ?>
+
+
 
     </div>
 
-    <!-- JS -->
-    <script>
-        document.querySelectorAll('.club-checkbox').forEach(chk => {
-            chk.addEventListener('change', () => {
-                const selected = document.querySelectorAll('.club-checkbox:checked');
-                if (selected.length > 3) {
-                    chk.checked = false;
-                    alert('You can only select 3 clubs.');
-                }
-            });
-        });
-        feather.replace();
-    </script>
+  
+
 </body>
-</html>
-<?php /**PATH C:\HARSHINI\intern\clubstce\resources\views/student/enroll.blade.php ENDPATH**/ ?>
+</html>  <?php /**PATH C:\HARSHINI\intern\clubstce\resources\views/student/enroll.blade.php ENDPATH**/ ?>
