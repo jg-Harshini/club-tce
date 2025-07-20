@@ -121,13 +121,16 @@
                                         <td>{{ \Carbon\Carbon::parse($event->start_time)->format('h:i A') }} - {{ \Carbon\Carbon::parse($event->end_time)->format('h:i A') }}</td>
                                         <td>
                                             <a href="{{ $baseUrl . '/edit/' . $event->id }}" class="btn btn-sm btn-warning mb-1">Edit</a>
-<form action="{{ $baseUrl . '/delete/' . $event->id }}" method="POST" style="display:inline;">
 
-                                                @csrf
-                                                <button onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Delete</button>
-                                                <a href="{{ url('/tce/superadmin/events/view/' . $event->id) }}">
+<form action="{{ $baseUrl . '/delete/' . $event->id }}" method="POST" style="display:inline;">
+    @csrf
+    <button onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Delete</button>
+</form>
+
+<a href="{{ $baseUrl . '/view/' . $event->id }}" class="btn btn-sm btn-info">
     <i class="fas fa-eye text-primary me-2"></i>View
 </a>
+
                                             </form>
                                         </td>
                                     </tr>

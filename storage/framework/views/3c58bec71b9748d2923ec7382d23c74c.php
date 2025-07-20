@@ -118,13 +118,16 @@
                                         <td><?php echo e(\Carbon\Carbon::parse($event->start_time)->format('h:i A')); ?> - <?php echo e(\Carbon\Carbon::parse($event->end_time)->format('h:i A')); ?></td>
                                         <td>
                                             <a href="<?php echo e($baseUrl . '/edit/' . $event->id); ?>" class="btn btn-sm btn-warning mb-1">Edit</a>
-<form action="<?php echo e($baseUrl . '/delete/' . $event->id); ?>" method="POST" style="display:inline;">
 
-                                                <?php echo csrf_field(); ?>
-                                                <button onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Delete</button>
-                                                <a href="<?php echo e(url('/tce/superadmin/events/view/' . $event->id)); ?>">
+<form action="<?php echo e($baseUrl . '/delete/' . $event->id); ?>" method="POST" style="display:inline;">
+    <?php echo csrf_field(); ?>
+    <button onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Delete</button>
+</form>
+
+<a href="<?php echo e($baseUrl . '/view/' . $event->id); ?>" class="btn btn-sm btn-info">
     <i class="fas fa-eye text-primary me-2"></i>View
 </a>
+
                                             </form>
                                         </td>
                                     </tr>

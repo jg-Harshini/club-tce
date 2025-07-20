@@ -80,4 +80,15 @@ Route::middleware(['auth'])->group(function () {
     Route::match(['get', 'post'], '/clubadmin/events/{action?}/{id?}', [ClubAdminController::class, 'events'])->name('clubadmin.events');
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/hod/dashboard', [App\Http\Controllers\HodController::class, 'index'])->name('hod.dashboard');
+    Route::get('/hod/clubs', [App\Http\Controllers\HodController::class, 'clubs'])->name('hod.clubs');
+Route::get('/hod/clubs/view/{id}', [App\Http\Controllers\HodController::class, 'clubs'])->name('hod.clubs.show')->defaults('action', 'view');
+Route::match(['get', 'post'], '/hod/clubs/edit/{id}', [App\Http\Controllers\HodController::class, 'clubs'])->name('hod.clubs.edit')->defaults('action', 'edit');
+Route::get('/hod/events/view/{id}', [HodController::class, 'viewEvent'])->name('hod.events.view');
+Route::get('/hod/events/edit/{id}', [HodController::class, 'editEvent'])->name('hod.events.edit');
+
+
+});
+
 Route::get('/superadmin/events/print/{id}', [SuperadminController::class, 'printReport'])->name('superadmin.events.print');
