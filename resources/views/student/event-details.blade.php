@@ -262,33 +262,40 @@
 </div>
 
 <!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row g-4 px-3 px-md-5">
-            <div class="col-md-6 col-lg-4">
-                <h4 style="color: #FADADD;">Contact Info</h4>
-                <p><i class="fas fa-map-marker-alt me-2"></i>123 College Road, Chennai, India</p>
-                <p><i class="fas fa-envelope me-2"></i>info@tce.edu.in</p>
-                <p><i class="fas fa-phone me-2"></i>+91 44 1234 5678</p>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <h4 style="color: #FADADD;">Opening Time</h4>
-                <p>Mon - Fri: 9:00 AM to 5:00 PM</p>
-                <p>Sat: 9:00 AM to 1:00 PM</p>
-                <p>Sun: Closed</p>
-            </div>
-            <div class="col-md-12 col-lg-4">
-                <h4 style="color: #FADADD;">Connect With Us</h4>
-                <a href="#"><i class="fab fa-facebook-f me-3"></i></a>
-                <a href="#"><i class="fab fa-twitter me-3"></i></a>
-                <a href="#"><i class="fab fa-instagram me-3"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+<div class="container-fluid" style="background-color: #800000; color: white; padding: 40px 0;">
+    <div class="row g-4 px-5">
+        <!-- Contact Info -->
+        <div class="col-md-6 col-lg-4">
+            <h4 style="color: #B34747; margin-bottom: 20px;">Contact Info</h4>
+            <p><i class="fa fa-map-marker-alt me-2" style="color: #B34747;"></i>V3JJ+VJ3, Thiruparankundram, Tamil Nadu 625015</p>
+            <p><i class="fas fa-envelope me-2" style="color: #B34747;"></i>www.tce.edu</p>
+            <p><i class="fas fa-phone me-2" style="color: #B34747;"></i>+91 452 2482240</p>
+        </div>
+
+        <!-- Opening Time -->
+        <div class="col-md-6 col-lg-4">
+            <h4 style="color: #B34747; margin-bottom: 20px;">Opening Time</h4>
+            <p>Monday - Friday: 9:00 AM to 5:00 PM</p>
+            <p>Sunday: Closed</p>
+        </div>
+
+        <!-- Social Media -->
+        <div class="col-md-12 col-lg-4 d-flex flex-column">
+            <h4 style="color: #B34747; margin-bottom: 20px;">Connect With Us</h4>
+            <div>
+                <a href="https://www.facebook.com/TheOfficialTCEPage" style="color: white; margin-right: 15px; font-size: 1.5rem;"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/tceofficialpage" style="color: white; margin-right: 15px; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/tce_madurai/" style="color: white; margin-right: 15px; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                <a href="https://x.com/tceofficialpage" style="color: white; font-size: 1.5rem;"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
-        <hr class="my-4" style="border-color:  #FADADD;">
-        <p class="text-center mb-0">&copy; 2025 TCE College. All Rights Reserved.</p>
     </div>
-</footer>
+
+    <hr style="border-color: #B34747; margin: 30px 5%;">
+    <div class="text-center" style="color: white; font-size: 0.9rem;">
+        &copy; 2025 TCE College. All Rights Reserved.
+    </div>
+</div>
 
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

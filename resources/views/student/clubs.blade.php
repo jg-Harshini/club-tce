@@ -211,31 +211,38 @@
 
 <!-- Footer -->
 <div class="container-fluid" style="background-color: #800000; color: white; padding: 40px 0;">
-  <div class="row g-4 px-5">
-    <div class="col-md-6 col-lg-4">
-      <h4 style="color: #B34747; margin-bottom: 20px;">Contact Info</h4>
-      <p>123 College Road, Chennai, India</p>
-      <p>info@tce.edu.in</p>
-      <p>+91 44 1234 5678</p>
+    <div class="row g-4 px-5">
+        <!-- Contact Info -->
+        <div class="col-md-6 col-lg-4">
+            <h4 style="color: #B34747; margin-bottom: 20px;">Contact Info</h4>
+            <p><i class="fa fa-map-marker-alt me-2" style="color: #B34747;"></i>V3JJ+VJ3, Thiruparankundram, Tamil Nadu 625015</p>
+            <p><i class="fas fa-envelope me-2" style="color: #B34747;"></i>www.tce.edu</p>
+            <p><i class="fas fa-phone me-2" style="color: #B34747;"></i>+91 452 2482240</p>
+        </div>
+
+        <!-- Opening Time -->
+        <div class="col-md-6 col-lg-4">
+            <h4 style="color: #B34747; margin-bottom: 20px;">Opening Time</h4>
+            <p>Monday - Friday: 9:00 AM to 5:00 PM</p>
+            <p>Sunday: Closed</p>
+        </div>
+
+        <!-- Social Media -->
+        <div class="col-md-12 col-lg-4 d-flex flex-column">
+            <h4 style="color: #B34747; margin-bottom: 20px;">Connect With Us</h4>
+            <div>
+                <a href="https://www.facebook.com/TheOfficialTCEPage" style="color: white; margin-right: 15px; font-size: 1.5rem;"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/tceofficialpage" style="color: white; margin-right: 15px; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/tce_madurai/" style="color: white; margin-right: 15px; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                <a href="https://x.com/tceofficialpage" style="color: white; font-size: 1.5rem;"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
     </div>
-    <div class="col-md-6 col-lg-4">
-      <h4 style="color: #B34747; margin-bottom: 20px;">Opening Time</h4>
-      <p>Monday - Friday: 9:00 AM to 5:00 PM</p>
-      <p>Saturday: 9:00 AM to 1:00 PM</p>
-      <p>Sunday: Closed</p>
+
+    <hr style="border-color: #B34747; margin: 30px 5%;">
+    <div class="text-center" style="color: white; font-size: 0.9rem;">
+        &copy; 2025 TCE College. All Rights Reserved.
     </div>
-    <div class="col-md-12 col-lg-4">
-      <h4 style="color: #B34747; margin-bottom: 20px;">Connect With Us</h4>
-      <a href="#" style="color: white; margin-right: 15px; font-size: 1.5rem;"><i class="fab fa-facebook-f"></i></a>
-      <a href="#" style="color: white; margin-right: 15px; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
-      <a href="#" style="color: white; margin-right: 15px; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
-      <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-linkedin-in"></i></a>
-    </div>
-  </div>
-  <hr style="border-color: #B34747; margin: 30px 5%;">
-  <div class="text-center" style="color: white; font-size: 0.9rem;">
-    &copy; 2025 TCE College. All Rights Reserved.
-  </div>
 </div>
 
 <!-- Scripts -->

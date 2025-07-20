@@ -1,8 +1,6 @@
-@extends('layout.app')
+<?php $__env->startSection('title', 'Dashboard'); ?>
 
-@section('title', 'Dashboard')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="row mb-4">
   <div class="col-12">
     <h3 class="text-dark fw-bold mt-0">Club Enrollment Dashboard</h3>
@@ -16,7 +14,7 @@
     <div class="card shadow-sm text-dark" style="background-color: #ffcad4;">
       <div class="card-body">
         <h5 class="card-title">Total Clubs</h5>
-        <h2 class="fw-bold">{{ $totalClubs }}</h2>
+        <h2 class="fw-bold"><?php echo e($totalClubs); ?></h2>
       </div>
     </div>
   </div>
@@ -24,7 +22,7 @@
     <div class="card shadow-sm text-dark" style="background-color: #ffddb0;">
       <div class="card-body">
         <h5 class="card-title">Total Club Applications</h5>
-        <h2 class="fw-bold">{{ $totalApplications }}</h2>
+        <h2 class="fw-bold"><?php echo e($totalApplications); ?></h2>
       </div>
     </div>
   </div>
@@ -32,7 +30,7 @@
     <div class="card shadow-sm text-dark" style="background-color: #b7eadf;">
       <div class="card-body">
         <h5 class="card-title">Total Distinct Students</h5>
-        <h2 class="fw-bold">{{ $totalStudents }}</h2>
+        <h2 class="fw-bold"><?php echo e($totalStudents); ?></h2>
       </div>
     </div>
   </div>
@@ -80,16 +78,16 @@
     </div>
   </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('scripts')
+<?php $__env->startSection('scripts'); ?>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  const deptData = @json($departmentDistribution);
-  const clubData = @json($popularClubs);
-  const activeClubEvents = @json($activeClubsByEvents);
-  const genderData = @json($genderDistribution);
+  const deptData = <?php echo json_encode($departmentDistribution, 15, 512) ?>;
+  const clubData = <?php echo json_encode($popularClubs, 15, 512) ?>;
+  const activeClubEvents = <?php echo json_encode($activeClubsByEvents, 15, 512) ?>;
+  const genderData = <?php echo json_encode($genderDistribution, 15, 512) ?>;
 
   const deptCtx = document.getElementById("dept-chart");
   const clubCtx = document.getElementById("popular-clubs-chart");
@@ -238,4 +236,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH E:\club\kiruthi\admin\club-tce\resources\views/dash.blade.php ENDPATH**/ ?>
