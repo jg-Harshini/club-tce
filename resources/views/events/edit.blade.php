@@ -92,7 +92,7 @@
         <div class="mb-3">
             <label class="form-label">Gallery Images</label>
             <input type="file" name="gallery[]" class="form-control" multiple accept="image/*">
-            <small class="text-muted">You can upload multiple images.</small>
+            <small class="text-muted">Upload images with geo tag.</small>
         </div>
 
         @if ($event->gallery && is_array(json_decode($event->gallery, true)))
