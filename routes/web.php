@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Controllers\SuperadminController;
@@ -85,8 +86,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/hod/clubs', [App\Http\Controllers\HodController::class, 'clubs'])->name('hod.clubs');
 Route::get('/hod/clubs/view/{id}', [App\Http\Controllers\HodController::class, 'clubs'])->name('hod.clubs.show')->defaults('action', 'view');
 Route::match(['get', 'post'], '/hod/clubs/edit/{id}', [App\Http\Controllers\HodController::class, 'clubs'])->name('hod.clubs.edit')->defaults('action', 'edit');
-Route::get('/hod/events/view/{id}', [HodController::class, 'viewEvent'])->name('hod.events.view');
-Route::get('/hod/events/edit/{id}', [HodController::class, 'editEvent'])->name('hod.events.edit');
+Route::get('/hod/events/view/{id}', [App\Http\Controllers\HodController::class, 'viewEvent'])->name('hod.events.view');
+Route::get('/hod/events/edit/{id}', [App\Http\Controllers\HodController::class, 'editEvent'])->name('hod.events.edit');
+Route::get('/hod/enrollments', [App\Http\Controllers\HodController::class, 'enrollments'])->name('hod.enrollments');
+
+Route::get('/hod/enrollments/pdf', [App\Http\Controllers\HodController::class, 'exportPDF'])->name('hod.export.pdf');
+Route::get('/hod/export/excel', [App\Http\Controllers\HodController::class, 'exportExcel'])->name('hod.export.excel');
+
+
 
 
 });

@@ -15,37 +15,52 @@ class SuperadminController extends Controller
     {
         switch ($action) {
             case 'create':
-                if ($request->isMethod('post')) {
-                    $request->validate([
-                        'club_name' => 'required|string|max:255',
-                        'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                        'introduction' => 'required|string',
-                        'mission' => 'required|string',
-                        'staff_coordinator_name' => 'required|string|max:255',
-                        'staff_coordinator_email' => 'nullable|email|max:255',
-                        'staff_coordinator_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                        'year_started' => 'required|integer',
-                    ]);
+    if ($request->isMethod('post')) {
+        $request->validate([
+            'club_name' => 'required|string|max:255',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'introduction' => 'required|string',
+            'mission' => 'required|string',
+            'staff_coordinator_name' => 'required|string|max:255',
+            'staff_coordinator_email' => 'nullable|email|max:255',
+            'staff_coordinator_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'year_started' => 'required|integer',
+            'department_name' => 'required|string',
+            'category' => 'required|string|in:Technical,Non-Technical',
+        ]);
 
-                    $logoPath = $request->file('logo')->store('club_logos', 'public');
-                    $staffPhotoPath = $request->hasFile('staff_coordinator_photo')
-                        ? $request->file('staff_coordinator_photo')->store('staff_photos', 'public')
-                        : null;
+        $logoPath = $request->file('logo')->store('club_logos', 'public');
+        $staffPhotoPath = $request->hasFile('staff_coordinator_photo')
+            ? $request->file('staff_coordinator_photo')->store('staff_photos', 'public')
+            : null;
 
-                    Club::create([
-                        'club_name' => $request->club_name,
-                        'logo' => $logoPath,
-                        'introduction' => $request->introduction,
-                        'mission' => $request->mission,
-                        'staff_coordinator_name' => $request->staff_coordinator_name,
-                        'staff_coordinator_email' => $request->staff_coordinator_email,
-                        'staff_coordinator_photo' => $staffPhotoPath,
-                        'year_started' => $request->year_started,
-                    ]);
+        // Fetch department_id using department_name
+        $department = DB::table('departments')
+    ->where('name', $request->department_name)
+    ->first();
 
-                    return redirect()->back()->with('success', 'Club created successfully!');
-                }
-                return view('clubs.create');
+if (!$department) {
+    return back()->withErrors(['department_name' => 'Invalid department selected.']);
+}
+
+Club::create([
+    'club_name' => $request->club_name,
+    'logo' => $logoPath,
+    'introduction' => $request->introduction,
+    'mission' => $request->mission,
+    'staff_coordinator_name' => $request->staff_coordinator_name,
+    'staff_coordinator_email' => $request->staff_coordinator_email,
+    'staff_coordinator_photo' => $staffPhotoPath,
+    'year_started' => $request->year_started,
+    'department_id' => $department->id, // ✅ fixed here
+    'category' => $request->category,
+]);
+
+        return redirect()->back()->with('success', 'Club created successfully!');
+    }
+
+    return view('clubs.create');
+
 
             case 'edit':
                 $club = Club::findOrFail($id);

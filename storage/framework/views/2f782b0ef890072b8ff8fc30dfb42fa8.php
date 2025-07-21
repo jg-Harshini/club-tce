@@ -1,22 +1,20 @@
-@extends('layout.app')
+<?php $__env->startSection('title', 'Add Club'); ?>
 
-@section('title', 'Add Club')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <h2 class="mb-4">Add Club</h2>
 
-@if ($errors->any())
+<?php if($errors->any()): ?>
     <div class="alert alert-danger">
         <ul class="mb-0">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
+            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <li><?php echo e($error); ?></li>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </ul>
     </div>
-@endif
+<?php endif; ?>
 
-<form action="{{ route('superadmin.clubs', ['action' => 'create']) }}" method="POST" enctype="multipart/form-data" class="bg-white p-4 rounded shadow-sm">
-    @csrf
+<form action="<?php echo e(route('superadmin.clubs', ['action' => 'create'])); ?>" method="POST" enctype="multipart/form-data" class="bg-white p-4 rounded shadow-sm">
+    <?php echo csrf_field(); ?>
 
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Club Name</label>
@@ -72,18 +70,18 @@
         </div>
     </div>
 
-   @php
+   <?php
     $departments = DB::table('departments')->orderBy('name')->get();
-@endphp
+?>
 
 <div class="row mb-3">
     <label class="col-sm-3 col-form-label">Department</label>
     <div class="col-sm-9">
         <select name="department_id" class="form-select" required>
             <option value="">Select Department</option>
-            @foreach ($departments as $dept)
-                <option value="{{ $dept->id }}">{{ $dept->name }}</option>
-            @endforeach
+            <?php $__currentLoopData = $departments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dept): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <option value="<?php echo e($dept->id); ?>"><?php echo e($dept->name); ?></option>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </select>
     </div>
 </div>
@@ -101,7 +99,7 @@
 </div>
 
 
-    {{-- Optional future Student Coordinators (currently not handled in controller) --}}
+    
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Student Coordinators</label>
         <div class="col-sm-9" id="student-fields">
@@ -132,4 +130,5 @@
         container.appendChild(div);
     }
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\HARSHINI\intern\club-tce current working\resources\views/clubs/create.blade.php ENDPATH**/ ?>

@@ -51,20 +51,20 @@
         <h4 class="text-center">HOD Panel</h4>
         <hr>
 
-        <a href="{{ route('hod.dashboard') }}">🏠 Dashboard</a>
-            <a href="{{ route('hod.clubs') }}">📚 View Clubs</a> 
-            <a href="{{ route('hod.enrollments') }}">📝 Enrollments</a>
+        <a href="<?php echo e(route('hod.dashboard')); ?>">🏠 Dashboard</a>
+            <a href="<?php echo e(route('hod.clubs')); ?>">📚 View Clubs</a> 
+            <a href="<?php echo e(route('hod.enrollments')); ?>">📝 Enrollments</a>
 
         <!-- 🔒 Logout -->
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
+        <form method="POST" action="<?php echo e(route('logout')); ?>">
+            <?php echo csrf_field(); ?>
             <button type="submit" class="btn btn-danger w-100 mt-3">Logout</button>
         </form>
     </div>
 
     <!-- Content -->
     <div class="content">
-        @yield('content')
+        <?php echo $__env->yieldContent('content'); ?>
     </div>
 </div>
 
@@ -72,7 +72,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
 
-@yield('scripts')
+<?php echo $__env->yieldContent('scripts'); ?>
 
 </body>
 </html>
+<?php /**PATH C:\HARSHINI\intern\club-tce current working\resources\views/layout/hod.blade.php ENDPATH**/ ?>

@@ -8,6 +8,8 @@ use App\Models\Event;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\EnrollmentsExport;
 
 
 class HodController extends Controller
@@ -143,5 +145,44 @@ public function editEvent($id)
         }
     return view('events.edit', compact('event', 'layout','baseUrl'));
 }
+
+public function enrollments()
+{
+    $hod = auth()->user(); // assuming HOD is logged in
+    $departmentId = $hod->department_id;
+
+    // Get department name from departments table
+$departmentName = DB::table('departments')
+    ->where('id', $departmentId)
+    ->value('name');
+
+    // Get all students with that department name
+    $students = Registration::with('clubs')
+        ->where('department', $departmentName)
+        ->get()
+        ->map(function ($student) {
+            return [
+                'name' => $student->name,
+                'club_enrolled' => $student->clubs->pluck('club_name')->join(', '),
+            ];
+        });
+
+    // Get clubs in this department (using department_id)
+$clubs = Club::orderBy('club_name', 'asc')->get();
+
+    return view('hod.enrollments', [
+        'students' => $students,
+        'clubs' => $clubs,
+        'department' => $departmentName
+    ]);
+}
+
+public function exportExcel()
+{
+    return Excel::download(new EnrollmentsExport, 'enrollments.xlsx');
+}
+
+
+
 
 }

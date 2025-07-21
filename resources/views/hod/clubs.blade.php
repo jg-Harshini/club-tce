@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mt-4">
-    <h3 class="mb-4">Clubs in Your Department</h3>
+    <h3 class="mb-4">Clubs in IT Department</h3>
 
     @if($clubs->count())
         <table class="table table-bordered table-hover">
