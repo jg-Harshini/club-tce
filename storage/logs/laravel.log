@@ -14411,3 +14411,21 @@ Did you mean one of these?
 #60 C:\\Users\\admin\\club-tce\\club-tce\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('C:\\\\Users\\\\admin\\\\...')
 #61 {main}
 "} 
+[2025-07-21 15:56:20] local.INFO: 📥 Registration request received {"request":{"_token":"N96adH8YnYgmfnae16DEDnRdVwlKUASJdcs80yCl","name":"Nikitha A S","roll_no":"660718","email":"nikithaa@student.tce.edu","gender":"Female","department":"IT","clubs":["35","1","22"]}} 
+[2025-07-21 15:56:20] local.INFO: ✅ Validation passed {"validatedData":{"name":"Nikitha A S","roll_no":"660718","email":"nikithaa@student.tce.edu","gender":"Female","department":"IT","clubs":["35","1","22"]}} 
+[2025-07-21 15:56:20] local.INFO: 🗃️ Registration created {"registration_id":53} 
+[2025-07-21 15:56:20] local.INFO: 📌 Attaching clubs {"clubs":["35","1","22"]} 
+[2025-07-21 15:56:20] local.INFO: ✅ Clubs attached successfully  
+[2025-07-21 15:56:28] local.INFO: ✅ Registration success mail sent to nikithaa@student.tce.edu  
+[2025-07-21 15:58:43] local.INFO: 📥 Registration request received {"request":{"_token":"N96adH8YnYgmfnae16DEDnRdVwlKUASJdcs80yCl","name":"Nikitha A S","roll_no":"660718","email":"nikithaa@student.tce.edu","gender":"Female","department":"IT","clubs":["35","5","43"]}} 
+[2025-07-21 15:58:43] local.INFO: ✅ Validation passed {"validatedData":{"name":"Nikitha A S","roll_no":"660718","email":"nikithaa@student.tce.edu","gender":"Female","department":"IT","clubs":["35","5","43"]}} 
+[2025-07-21 15:58:43] local.INFO: 🗃️ Registration created {"registration_id":54} 
+[2025-07-21 15:58:43] local.INFO: 📌 Attaching clubs {"clubs":["35","5","43"]} 
+[2025-07-21 15:58:43] local.INFO: ✅ Clubs attached successfully  
+[2025-07-21 15:58:49] local.INFO: ✅ Registration success mail sent to nikithaa@student.tce.edu  
+[2025-07-21 16:00:19] local.INFO: 📥 Registration request received {"request":{"_token":"N96adH8YnYgmfnae16DEDnRdVwlKUASJdcs80yCl","name":"Nikitha A S","roll_no":"660718","email":"nikithaa@student.tce.edu","gender":"Female","department":"IT","clubs":["35","5","22"]}} 
+[2025-07-21 16:00:19] local.INFO: ✅ Validation passed {"validatedData":{"name":"Nikitha A S","roll_no":"660718","email":"nikithaa@student.tce.edu","gender":"Female","department":"IT","clubs":["35","5","22"]}} 
+[2025-07-21 16:00:19] local.INFO: 🗃️ Registration created {"registration_id":55} 
+[2025-07-21 16:00:19] local.INFO: 📌 Attaching clubs {"clubs":["35","5","22"]} 
+[2025-07-21 16:00:19] local.INFO: ✅ Clubs attached successfully  
+[2025-07-21 16:00:24] local.INFO: ✅ Registration success mail sent to nikithaa@student.tce.edu  

@@ -2,26 +2,33 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Registration Confirmation</title>
+    <title>Club Registration Confirmation</title>
 </head>
 <body>
-    <h2>Dear <?php echo e($data['name']); ?>!</h2>
-    <p>You have successfully registered for the club(s).</p>
+    <p>Dear <?php echo e($data['name']); ?>,</p>
 
-    <ul>
-        <li><strong>Roll Number:</strong> <?php echo e($data['roll_no']); ?></li>
-        <li><strong>Email:</strong> <?php echo e($data['email']); ?></li>
-        <li><strong>Department:</strong> <?php echo e($data['department']); ?></li>
-        <li><strong>Clubs Enrolled:</strong>
-            <ul>
-                <?php $__currentLoopData = $data['clubs']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $clubName): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <li><?php echo e($clubName); ?></li>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </ul>
-        </li>
-    </ul>
+    <p>
+        We are pleased to inform you that your enrollment in the following clubs has been successfully completed:
+        <strong><?php echo e(implode(', ', $data['clubs'])); ?></strong>.
+    </p>
 
-    <p>Thank you!</p>
+    <p>
+        We are delighted to welcome you to the club community at Thiagarajar College of Engineering and look forward to your active involvement in the diverse activities, events, and initiatives organized throughout the academic year. Your participation plays a vital role in fostering a vibrant and collaborative campus environment.
+    </p>
+
+    <p>
+        Further information regarding orientation sessions, regular meetings, and upcoming events will be shared shortly by the respective club coordinators.
+    </p>
+
+    <p>
+        Wishing you a rewarding and enriching experience ahead.
+    </p>
+
+    <p>
+        Best regards,<br>
+        Clubs Coordination Committee<br>
+        Thiagarajar College of Engineering
+    </p>
 </body>
 </html>
 <?php /**PATH C:\Users\admin\club-tce\club-tce\resources\views/emails/registration_confirmation.blade.php ENDPATH**/ ?>

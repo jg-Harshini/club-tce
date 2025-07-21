@@ -98,6 +98,21 @@
             font-weight: 500;
             color: #444;
         }
+        /* Main form labels (bold) */
+label:not(.form-check-label) {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #444;
+        text-transform: uppercase;
+
+}
+
+/* Checkbox labels (keep previous look) */
+.form-check-label {
+    font-weight: 500;
+    color: #444;
+}
+
 
         input[type="text"],
         input[type="email"],
