@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AI Consortium Report 2025</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -161,13 +160,17 @@
 
 </div>
 
-<!-- Gallery -->
-@php $imgCount = count($eventImages); @endphp
+@php
+    $imgCount = count($eventImages ?? []);
+@endphp
+
 <div class="gallery {{ $imgCount === 1 ? 'single' : 'multi' }}">
     @foreach ($eventImages as $img)
-        <img src="{{ asset('storage/' . $img) }}" alt="Event Image">
+        <img src="{{ asset('storage/' . $img) }}" alt="Event Image" style="max-width: 100%;">
     @endforeach
 </div>
+
+
 <h5 class="fw-bold mt-3 mb-2" style="font-size: 25px; letter-spacing: 0.5px; color: #4a148c; text-align: left;">
     KEY HIGHLIGHTS:
 </h5>
@@ -179,7 +182,7 @@
         $highlights = [
             ['icon' => 'bi-people-fill', 'value' => $event->participants, 'label' => 'Participants', 'color' => 'text-primary'],
             ['icon' => 'bi-person-check-fill', 'value' => $event->coordinators, 'label' => 'Coordinators/Mentors', 'color' => 'text-danger'],
-            ['icon' => 'bi-award-fill', 'value' => $event->best_performance == 0 ? 'NA' : $event->best_performance, 'label' => 'Top Performances', 'color' => 'text-warning']
+            ['icon' => 'bi-award-fill', 'value' => $event->best_performance == 0 ? 'N/A' : $event->best_performance, 'label' => 'Top Performances', 'color' => 'text-warning']
         ];
     @endphp
 

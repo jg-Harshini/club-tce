@@ -11,6 +11,8 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ClubAdminController;
 use App\Http\Controllers\EnrollmentController;
+use App\Http\Controllers\HodController;
+
 
 
 Route::get('/export/excel', [EnrollmentController::class, 'exportExcel'])->name('export.excel');
@@ -85,10 +87,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/hod/dashboard', [App\Http\Controllers\HodController::class, 'index'])->name('hod.dashboard');
     Route::get('/hod/clubs', [App\Http\Controllers\HodController::class, 'clubs'])->name('hod.clubs');
 Route::get('/hod/clubs/view/{id}', [App\Http\Controllers\HodController::class, 'clubs'])->name('hod.clubs.show')->defaults('action', 'view');
-Route::match(['get', 'post'], '/hod/clubs/edit/{id}', [App\Http\Controllers\HodController::class, 'clubs'])->name('hod.clubs.edit')->defaults('action', 'edit');
-Route::get('/hod/events/view/{id}', [App\Http\Controllers\HodController::class, 'viewEvent'])->name('hod.events.view');
+Route::get('/hod/clubs/{clubId}/events/view/{id}', [App\Http\Controllers\HodController::class, 'viewEvent'])->name('hod.clubs.events.view');
 Route::get('/hod/events/edit/{id}', [App\Http\Controllers\HodController::class, 'editEvent'])->name('hod.events.edit');
 Route::get('/hod/enrollments', [App\Http\Controllers\HodController::class, 'enrollments'])->name('hod.enrollments');
+Route::get('/hod/events/print/{id}', [HodController::class, 'print'])->name('hod.events.print');
 
 Route::get('/hod/enrollments/pdf', [App\Http\Controllers\HodController::class, 'exportPDF'])->name('hod.export.pdf');
 Route::get('/hod/export/excel', [App\Http\Controllers\HodController::class, 'exportExcel'])->name('hod.export.excel');

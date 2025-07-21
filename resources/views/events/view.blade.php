@@ -108,13 +108,20 @@
                 ← Back to Club
             </a>
         </div>
-        <div class="text-start mt-4">
-  <a href="{{ route('superadmin.events.print', ['id' => $event->id]) }}" 
-   target="_blank" 
-   class="btn btn-outline-primary">
-   Print Report
-</a>
+        @php
+    $printRoute = auth()->user()->role === 'superadmin' 
+        ? route('superadmin.events.print', ['id' => $event->id]) 
+        : route('hod.events.print', ['id' => $event->id]);
+@endphp
+
+<div class="text-start mt-4">
+    <a href="{{ $printRoute }}" 
+       target="_blank" 
+       class="btn btn-outline-primary">
+        <i class="bi bi-printer me-2"></i> Print Report
+    </a>
 </div>
+
 
     </div>
 </div>

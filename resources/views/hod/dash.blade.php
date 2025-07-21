@@ -5,7 +5,7 @@
 @section('content')
 <div class="row mb-4">
   <div class="col-12">
-    <h3 class="text-dark fw-bold mt-0">HOD Dashboard</h3>
+<h3 class="text-dark fw-bold mt-0">HOD Dashboard - {{ $departmentName }}</h3>
     <p class="text-muted">Overview of your department’s club enrollments and events</p>
   </div>
 </div>

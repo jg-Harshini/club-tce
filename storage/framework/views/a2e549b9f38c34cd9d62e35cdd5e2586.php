@@ -5,6 +5,7 @@
     <title>HOD Panel</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
         html, body {
@@ -52,6 +53,8 @@
 
         <a href="<?php echo e(route('hod.dashboard')); ?>">🏠 Dashboard</a>
             <a href="<?php echo e(route('hod.clubs')); ?>">📚 View Clubs</a> 
+            <a href="<?php echo e(route('hod.enrollments')); ?>">📝 Enrollments</a>
+
         <!-- 🔒 Logout -->
         <form method="POST" action="<?php echo e(route('logout')); ?>">
             <?php echo csrf_field(); ?>

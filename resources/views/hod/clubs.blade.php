@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mt-4">
-    <h3 class="mb-4">Clubs in IT Department</h3>
+    <h3 class="mb-4">Clubs in {{ $department }} Department</h3>
 
     @if($clubs->count())
         <table class="table table-bordered table-hover">
@@ -22,7 +22,6 @@
                         <td>{{ $club->year_started ?? 'N/A' }}</td>
                         <td>
                             <a href="{{ route('hod.clubs.show', $club->id) }}" class="btn btn-info">View</a>
-<a href="{{ route('hod.clubs.edit', $club->id) }}" class="btn btn-primary">Edit</a>
 
 
                         </td>

@@ -17,34 +17,38 @@ class HodController extends Controller
     public function index()
     {
         $hodDeptId = auth()->user()->department_id;
-
+$hod=auth()->user();
         // Clubs under HOD's department
         $clubs = Club::where('department_id', $hodDeptId)->get();
         $clubIds = $clubs->pluck('id');
 
         // Total number of clubs
         $totalClubs = $clubs->count();
+        $departmentName = DB::table('departments')
+    ->where('id', $hodDeptId)
+    ->value('name');
 
-        // Total number of applications (registrations in these clubs)
-        $totalApplications = DB::table('club_registration')
-            ->whereIn('club_id', $clubIds)
-            ->count();
+        $totalApplications = DB::table('club_registration as cr')
+    ->join('registrations as r', 'cr.registration_id', '=', 'r.id')
+    ->where('r.department', $departmentName) // Only IT students
+    ->count();
 
-        // Total unique students in these clubs
-        $totalStudents = DB::table('club_registration')
-            ->whereIn('club_id', $clubIds)
-            ->distinct('registration_id')
-            ->count('registration_id');
+$totalStudents = DB::table('club_registration as cr')
+    ->join('registrations as r', 'cr.registration_id', '=', 'r.id')
+    ->where('r.department', $departmentName) // Only IT students
+    ->distinct('cr.registration_id')
+    ->count('cr.registration_id');
 
-        // Popular clubs (top 3 by registration count)
+
        $popularClubs = DB::table('club_registration')
+    ->join('registrations', 'club_registration.registration_id', '=', 'registrations.id')
     ->join('clubs', 'club_registration.club_id', '=', 'clubs.id')
-    ->whereIn('clubs.id', $clubIds)
-    ->groupBy('clubs.club_name')
+    ->where('registrations.department', $departmentName) // only your dept's students
+    ->groupBy('clubs.id', 'clubs.club_name')
     ->select('clubs.club_name', DB::raw('count(*) as total'))
     ->orderByDesc('total')
     ->take(3)
-    ->pluck('total', 'clubs.club_name');  // FIXED: use 'clubs.club_name'
+    ->pluck('total', 'clubs.club_name');
 
     $activeClubsByEvents = DB::table('events')
     ->join('clubs', 'events.club_id', '=', 'clubs.id')
@@ -62,14 +66,18 @@ class HodController extends Controller
             ->groupBy('registrations.gender')
             ->pluck('total', 'gender');
 
-        return view('hod.dash', compact(
-            'totalClubs',
-            'totalApplications',
-            'totalStudents',
-            'popularClubs',
-            'activeClubsByEvents',
-            'genderDistribution'
-        ));
+
+
+return view('hod.dash', compact(
+    'totalClubs',
+    'totalApplications',
+    'totalStudents',
+    'popularClubs',
+    'activeClubsByEvents',
+    'genderDistribution',
+    'departmentName'
+));
+
     }
 
 public function clubs(Request $request, $id = null, $action = null)
@@ -114,37 +122,49 @@ return view('clubs.edit', compact('club'))->with('layout', 'layout.hod');
             case 'view':
                 $club = Club::where('department_id', $deptId)->findOrFail($id);
                 $baseUrl = url('/hod/clubs/' . $club->id . '/events');
-return view('clubs.profile', compact('club', 'baseUrl'))->with('layout', 'layout.hod');
-
+return view('hod.club-view', compact('club', 'baseUrl'))->with('layout', 'layout.hod');
 
             default:
+                $departmentId = $hod->department_id;
+
+            $departmentName = DB::table('departments')
+    ->where('id', $departmentId)
+    ->value('name');
+    
+
                 $clubs = Club::where('department_id', $deptId)->get();
-                return view('hod.clubs', compact('clubs'));
+return view('hod.clubs', [
+    'clubs' => $clubs,
+    'department' => $departmentName
+]);
         }
     }
-    public function viewEvent($id)
+    
+   
+public function viewEvent($clubId, $id)
 {
     $event = Event::findOrFail($id);
-    $layout = 'layout.hod'; // or conditionally set
-    if (auth()->user()->role == 'superadmin') {
-            $baseUrl = '/tce/superadmin/events';
-        } else {
-            $baseUrl = '/tce/hod/events';
-        }
-    return view('events.view', compact('event', 'layout','baseUrl'));
+    $layout = 'layout.hod';
+    $baseUrl = "/tce/hod/clubs/{$clubId}/events";
+
+    return view('events.view', compact('event', 'layout', 'baseUrl'));
 }
 
-public function editEvent($id)
+
+public function print($id)
 {
-    $event = Event::findOrFail($id);
-    $layout = 'layout.hod'; // or conditionally set
-    if (auth()->user()->role == 'superadmin') {
-            $baseUrl = '/tce/superadmin/events';
-        } else {
-            $baseUrl = '/tce/hod/events';
-        }
-    return view('events.edit', compact('event', 'layout','baseUrl'));
+    $event = Event::with('club')->findOrFail($id);
+    $eventImages = json_decode($event->gallery ?? '[]');
+    $eventImages = array_slice($eventImages, 0, 4); // Limit to 4 images
+    $layout = 'layout.hod'; // Or your correct HOD layout
+
+    return view('events.report', [
+        'event' => $event,
+        'eventImages' => $eventImages,
+        'layout' => $layout,
+    ]);
 }
+
 
 public function enrollments()
 {

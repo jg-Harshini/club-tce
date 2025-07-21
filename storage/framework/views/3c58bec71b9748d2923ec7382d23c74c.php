@@ -26,7 +26,7 @@
 
             
             <div class="row align-items-center mb-5">
-                <div class="col-md-3 text-center mb-3 mb-md-0">
+                <!--div class="col-md-3 text-center mb-3 mb-md-0">
                     <?php if($club->staff_coordinator_photo): ?>
                         <img src="<?php echo e(asset('storage/' . $club->staff_coordinator_photo)); ?>"
                              class="rounded-circle shadow border"
@@ -37,7 +37,7 @@
                             <i class="bi bi-person fs-1 text-muted"></i>
                         </div>
                     <?php endif; ?>
-                </div>
+                </div-->
                 <div class="col-md-9">
                     <h4 class="fw-semibold" style="color: #003366;">Staff Coordinator</h4>
                     <h6 class="mb-1 mt-3"><?php echo e($club->staff_coordinator_name); ?></h6>
@@ -52,7 +52,7 @@
                 <h4 class="fw-semibold mb-4" style="color: #003366;">Student Coordinators</h4>
                 <div class="row">
                     <?php $__empty_1 = true; $__currentLoopData = $club->studentCoordinators; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $student): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                        <div class="col-md-3 col-sm-4 col-6 mb-4 text-center">
+                        <!--div class="col-md-3 col-sm-4 col-6 mb-4 text-center">
                             <div class="d-flex flex-column align-items-center">
                                 <?php if($student->photo): ?>
                                     <img src="<?php echo e(asset('storage/' . $student->photo)); ?>" 
@@ -66,9 +66,10 @@
                                         <i class="bi bi-person-circle fs-1 text-muted"></i>
                                     </div>
                                 <?php endif; ?>
-                                <p class="fw-medium text-dark mb-0"><?php echo e($student->name); ?></p>
                             </div>
-                        </div>
+                        </div-->
+                                                        <p class="fw-medium text-dark mb-0"><?php echo e($student->name); ?></p>
+
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                         <div class="text-muted">No student coordinators listed.</div>
                     <?php endif; ?>
@@ -112,21 +113,49 @@
                                             <?php endif; ?>
                                         </td>
                                         <td><?php echo e($event->event_name); ?></td>
-                                        <td><?php echo e($event->description); ?></td>
+<td>
+    <div><?php echo e($event->description); ?></div>
+    <?php if(!empty($event->chief_guest) && $event->chief_guest !== 'NA'): ?>
+        <small class="text-muted d-block mt-1">
+            <strong>Chief Guest:</strong> <?php echo e($event->chief_guest); ?>
+
+        </small>
+    <?php endif; ?>
+</td>
                                         <td><?php echo e(\Carbon\Carbon::parse($event->start_date)->format('F j ')); ?> to
                                             <?php echo e(\Carbon\Carbon::parse($event->end_date)->format('F j, Y')); ?> </td>
                                         <td><?php echo e(\Carbon\Carbon::parse($event->start_time)->format('h:i A')); ?> - <?php echo e(\Carbon\Carbon::parse($event->end_time)->format('h:i A')); ?></td>
-                                        <td>
-                                            <a href="<?php echo e($baseUrl . '/edit/' . $event->id); ?>" class="btn btn-sm btn-warning mb-1">Edit</a>
+      <td class="text-center">
+    <div class="d-flex justify-content-center align-items-center gap-2 flex-wrap">
+        
+        <a href="<?php echo e($baseUrl . '/view/' . $event->id); ?>" 
+           class="btn btn-sm btn-outline-info border-2" 
+           title="View">
+            <i class="bi bi-eye fs-5"></i>
+        </a>
+        
+        <a href="<?php echo e($baseUrl . '/edit/' . $event->id); ?>" 
+           class="btn btn-sm btn-outline-warning border-2" 
+           title="Edit">
+            <i class="bi bi-pencil-square fs-5"></i>
+        </a>
 
-<form action="<?php echo e($baseUrl . '/delete/' . $event->id); ?>" method="POST" style="display:inline;">
+      <form action="<?php echo e($baseUrl . '/delete/' . $event->id); ?>" method="POST" class="d-inline delete-form">
     <?php echo csrf_field(); ?>
-    <button onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Delete</button>
+    <button type="button"
+            class="btn btn-sm btn-outline-danger border-2 delete-btn"
+            data-event-id="<?php echo e($event->id); ?>"
+            title="Delete">
+        <i class="bi bi-trash fs-5"></i>
+    </button>
 </form>
 
-<a href="<?php echo e($baseUrl . '/view/' . $event->id); ?>" class="btn btn-sm btn-info">
-    <i class="fas fa-eye text-primary me-2"></i>View
-</a>
+
+
+
+    </div>
+</td>
+
 
                                             </form>
                                         </td>
@@ -171,6 +200,13 @@
                     <textarea name="description" class="form-control" rows="3"></textarea>
                 </div>
             </div>
+
+<div class="row mb-3">
+    <label for="chief_guest" class="col-sm-3 col-form-label">Chief Guest</label>
+    <div class="col-sm-9">
+        <input type="text" name="chief_guest" class="form-control" placeholder="Enter Chief Guest name (optional)" value="NA">
+    </div>
+</div>
 
             
             <div class="row mb-3">
@@ -248,6 +284,41 @@
     </form>
   </div>
 </div>
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content border-0 rounded-4 shadow-lg">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Deletion</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure? <strong>This action cannot be undone.</strong>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" id="confirmDeleteBtn" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    let deleteForm = null;
+
+    document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            deleteForm = this.closest('form');
+            const modal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
+            modal.show();
+        });
+    });
+
+    document.getElementById('confirmDeleteBtn').addEventListener('click', function () {
+        if (deleteForm) {
+            deleteForm.submit();
+        }
+    });
+</script>
 
 <?php $__env->stopSection(); ?>
 

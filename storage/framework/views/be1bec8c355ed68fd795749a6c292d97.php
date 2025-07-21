@@ -1,8 +1,6 @@
-
-
 <?php $__env->startSection('content'); ?>
 <div class="container mt-4">
-    <h3 class="mb-4">Clubs in Your Department</h3>
+    <h3 class="mb-4">Clubs in <?php echo e($department); ?> Department</h3>
 
     <?php if($clubs->count()): ?>
         <table class="table table-bordered table-hover">
@@ -22,7 +20,6 @@
                         <td><?php echo e($club->year_started ?? 'N/A'); ?></td>
                         <td>
                             <a href="<?php echo e(route('hod.clubs.show', $club->id)); ?>" class="btn btn-info">View</a>
-<a href="<?php echo e(route('hod.clubs.edit', $club->id)); ?>" class="btn btn-primary">Edit</a>
 
 
                         </td>
