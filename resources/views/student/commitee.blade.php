@@ -198,6 +198,7 @@
         </div>
     </div>
 
+<<<<<<< Updated upstream
     <!-- No extra padding needed because header is static -->
 
     <!-- Feather Icons -->
@@ -268,6 +269,54 @@
 
     new Treant(chart_config);
   </script>
+=======
+<!-- Footer -->
+<footer>
+<div class="container-fluid" style="background-color: #800000; color: white; padding: 40px 0;">
+    <!-- First Row -->
+    <div class="row g-4 px-5">
+        <!-- Contact Info -->
+        <div class="col-md-6 col-lg-6">
+            <h4 style="color: #B34747; margin-bottom: 20px;">Contact Info</h4>
+            <p><i class="fa fa-map-marker-alt me-2" style="color: #B34747;"></i>V3JJ+VJ3, Thiruparankundram, Tamil Nadu 625015</p>
+            <p><i class="fas fa-envelope me-2" style="color: #B34747;"></i>www.tce.edu</p>
+            <p><i class="fas fa-phone me-2" style="color: #B34747;"></i>+91 452 2482240</p>
+        </div>
+
+        <!-- Developed By -->
+        <div class="col-md-6 col-lg-6">
+            <h4 style="color: #B34747; margin-bottom: 20px;">Developed By</h4>
+            <ul style="list-style: none; padding: 0;">
+                <li>1. Aburvaa A S</li>
+                <li>2. Harshini J G</li>
+                <li>3. Kiruthika B</li>
+                <li>4. Nikitha A S</li>
+                <li>5. Varshini C</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Second Row -->
+    <div class="row px-5 mt-4">
+        <div class="col-12">
+            <h4 style="color: #B34747; margin-bottom: 20px;">Connect With Us</h4>
+            <div>
+                <a href="https://www.facebook.com/TheOfficialTCEPage" style="color: white; margin-right: 15px; font-size: 1.5rem;"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/tceofficialpage" style="color: white; margin-right: 15px; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/tce_madurai/" style="color: white; margin-right: 15px; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                <a href="https://x.com/tceofficialpage" style="color: white; font-size: 1.5rem;"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <hr style="border-color: #B34747; margin: 30px 5%;">
+    <div class="text-center" style="color: white; font-size: 0.9rem;">
+        &copy; 2025 TCE College. All Rights Reserved.
+    </div>
+</div>
+</footer>
+
+>>>>>>> Stashed changes
 
 </body>
 </html>

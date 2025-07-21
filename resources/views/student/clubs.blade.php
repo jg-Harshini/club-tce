@@ -210,25 +210,34 @@
 </div>
 
 <!-- Footer -->
+<footer>
 <div class="container-fluid" style="background-color: #800000; color: white; padding: 40px 0;">
+    <!-- First Row -->
     <div class="row g-4 px-5">
         <!-- Contact Info -->
-        <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-6">
             <h4 style="color: #B34747; margin-bottom: 20px;">Contact Info</h4>
             <p><i class="fa fa-map-marker-alt me-2" style="color: #B34747;"></i>V3JJ+VJ3, Thiruparankundram, Tamil Nadu 625015</p>
             <p><i class="fas fa-envelope me-2" style="color: #B34747;"></i>www.tce.edu</p>
             <p><i class="fas fa-phone me-2" style="color: #B34747;"></i>+91 452 2482240</p>
         </div>
 
-        <!-- Opening Time -->
-        <div class="col-md-6 col-lg-4">
-            <h4 style="color: #B34747; margin-bottom: 20px;">Opening Time</h4>
-            <p>Monday - Friday: 9:00 AM to 5:00 PM</p>
-            <p>Sunday: Closed</p>
+        <!-- Developed By -->
+        <div class="col-md-6 col-lg-6">
+            <h4 style="color: #B34747; margin-bottom: 20px;">Developed By</h4>
+            <ul style="list-style: none; padding: 0;">
+                <li>1. Aburvaa A S</li>
+                <li>2. Harshini J G</li>
+                <li>3. Kiruthika B</li>
+                <li>4. Nikitha A S</li>
+                <li>5. Varshini C</li>
+            </ul>
         </div>
+    </div>
 
-        <!-- Social Media -->
-        <div class="col-md-12 col-lg-4 d-flex flex-column">
+    <!-- Second Row -->
+    <div class="row px-5 mt-4">
+        <div class="col-12">
             <h4 style="color: #B34747; margin-bottom: 20px;">Connect With Us</h4>
             <div>
                 <a href="https://www.facebook.com/TheOfficialTCEPage" style="color: white; margin-right: 15px; font-size: 1.5rem;"><i class="fab fa-facebook-f"></i></a>
@@ -244,6 +253,9 @@
         &copy; 2025 TCE College. All Rights Reserved.
     </div>
 </div>
+</footer>
+
+
 
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
