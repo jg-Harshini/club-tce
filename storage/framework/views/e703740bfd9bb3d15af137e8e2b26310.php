@@ -12,7 +12,7 @@
 
 <div class="row mb-4">
   <div class="col-lg-4 col-md-6">
-    <div class="card shadow-sm text-dark" style="background-color: #ffcad4;">
+    <div class="card shadow-sm text-dark" style="background-color: #e74563ff;">
       <div class="card-body">
         <h5 class="card-title">Total Clubs</h5>
         <h2 class="fw-bold"><?php echo e($totalClubs); ?></h2>
@@ -20,7 +20,7 @@
     </div>
   </div>
   <div class="col-lg-4 col-md-6">
-    <div class="card shadow-sm text-dark" style="background-color: #ffddb0;">
+    <div class="card shadow-sm text-dark" style="background-color: #e0a250ff;">
       <div class="card-body">
         <h5 class="card-title">Total Club Applications</h5>
         <h2 class="fw-bold"><?php echo e($totalApplications); ?></h2>
@@ -28,7 +28,7 @@
     </div>
   </div>
   <div class="col-lg-4 col-md-12">
-    <div class="card shadow-sm text-dark" style="background-color: #b7eadf;">
+    <div class="card shadow-sm text-dark" style="background-color: #209178ff;">
       <div class="card-body">
         <h5 class="card-title">Total Distinct Students</h5>
         <h2 class="fw-bold"><?php echo e($totalStudents); ?></h2>
@@ -92,8 +92,14 @@
           datasets: [{
             label: "Applications",
             data: Object.values(clubData),
-            backgroundColor: ['#f5b8d1', '#ffd6a5', '#bae1ff']
+            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'] // bright pink, blue, yellow
           }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false }
+          }
         }
       });
     }
@@ -106,8 +112,14 @@
           datasets: [{
             label: "Events",
             data: Object.values(activeClubEvents),
-            backgroundColor: ['#f7b7b7', '#c2f0c2', '#ffdfba']
+            backgroundColor: ['#4BC0C0', '#9966FF', '#FF9F40'] // bright teal, purple, orange
           }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false }
+          }
         }
       });
     }
@@ -119,8 +131,18 @@
           labels: Object.keys(genderData),
           datasets: [{
             data: Object.values(genderData),
-            backgroundColor: ['#92caff', '#ffb6c1', '#e2e2e2']
+            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'] // same bright palette
           }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              labels: {
+                font: { size: 14 }
+              }
+            }
+          }
         }
       });
     }
