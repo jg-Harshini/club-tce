@@ -55,8 +55,8 @@
     </div>
   </div>
 </div>
-<!-- New Row for Active Clubs by Event Count -->
-<!-- New Row for Active Clubs and Placeholder (for future chart) -->
+
+<!-- Active Clubs & Gender Distribution -->
 <div class="row mb-4">
   <div class="col-lg-6">
     <div class="card shadow-sm">
@@ -67,16 +67,14 @@
     </div>
   </div>
 
-  <!-- Placeholder for future chart -->
-<!-- Placeholder for future chart -->
-<div class="col-lg-6">
-  <div class="card shadow-sm">
-    <div class="card-body text-center">
-      <h6 class="fw-semibold mb-3">Gender Distribution</h6>
-      <div style="height: 320px; display: flex; align-items: center; justify-content: center;">
-  <canvas id="gender-chart" width="250" height="250"></canvas>
-</div>
-
+  <div class="col-lg-6">
+    <div class="card shadow-sm">
+      <div class="card-body text-center">
+        <h6 class="fw-semibold mb-3">Gender Distribution</h6>
+        <div style="height: 320px; display: flex; align-items: center; justify-content: center;">
+          <canvas id="gender-chart" width="250" height="250"></canvas>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -85,134 +83,96 @@
 <?php $__env->startSection('scripts'); ?>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const deptData = <?php echo json_encode($departmentDistribution, 15, 512) ?>;
-    const clubData = <?php echo json_encode($popularClubs, 15, 512) ?>;
- const activeClubEvents = <?php echo json_encode($activeClubsByEvents, 15, 512) ?>;
+document.addEventListener('DOMContentLoaded', function () {
+  const deptData = <?php echo json_encode($departmentDistribution, 15, 512) ?>;
+  const clubData = <?php echo json_encode($popularClubs, 15, 512) ?>;
+  const activeClubEvents = <?php echo json_encode($activeClubsByEvents, 15, 512) ?>;
   const genderData = <?php echo json_encode($genderDistribution, 15, 512) ?>;
 
-    const deptCtx = document.getElementById("dept-chart");
-    const clubCtx = document.getElementById("popular-clubs-chart");
- const activeClubCtx = document.getElementById("active-club-events-chart");
+  const deptCtx = document.getElementById("dept-chart");
+  const clubCtx = document.getElementById("popular-clubs-chart");
+  const activeClubCtx = document.getElementById("active-club-events-chart");
   const genderCtx = document.getElementById("gender-chart");
 
-    if (deptCtx && deptData && Object.keys(deptData).length) {
-      new Chart(deptCtx, {
-        type: "bar",
-        data: {
-          labels: Object.keys(deptData),
-          datasets: [{
-            label: "Students",
-            data: Object.values(deptData),
-backgroundColor: ['#f7b7b7', '#c2f0c2', '#ffdfba', '#d0c7f2', '#f8e2cf'] // dept-chart
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: {
-  legend: {
-    display: false,
-    labels: {
-      font: {
-        weight: 'bold',
-        size: 14
+  if (deptCtx && deptData && Object.keys(deptData).length) {
+    new Chart(deptCtx, {
+      type: "bar",
+      data: {
+        labels: Object.keys(deptData),
+        datasets: [{
+          label: "Students",
+          data: Object.values(deptData),
+          backgroundColor: ['#5D5FEE', '#2E8B57', '#FF6347', '#6A5ACD', '#B22222']
+        }]
       },
-      color: '#333' // darker text
-    }
-  },
-  tooltip: {
-    bodyFont: {
-      weight: 'bold',
-      size: 13
-    }
-  }
-},
-scales: {
-  x: {
-    ticks: {
-      color: '#222',
-      font: {
-        weight: 'bold',
-        size: 13
-      }
-    }
-  },
-  y: {
-    beginAtZero: true,
-    ticks: {
-      precision: 0,
-      color: '#222',
-      font: {
-        weight: 'bold',
-        size: 13
-      }
-    }
-  }
-}
-
-        }
-      });
-    }
-
-    if (clubCtx && clubData && Object.keys(clubData).length) {
-      new Chart(clubCtx, {
-        type: "bar",
-        data: {
-          labels: Object.keys(clubData),
-          datasets: [{
-            label: "Applications",
-            data: Object.values(clubData),
-backgroundColor: ['#f5b8d1', '#ffd6a5', '#bae1ff'] // popular-clubs-chart
-          }]
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            bodyFont: { weight: 'bold', size: 13 }
+          }
         },
-        options: {
-          responsive: true,
-          plugins: {
-  legend: {
-    display: false,
-    labels: {
-      font: {
-        weight: 'bold',
-        size: 14
-      },
-      color: '#333' // darker text
-    }
-  },
-  tooltip: {
-    bodyFont: {
-      weight: 'bold',
-      size: 13
-    }
-  }
-},
-scales: {
-  x: {
-    ticks: {
-      color: '#222',
-      font: {
-        weight: 'bold',
-        size: 13
-      }
-    }
-  },
-  y: {
-    beginAtZero: true,
-    ticks: {
-      precision: 0,
-      color: '#222',
-      font: {
-        weight: 'bold',
-        size: 13
-      }
-    }
-  }
-}
-
-
+        scales: {
+          x: {
+            ticks: {
+              color: '#222',
+              font: { weight: 'bold', size: 13 }
+            }
+          },
+          y: {
+            beginAtZero: true,
+            ticks: {
+              precision: 0,
+              color: '#222',
+              font: { weight: 'bold', size: 13 }
+            }
+          }
         }
-      });
-    }
-      if (activeClubCtx && activeClubEvents && Object.keys(activeClubEvents).length) {
+      }
+    });
+  }
+
+  if (clubCtx && clubData && Object.keys(clubData).length) {
+    new Chart(clubCtx, {
+      type: "bar",
+      data: {
+        labels: Object.keys(clubData),
+        datasets: [{
+          label: "Applications",
+          data: Object.values(clubData),
+          backgroundColor: ['#1F77B4', '#FF7F0E', '#2CA02C']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            bodyFont: { weight: 'bold', size: 13 }
+          }
+        },
+        scales: {
+          x: {
+            ticks: {
+              color: '#222',
+              font: { weight: 'bold', size: 13 }
+            }
+          },
+          y: {
+            beginAtZero: true,
+            ticks: {
+              precision: 0,
+              color: '#222',
+              font: { weight: 'bold', size: 13 }
+            }
+          }
+        }
+      }
+    });
+  }
+
+  if (activeClubCtx && activeClubEvents && Object.keys(activeClubEvents).length) {
     new Chart(activeClubCtx, {
       type: "bar",
       data: {
@@ -220,59 +180,40 @@ scales: {
         datasets: [{
           label: "Events Conducted",
           data: Object.values(activeClubEvents),
-backgroundColor: ['#f7b7b7', '#c2f0c2', '#ffdfba', '#d0c7f2', '#f8e2cf'] // active-club-events-chart
+          backgroundColor: ['#8B0000', '#483D8B', '#006400', '#8B008B', '#2F4F4F']
         }]
       },
-    options: {
-  responsive: true,
-  plugins: {
-    legend: {
-      display: false,
-      labels: {
-        font: {
-          weight: 'bold',
-          size: 14
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            bodyFont: { weight: 'bold', size: 13 }
+          }
         },
-        color: '#333'
-      }
-    },
-    tooltip: {
-      bodyFont: {
-        weight: 'bold',
-        size: 13
-      }
-    }
-  },
-  scales: {
-    x: {
-  ticks: {
-    callback: function(value, index, values) {
-      let label = this.getLabelForValue(value);
-      return label.length > 10 ? label.slice(0, 10) + '…' : label;
-    },
-    color: '#222',
-    font: {
-      weight: 'bold',
-      size: 13
-    },
-    maxRotation: 0,
-    minRotation: 0
-  }
-},
-    y: {
-      beginAtZero: true,
-      ticks: {
-        precision: 0,
-        color: '#222',
-        font: {
-          weight: 'bold',
-          size: 13
+        scales: {
+          x: {
+            ticks: {
+              callback: function(value, index, values) {
+                let label = this.getLabelForValue(value);
+                return label.length > 10 ? label.slice(0, 10) + '…' : label;
+              },
+              color: '#222',
+              font: { weight: 'bold', size: 13 },
+              maxRotation: 0,
+              minRotation: 0
+            }
+          },
+          y: {
+            beginAtZero: true,
+            ticks: {
+              precision: 0,
+              color: '#222',
+              font: { weight: 'bold', size: 13 }
+            }
+          }
         }
       }
-    }
-  }
-}
-
     });
   }
 
@@ -284,18 +225,16 @@ backgroundColor: ['#f7b7b7', '#c2f0c2', '#ffdfba', '#d0c7f2', '#f8e2cf'] // acti
         datasets: [{
           label: "Gender",
           data: Object.values(genderData),
-backgroundColor: ['#92caff', '#ffb6c1', '#e2e2e2'] // gender pie
+          backgroundColor: ['#007BFF', '#FF1493', '#6C757D']
         }]
-        
       },
       options: {
         responsive: false,
-        maintainAspectRatio: false,
-        
+        maintainAspectRatio: false
       }
     });
   }
-  });
+});
 </script>
 <?php $__env->stopSection(); ?>
 
